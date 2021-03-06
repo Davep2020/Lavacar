@@ -21,6 +21,7 @@ namespace BDLavacar.Models
     
         public int Id_Tipo_TV { get; set; }
         public string Tipo_TV { get; set; }
+        public string codigo_TV { get; set; }
     
         public virtual ICollection<Tbl_Vehiculo_V> Tbl_Vehiculo_V { get; set; }
     }

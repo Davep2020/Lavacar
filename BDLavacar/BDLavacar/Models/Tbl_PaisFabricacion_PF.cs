@@ -21,6 +21,7 @@ namespace BDLavacar.Models
     
         public int Id_PaisFabricacion_PF { get; set; }
         public string Pais_PF { get; set; }
+        public string Codigo_PF { get; set; }
     
         public virtual ICollection<Tbl_MarcaVehiculo_MV> Tbl_MarcaVehiculo_MV { get; set; }
     }

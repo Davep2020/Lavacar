@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="bdlavacarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="bdlavacarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Canton">
           <Key>
             <PropertyRef Name="id_Canton" />
@@ -63,6 +63,7 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FS
             <PropertyRef Name="Id_Marca_MV" />
           </Key>
           <Property Name="Id_Marca_MV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_MV" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Tipo_MV" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Id_Pais_MV" Type="int" Nullable="false" />
         </EntityType>
@@ -71,6 +72,7 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FS
             <PropertyRef Name="Id_PaisFabricacion_PF" />
           </Key>
           <Property Name="Id_PaisFabricacion_PF" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_PF" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Pais_PF" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_Persona_P">
@@ -103,6 +105,7 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FS
             <PropertyRef Name="Id_Servicio_S" />
           </Key>
           <Property Name="Id_Servicio_S" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_S" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Descripcion_S" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Precio_S" Type="int" Nullable="false" />
           <Property Name="Tipo_S" Type="varchar" MaxLength="50" Nullable="false" />
@@ -112,6 +115,7 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FS
             <PropertyRef Name="Id_Tipo_TV" />
           </Key>
           <Property Name="Id_Tipo_TV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_TV" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Tipo_TV" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_TipoPersona_TP">
@@ -404,8 +408,7 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
             <End Role="TblFactura_F" EntitySet="TblFactura_F" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bdlavacarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -463,6 +466,7 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           <Property Name="Id_Pais_MV" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Tbl_PaisFabricacion_PF" Relationship="Self.FK_Tbl_MarcaVehiculo_MV_Tbl_PaisFabricacion_PF" FromRole="Tbl_MarcaVehiculo_MV" ToRole="Tbl_PaisFabricacion_PF" />
           <NavigationProperty Name="Tbl_Vehiculo_V" Relationship="Self.FK_Tbl_Vehiculo_V_Tbl_MarcaVehiculo_MV" FromRole="Tbl_MarcaVehiculo_MV" ToRole="Tbl_Vehiculo_V" />
+          <Property Name="Codigo_MV" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Tbl_PaisFabricacion_PF">
           <Key>
@@ -471,6 +475,7 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           <Property Name="Id_PaisFabricacion_PF" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Pais_PF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tbl_MarcaVehiculo_MV" Relationship="Self.FK_Tbl_MarcaVehiculo_MV_Tbl_PaisFabricacion_PF" FromRole="Tbl_PaisFabricacion_PF" ToRole="Tbl_MarcaVehiculo_MV" />
+          <Property Name="Codigo_PF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Tbl_Persona_P">
           <Key>
@@ -512,6 +517,7 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           <Property Name="Precio_S" Type="Int32" Nullable="false" />
           <Property Name="Tipo_S" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tbl_FacturaServicioVehiculo_FSV" Relationship="Self.FK_Tbl_FacturaServicioVehiculo_FSV_Tbl_Servicio_S" FromRole="Tbl_Servicio_S" ToRole="Tbl_FacturaServicioVehiculo_FSV" />
+          <Property Name="Codigo_S" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Tbl_Tipo_TV">
           <Key>
@@ -520,6 +526,7 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           <Property Name="Id_Tipo_TV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tipo_TV" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tbl_Vehiculo_V" Relationship="Self.FK_Tbl_Vehiculo_V_Tbl_Tipo_TV" FromRole="Tbl_Tipo_TV" ToRole="Tbl_Vehiculo_V" />
+          <Property Name="codigo_TV" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Tbl_TipoPersona_TP">
           <Key>
@@ -837,6 +844,7 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           <EntitySetMapping Name="Tbl_MarcaVehiculo_MV">
             <EntityTypeMapping TypeName="bdlavacarModel.Tbl_MarcaVehiculo_MV">
               <MappingFragment StoreEntitySet="Tbl_MarcaVehiculo_MV">
+                <ScalarProperty Name="Codigo_MV" ColumnName="Codigo_MV" />
                 <ScalarProperty Name="Id_Marca_MV" ColumnName="Id_Marca_MV" />
                 <ScalarProperty Name="Tipo_MV" ColumnName="Tipo_MV" />
                 <ScalarProperty Name="Id_Pais_MV" ColumnName="Id_Pais_MV" />
@@ -846,6 +854,7 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           <EntitySetMapping Name="Tbl_PaisFabricacion_PF">
             <EntityTypeMapping TypeName="bdlavacarModel.Tbl_PaisFabricacion_PF">
               <MappingFragment StoreEntitySet="Tbl_PaisFabricacion_PF">
+                <ScalarProperty Name="Codigo_PF" ColumnName="Codigo_PF" />
                 <ScalarProperty Name="Id_PaisFabricacion_PF" ColumnName="Id_PaisFabricacion_PF" />
                 <ScalarProperty Name="Pais_PF" ColumnName="Pais_PF" />
               </MappingFragment>
@@ -881,6 +890,7 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           <EntitySetMapping Name="Tbl_Servicio_S">
             <EntityTypeMapping TypeName="bdlavacarModel.Tbl_Servicio_S">
               <MappingFragment StoreEntitySet="Tbl_Servicio_S">
+                <ScalarProperty Name="Codigo_S" ColumnName="Codigo_S" />
                 <ScalarProperty Name="Id_Servicio_S" ColumnName="Id_Servicio_S" />
                 <ScalarProperty Name="Descripcion_S" ColumnName="Descripcion_S" />
                 <ScalarProperty Name="Precio_S" ColumnName="Precio_S" />
@@ -891,6 +901,7 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           <EntitySetMapping Name="Tbl_Tipo_TV">
             <EntityTypeMapping TypeName="bdlavacarModel.Tbl_Tipo_TV">
               <MappingFragment StoreEntitySet="Tbl_Tipo_TV">
+                <ScalarProperty Name="codigo_TV" ColumnName="codigo_TV" />
                 <ScalarProperty Name="Id_Tipo_TV" ColumnName="Id_Tipo_TV" />
                 <ScalarProperty Name="Tipo_TV" ColumnName="Tipo_TV" />
               </MappingFragment>
