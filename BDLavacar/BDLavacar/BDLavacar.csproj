@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -152,6 +153,24 @@
       <DependentUpon>BDLavacarEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Provincia.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaMarcaVehiculo_ID_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaMarcaVehiculo_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaPaisFabricante_ID_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaPaisFabricante_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaTipoVehiculo_ID_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaTipoVehiculo_Result.cs">
       <DependentUpon>BDLavacarEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TblFactura_F.cs">
@@ -240,6 +259,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutBDLavacar.cshtml" />
+    <Content Include="Views\Vehiculo\PaisFabricanteLista.cshtml" />
+    <Content Include="Views\Vehiculo\MarcaVehiculoLista.cshtml" />
+    <Content Include="Views\Vehiculo\TipoVehiculoLista.cshtml" />
+    <Content Include="Views\Vehiculo\PaisFabricanteNuevo.cshtml" />
+    <Content Include="Views\Vehiculo\TipoVehiculoNuevo.cshtml" />
+    <Content Include="Views\Vehiculo\MarcaVehiculoNuevo.cshtml" />
+    <Content Include="Views\Vehiculo\PaisFabricanteElimina.cshtml" />
+    <Content Include="Views\Vehiculo\MarcaVehiculoElimina.cshtml" />
+    <Content Include="Views\Vehiculo\TipoVehiculoElimina.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

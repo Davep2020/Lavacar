@@ -324,6 +324,64 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_VehiculoCliente_VC' no tie
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_EliminaMarcaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMarcaVehiculo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EliminaPaisFabricante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPais" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EliminaTipoVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTipoVehiculo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertaMarcaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipoVehiculo" Type="varchar" Mode="In" />
+          <Parameter Name="codigo" Type="varchar" Mode="In" />
+          <Parameter Name="idPais" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertaPaisFabricante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertaTipoVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipoVehiculo" Type="varchar" Mode="In" />
+          <Parameter Name="codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ModificaMarcaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMarcaVehiculo" Type="int" Mode="In" />
+          <Parameter Name="marcaVehiculo" Type="varchar" Mode="In" />
+          <Parameter Name="codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ModificaPaisFabricante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Pais" Type="int" Mode="In" />
+          <Parameter Name="codigo" Type="varchar" Mode="In" />
+          <Parameter Name="pais" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ModificaTipoVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTipoVehiculo" Type="int" Mode="In" />
+          <Parameter Name="tipoVehiculo" Type="varchar" Mode="In" />
+          <Parameter Name="codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaMarcaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="marcaVehiculo" Type="varchar" Mode="In" />
+          <Parameter Name="codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaMarcaVehiculo_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMarca" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaPaisFabricante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaPaisFabricante_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPais" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaTipoVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipoVehiculo" Type="varchar" Mode="In" />
+          <Parameter Name="codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaTipoVehiculo_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTipo" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="bdlavacarModelStoreContainer">
           <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
@@ -791,7 +849,98 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
             <End Role="Tbl_Persona_P" EntitySet="Tbl_Persona_P" />
             <End Role="Tbl_Vehiculo_V" EntitySet="Tbl_Vehiculo_V" />
           </AssociationSet>
+          <FunctionImport Name="sp_EliminaMarcaVehiculo">
+          <Parameter Name="idMarcaVehiculo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EliminaPaisFabricante">
+          <Parameter Name="idPais" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EliminaTipoVehiculo">
+          <Parameter Name="idTipoVehiculo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertaMarcaVehiculo">
+            <Parameter Name="tipoVehiculo" Mode="In" Type="String" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+            <Parameter Name="idPais" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertaPaisFabricante">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertaTipoVehiculo">
+            <Parameter Name="tipoVehiculo" Mode="In" Type="String" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificaMarcaVehiculo">
+            <Parameter Name="idMarcaVehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="marcaVehiculo" Mode="In" Type="String" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificaPaisFabricante">
+            <Parameter Name="id_Pais" Mode="In" Type="Int32" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+            <Parameter Name="pais" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificaTipoVehiculo">
+            <Parameter Name="idTipoVehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="tipoVehiculo" Mode="In" Type="String" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaPaisFabricante" ReturnType="Collection(bdlavacarModel.sp_RetornaPaisFabricante_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaTipoVehiculo" ReturnType="Collection(bdlavacarModel.sp_RetornaTipoVehiculo_Result)">
+            <Parameter Name="tipoVehiculo" Mode="In" Type="String" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaMarcaVehiculo" ReturnType="Collection(bdlavacarModel.sp_RetornaMarcaVehiculo_Result)">
+            <Parameter Name="marcaVehiculo" Mode="In" Type="String" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaPaisFabricante_ID" ReturnType="Collection(bdlavacarModel.sp_RetornaPaisFabricante_ID_Result)">
+          <Parameter Name="idPais" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaMarcaVehiculo_ID" ReturnType="Collection(bdlavacarModel.sp_RetornaMarcaVehiculo_ID_Result)">
+          <Parameter Name="idMarca" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaTipoVehiculo_ID" ReturnType="Collection(bdlavacarModel.sp_RetornaTipoVehiculo_ID_Result)">
+            <Parameter Name="idTipo" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="sp_RetornaPaisFabricante_Result">
+          <Property Type="Int32" Name="Id_PaisFabricacion_PF" Nullable="false" />
+          <Property Type="String" Name="Pais_PF" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Codigo_PF" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaTipoVehiculo_Result">
+          <Property Type="Int32" Name="Id_Tipo_TV" Nullable="false" />
+          <Property Type="String" Name="Tipo_TV" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="codigo_TV" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaMarcaVehiculo_Result">
+          <Property Type="Int32" Name="Id_Marca_MV" Nullable="false" />
+          <Property Type="String" Name="Tipo_MV" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Codigo_MV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Pais_PF" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Id_PaisFabricacion_PF" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaPaisFabricante_ID_Result">
+          <Property Type="Int32" Name="Id_PaisFabricacion_PF" Nullable="false" />
+          <Property Type="String" Name="Pais_PF" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Codigo_PF" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaMarcaVehiculo_ID_Result">
+          <Property Type="Int32" Name="Id_Marca_MV" Nullable="false" />
+          <Property Type="String" Name="Codigo_MV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Tipo_MV" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Id_PaisFabricacion_PF" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaTipoVehiculo_ID_Result">
+          <Property Type="Int32" Name="Id_Tipo_TV" Nullable="false" />
+          <Property Type="String" Name="Tipo_TV" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="codigo_TV" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -956,6 +1105,72 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
               <ScalarProperty Name="Id_Vehiculo_V" ColumnName="Id_Vehiculo_VC" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_EliminaMarcaVehiculo" FunctionName="bdlavacarModel.Store.sp_EliminaMarcaVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_EliminaPaisFabricante" FunctionName="bdlavacarModel.Store.sp_EliminaPaisFabricante" />
+          <FunctionImportMapping FunctionImportName="sp_EliminaTipoVehiculo" FunctionName="bdlavacarModel.Store.sp_EliminaTipoVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_InsertaMarcaVehiculo" FunctionName="bdlavacarModel.Store.sp_InsertaMarcaVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_InsertaPaisFabricante" FunctionName="bdlavacarModel.Store.sp_InsertaPaisFabricante" />
+          <FunctionImportMapping FunctionImportName="sp_InsertaTipoVehiculo" FunctionName="bdlavacarModel.Store.sp_InsertaTipoVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_ModificaMarcaVehiculo" FunctionName="bdlavacarModel.Store.sp_ModificaMarcaVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_ModificaPaisFabricante" FunctionName="bdlavacarModel.Store.sp_ModificaPaisFabricante" />
+          <FunctionImportMapping FunctionImportName="sp_ModificaTipoVehiculo" FunctionName="bdlavacarModel.Store.sp_ModificaTipoVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaPaisFabricante" FunctionName="bdlavacarModel.Store.sp_RetornaPaisFabricante">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel.sp_RetornaPaisFabricante_Result">
+                <ScalarProperty Name="Id_PaisFabricacion_PF" ColumnName="Id_PaisFabricacion_PF" />
+                <ScalarProperty Name="Pais_PF" ColumnName="Pais_PF" />
+                <ScalarProperty Name="Codigo_PF" ColumnName="Codigo_PF" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaTipoVehiculo" FunctionName="bdlavacarModel.Store.sp_RetornaTipoVehiculo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel.sp_RetornaTipoVehiculo_Result">
+                <ScalarProperty Name="Id_Tipo_TV" ColumnName="Id_Tipo_TV" />
+                <ScalarProperty Name="Tipo_TV" ColumnName="Tipo_TV" />
+                <ScalarProperty Name="codigo_TV" ColumnName="codigo_TV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaMarcaVehiculo" FunctionName="bdlavacarModel.Store.sp_RetornaMarcaVehiculo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel.sp_RetornaMarcaVehiculo_Result">
+                <ScalarProperty Name="Id_Marca_MV" ColumnName="Id_Marca_MV" />
+                <ScalarProperty Name="Tipo_MV" ColumnName="Tipo_MV" />
+                <ScalarProperty Name="Codigo_MV" ColumnName="Codigo_MV" />
+                <ScalarProperty Name="Pais_PF" ColumnName="Pais_PF" />
+                <ScalarProperty Name="Id_PaisFabricacion_PF" ColumnName="Id_PaisFabricacion_PF" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaPaisFabricante_ID" FunctionName="bdlavacarModel.Store.sp_RetornaPaisFabricante_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel.sp_RetornaPaisFabricante_ID_Result">
+                <ScalarProperty Name="Id_PaisFabricacion_PF" ColumnName="Id_PaisFabricacion_PF" />
+                <ScalarProperty Name="Pais_PF" ColumnName="Pais_PF" />
+                <ScalarProperty Name="Codigo_PF" ColumnName="Codigo_PF" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaMarcaVehiculo_ID" FunctionName="bdlavacarModel.Store.sp_RetornaMarcaVehiculo_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel.sp_RetornaMarcaVehiculo_ID_Result">
+                <ScalarProperty Name="Id_Marca_MV" ColumnName="Id_Marca_MV" />
+                <ScalarProperty Name="Codigo_MV" ColumnName="Codigo_MV" />
+                <ScalarProperty Name="Tipo_MV" ColumnName="Tipo_MV" />
+                <ScalarProperty Name="Id_PaisFabricacion_PF" ColumnName="Id_PaisFabricacion_PF" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaTipoVehiculo_ID" FunctionName="bdlavacarModel.Store.sp_RetornaTipoVehiculo_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel.sp_RetornaTipoVehiculo_ID_Result">
+                <ScalarProperty Name="Id_Tipo_TV" ColumnName="Id_Tipo_TV" />
+                <ScalarProperty Name="Tipo_TV" ColumnName="Tipo_TV" />
+                <ScalarProperty Name="codigo_TV" ColumnName="codigo_TV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
