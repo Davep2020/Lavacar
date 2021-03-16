@@ -112,23 +112,6 @@ namespace BDLavacar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaTipoVehiculo", tipoVehiculoParameter, codigoParameter);
         }
     
-        public virtual int sp_ModificaMarcaVehiculo(Nullable<int> idMarcaVehiculo, string marcaVehiculo, string codigo)
-        {
-            var idMarcaVehiculoParameter = idMarcaVehiculo.HasValue ?
-                new ObjectParameter("idMarcaVehiculo", idMarcaVehiculo) :
-                new ObjectParameter("idMarcaVehiculo", typeof(int));
-    
-            var marcaVehiculoParameter = marcaVehiculo != null ?
-                new ObjectParameter("marcaVehiculo", marcaVehiculo) :
-                new ObjectParameter("marcaVehiculo", typeof(string));
-    
-            var codigoParameter = codigo != null ?
-                new ObjectParameter("codigo", codigo) :
-                new ObjectParameter("codigo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaMarcaVehiculo", idMarcaVehiculoParameter, marcaVehiculoParameter, codigoParameter);
-        }
-    
         public virtual int sp_ModificaPaisFabricante(Nullable<int> id_Pais, string codigo, string pais)
         {
             var id_PaisParameter = id_Pais.HasValue ?
@@ -399,6 +382,108 @@ namespace BDLavacar.Models
                 new ObjectParameter("Id_Servicio_S", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaServicioID_Result>("sp_RetornaServicioID", id_Servicio_SParameter);
+        }
+    
+        public virtual int sp_ModificaMarcaVehiculo(Nullable<int> idMarcaVehiculo, Nullable<int> idPaisFabricacion, string marcaVehiculo, string codigo)
+        {
+            var idMarcaVehiculoParameter = idMarcaVehiculo.HasValue ?
+                new ObjectParameter("idMarcaVehiculo", idMarcaVehiculo) :
+                new ObjectParameter("idMarcaVehiculo", typeof(int));
+    
+            var idPaisFabricacionParameter = idPaisFabricacion.HasValue ?
+                new ObjectParameter("idPaisFabricacion", idPaisFabricacion) :
+                new ObjectParameter("idPaisFabricacion", typeof(int));
+    
+            var marcaVehiculoParameter = marcaVehiculo != null ?
+                new ObjectParameter("marcaVehiculo", marcaVehiculo) :
+                new ObjectParameter("marcaVehiculo", typeof(string));
+    
+            var codigoParameter = codigo != null ?
+                new ObjectParameter("codigo", codigo) :
+                new ObjectParameter("codigo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaMarcaVehiculo", idMarcaVehiculoParameter, idPaisFabricacionParameter, marcaVehiculoParameter, codigoParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaVehiculo_ID_Result> sp_RetornaVehiculo_ID(Nullable<int> idVehiculo)
+        {
+            var idVehiculoParameter = idVehiculo.HasValue ?
+                new ObjectParameter("idVehiculo", idVehiculo) :
+                new ObjectParameter("idVehiculo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaVehiculo_ID_Result>("sp_RetornaVehiculo_ID", idVehiculoParameter);
+        }
+    
+        public virtual int sp_InsertaVehiculo(string placa, Nullable<int> idMarca, Nullable<int> idTipoVehiculo, Nullable<int> puertas, Nullable<int> ruedas)
+        {
+            var placaParameter = placa != null ?
+                new ObjectParameter("placa", placa) :
+                new ObjectParameter("placa", typeof(string));
+    
+            var idMarcaParameter = idMarca.HasValue ?
+                new ObjectParameter("idMarca", idMarca) :
+                new ObjectParameter("idMarca", typeof(int));
+    
+            var idTipoVehiculoParameter = idTipoVehiculo.HasValue ?
+                new ObjectParameter("idTipoVehiculo", idTipoVehiculo) :
+                new ObjectParameter("idTipoVehiculo", typeof(int));
+    
+            var puertasParameter = puertas.HasValue ?
+                new ObjectParameter("puertas", puertas) :
+                new ObjectParameter("puertas", typeof(int));
+    
+            var ruedasParameter = ruedas.HasValue ?
+                new ObjectParameter("ruedas", ruedas) :
+                new ObjectParameter("ruedas", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaVehiculo", placaParameter, idMarcaParameter, idTipoVehiculoParameter, puertasParameter, ruedasParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaVehiculo_Result> sp_RetornaVehiculo(string placa)
+        {
+            var placaParameter = placa != null ?
+                new ObjectParameter("placa", placa) :
+                new ObjectParameter("placa", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaVehiculo_Result>("sp_RetornaVehiculo", placaParameter);
+        }
+    
+        public virtual int sp_EliminaVehiculo(Nullable<int> idVehiculo)
+        {
+            var idVehiculoParameter = idVehiculo.HasValue ?
+                new ObjectParameter("idVehiculo", idVehiculo) :
+                new ObjectParameter("idVehiculo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EliminaVehiculo", idVehiculoParameter);
+        }
+    
+        public virtual int sp_ModificaVehiculo(Nullable<int> idVehiculo, string placa, Nullable<int> idMarca, Nullable<int> idTipo, Nullable<int> puertas, Nullable<int> ruedas)
+        {
+            var idVehiculoParameter = idVehiculo.HasValue ?
+                new ObjectParameter("idVehiculo", idVehiculo) :
+                new ObjectParameter("idVehiculo", typeof(int));
+    
+            var placaParameter = placa != null ?
+                new ObjectParameter("placa", placa) :
+                new ObjectParameter("placa", typeof(string));
+    
+            var idMarcaParameter = idMarca.HasValue ?
+                new ObjectParameter("idMarca", idMarca) :
+                new ObjectParameter("idMarca", typeof(int));
+    
+            var idTipoParameter = idTipo.HasValue ?
+                new ObjectParameter("idTipo", idTipo) :
+                new ObjectParameter("idTipo", typeof(int));
+    
+            var puertasParameter = puertas.HasValue ?
+                new ObjectParameter("puertas", puertas) :
+                new ObjectParameter("puertas", typeof(int));
+    
+            var ruedasParameter = ruedas.HasValue ?
+                new ObjectParameter("ruedas", ruedas) :
+                new ObjectParameter("ruedas", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaVehiculo", idVehiculoParameter, placaParameter, idMarcaParameter, idTipoParameter, puertasParameter, ruedasParameter);
         }
     }
 }

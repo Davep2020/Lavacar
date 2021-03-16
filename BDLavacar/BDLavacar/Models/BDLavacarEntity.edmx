@@ -346,6 +346,9 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_VehiculoCliente_VC' no tie
         <Function Name="sp_EliminaTipoVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTipoVehiculo" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_EliminaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idVehiculo" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_InsertaMarcaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tipoVehiculo" Type="varchar" Mode="In" />
           <Parameter Name="codigo" Type="varchar" Mode="In" />
@@ -365,6 +368,13 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_VehiculoCliente_VC' no tie
           <Parameter Name="tipoVehiculo" Type="varchar" Mode="In" />
           <Parameter Name="codigo" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="sp_InsertaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="placa" Type="varchar" Mode="In" />
+          <Parameter Name="idMarca" Type="int" Mode="In" />
+          <Parameter Name="idTipoVehiculo" Type="int" Mode="In" />
+          <Parameter Name="puertas" Type="int" Mode="In" />
+          <Parameter Name="ruedas" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_ModificaClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_Cliente_P" Type="int" Mode="In" />
           <Parameter Name="Cedula_P" Type="int" Mode="In" />
@@ -379,6 +389,7 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_VehiculoCliente_VC' no tie
         </Function>
         <Function Name="sp_ModificaMarcaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idMarcaVehiculo" Type="int" Mode="In" />
+          <Parameter Name="idPaisFabricacion" Type="int" Mode="In" />
           <Parameter Name="marcaVehiculo" Type="varchar" Mode="In" />
           <Parameter Name="codigo" Type="varchar" Mode="In" />
         </Function>
@@ -398,6 +409,14 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_VehiculoCliente_VC' no tie
           <Parameter Name="idTipoVehiculo" Type="int" Mode="In" />
           <Parameter Name="tipoVehiculo" Type="varchar" Mode="In" />
           <Parameter Name="codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ModificaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idVehiculo" Type="int" Mode="In" />
+          <Parameter Name="placa" Type="varchar" Mode="In" />
+          <Parameter Name="idMarca" Type="int" Mode="In" />
+          <Parameter Name="idTipo" Type="int" Mode="In" />
+          <Parameter Name="puertas" Type="int" Mode="In" />
+          <Parameter Name="ruedas" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_RetornaClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_RetornaClientesID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -431,6 +450,12 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_VehiculoCliente_VC' no tie
         </Function>
         <Function Name="sp_RetornaTipoVehiculo_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTipo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="placa" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaVehiculo_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idVehiculo" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="bdlavacarModelStoreContainer">
           <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
@@ -828,11 +853,6 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
             <Parameter Name="tipoVehiculo" Mode="In" Type="String" />
             <Parameter Name="codigo" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_ModificaMarcaVehiculo">
-            <Parameter Name="idMarcaVehiculo" Mode="In" Type="Int32" />
-            <Parameter Name="marcaVehiculo" Mode="In" Type="String" />
-            <Parameter Name="codigo" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="sp_ModificaPaisFabricante">
             <Parameter Name="id_Pais" Mode="In" Type="Int32" />
             <Parameter Name="codigo" Mode="In" Type="String" />
@@ -933,7 +953,37 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           </FunctionImport>
           <FunctionImport Name="sp_RetornaServicios" ReturnType="Collection(bdlavacarModel.sp_RetornaServicios_Result)" />
           <FunctionImport Name="sp_RetornaServicioID" ReturnType="Collection(bdlavacarModel.sp_RetornaServicioID_Result)">
-            <Parameter Name="Id_Servicio_S" Mode="In" Type="Int32" />
+          <Parameter Name="Id_Servicio_S" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificaMarcaVehiculo">
+            <Parameter Name="idMarcaVehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="idPaisFabricacion" Mode="In" Type="Int32" />
+            <Parameter Name="marcaVehiculo" Mode="In" Type="String" />
+            <Parameter Name="codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaVehiculo_ID" ReturnType="Collection(bdlavacarModel.sp_RetornaVehiculo_ID_Result)">
+          <Parameter Name="idVehiculo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertaVehiculo">
+            <Parameter Name="placa" Mode="In" Type="String" />
+            <Parameter Name="idMarca" Mode="In" Type="Int32" />
+            <Parameter Name="idTipoVehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="puertas" Mode="In" Type="Int32" />
+            <Parameter Name="ruedas" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaVehiculo" ReturnType="Collection(bdlavacarModel.sp_RetornaVehiculo_Result)">
+          <Parameter Name="placa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EliminaVehiculo">
+            <Parameter Name="idVehiculo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificaVehiculo">
+            <Parameter Name="idVehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="placa" Mode="In" Type="String" />
+            <Parameter Name="idMarca" Mode="In" Type="Int32" />
+            <Parameter Name="idTipo" Mode="In" Type="Int32" />
+            <Parameter Name="puertas" Mode="In" Type="Int32" />
+            <Parameter Name="ruedas" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="sp_RetornaPaisFabricante_Result">
@@ -1117,6 +1167,24 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           <Property Type="Int32" Name="Precio_S" Nullable="false" />
           <Property Type="String" Name="Tipo_S" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="sp_RetornaVehiculo_ID_Result">
+          <Property Type="Int32" Name="Id_Vehiculo_V" Nullable="false" />
+          <Property Type="String" Name="Placa_V" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Marca_MV" Nullable="false" />
+          <Property Type="Int32" Name="Id_Tipo_TV" Nullable="false" />
+          <Property Type="Int32" Name="Numero_Puertas_V" Nullable="false" />
+          <Property Type="Int32" Name="Numero_Ruedas_V" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaVehiculo_Result">
+          <Property Type="Int32" Name="Id_Vehiculo_V" Nullable="false" />
+          <Property Type="String" Name="Placa_V" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Tipo_MV" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Tipo_TV" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Numero_Puertas_V" Nullable="false" />
+          <Property Type="Int32" Name="Numero_Ruedas_V" Nullable="false" />
+          <Property Type="Int32" Name="Id_Marca_V" Nullable="false" />
+          <Property Type="Int32" Name="Id_Tipo_V" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1263,7 +1331,6 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="sp_InsertaMarcaVehiculo" FunctionName="bdlavacarModel.Store.sp_InsertaMarcaVehiculo" />
           <FunctionImportMapping FunctionImportName="sp_InsertaPaisFabricante" FunctionName="bdlavacarModel.Store.sp_InsertaPaisFabricante" />
           <FunctionImportMapping FunctionImportName="sp_InsertaTipoVehiculo" FunctionName="bdlavacarModel.Store.sp_InsertaTipoVehiculo" />
-          <FunctionImportMapping FunctionImportName="sp_ModificaMarcaVehiculo" FunctionName="bdlavacarModel.Store.sp_ModificaMarcaVehiculo" />
           <FunctionImportMapping FunctionImportName="sp_ModificaPaisFabricante" FunctionName="bdlavacarModel.Store.sp_ModificaPaisFabricante" />
           <FunctionImportMapping FunctionImportName="sp_ModificaTipoVehiculo" FunctionName="bdlavacarModel.Store.sp_ModificaTipoVehiculo" />
           <FunctionImportMapping FunctionImportName="sp_RetornaPaisFabricante" FunctionName="bdlavacarModel.Store.sp_RetornaPaisFabricante">
@@ -1456,6 +1523,36 @@ FROM [dbo].[Tbl_VehiculoCliente_VC] AS [Tbl_VehiculoCliente_VC]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ModificaMarcaVehiculo" FunctionName="bdlavacarModel.Store.sp_ModificaMarcaVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaVehiculo_ID" FunctionName="bdlavacarModel.Store.sp_RetornaVehiculo_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel.sp_RetornaVehiculo_ID_Result">
+                <ScalarProperty Name="Id_Vehiculo_V" ColumnName="Id_Vehiculo_V" />
+                <ScalarProperty Name="Placa_V" ColumnName="Placa_V" />
+                <ScalarProperty Name="Id_Marca_MV" ColumnName="Id_Marca_MV" />
+                <ScalarProperty Name="Id_Tipo_TV" ColumnName="Id_Tipo_TV" />
+                <ScalarProperty Name="Numero_Puertas_V" ColumnName="Numero_Puertas_V" />
+                <ScalarProperty Name="Numero_Ruedas_V" ColumnName="Numero_Ruedas_V" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_InsertaVehiculo" FunctionName="bdlavacarModel.Store.sp_InsertaVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaVehiculo" FunctionName="bdlavacarModel.Store.sp_RetornaVehiculo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel.sp_RetornaVehiculo_Result">
+                <ScalarProperty Name="Id_Vehiculo_V" ColumnName="Id_Vehiculo_V" />
+                <ScalarProperty Name="Placa_V" ColumnName="Placa_V" />
+                <ScalarProperty Name="Tipo_MV" ColumnName="Tipo_MV" />
+                <ScalarProperty Name="Tipo_TV" ColumnName="Tipo_TV" />
+                <ScalarProperty Name="Numero_Puertas_V" ColumnName="Numero_Puertas_V" />
+                <ScalarProperty Name="Numero_Ruedas_V" ColumnName="Numero_Ruedas_V" />
+                <ScalarProperty Name="Id_Marca_V" ColumnName="Id_Marca_V" />
+                <ScalarProperty Name="Id_Tipo_V" ColumnName="Id_Tipo_V" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_EliminaVehiculo" FunctionName="bdlavacarModel.Store.sp_EliminaVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_ModificaVehiculo" FunctionName="bdlavacarModel.Store.sp_ModificaVehiculo" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -197,6 +197,12 @@
     <Compile Include="Models\sp_RetornaTipoVehiculo_Result.cs">
       <DependentUpon>BDLavacarEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_RetornaVehiculo_ID_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaVehiculo_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TblFactura_F.cs">
       <DependentUpon>BDLavacarEntity.tt</DependentUpon>
     </Compile>
@@ -306,6 +312,13 @@
     <Content Include="Views\Servicios\ServicioEliminar.cshtml" />
     <Content Include="Views\Servicios\ServicioModifica.cshtml" />
     <Content Include="Views\Login\login.cshtml" />
+    <Content Include="Views\Vehiculo\PaisFabricanteModifica.cshtml" />
+    <Content Include="Views\Vehiculo\MarcaVehiculoModifica.cshtml" />
+    <Content Include="Views\Vehiculo\TipoVehiculoModifica.cshtml" />
+    <Content Include="Views\Vehiculo\VehiculoNuevo.cshtml" />
+    <Content Include="Views\Vehiculo\VehiculoLista.cshtml" />
+    <Content Include="Views\Vehiculo\VehiculoModifica.cshtml" />
+    <Content Include="Views\Vehiculo\VehiculoElimina.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
