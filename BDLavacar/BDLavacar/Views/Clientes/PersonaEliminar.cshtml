@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "PersonaEliminar";
+    Layout = "~/Views/Shared/_LayoutBDLavacar.cshtml";
+}
+
+<h2>PersonaEliminar</h2>
+
+<form id="frmModificaUsuario" method="post">
+
+    <div class="form-group">
+        <label>Cédula :</label>
+        <input type="text" name="Cedula_P" id="Cedula_P" class="form-control" value="@Model.Cedula_P" readonly />
+    </div>
+    <div class="form-check">
+        <label>Sexo:  </label>
+
+        <input type="radio" name="Genero_P" value="f" class="form-check-input"
+               @(Model.Genero_P.ToLower() == "f" ? "checked" : "") readonly /> Femenino
+
+        <input type="radio" name="Genero_P" value="m" class="form-check-input"
+               @(Model.Genero_P.ToLower() == "m" ? "checked" : "") readonly/> Masculino
+
+        <input type="radio" name="Genero_P" value="i" class="form-check-input"
+               @(Model.Genero_P.ToLower() == "i" ? "checked" : "") readonly/> Indefinido
+    </div>
+    <div class="form-group">
+        <label>Fecha de nacimiento:</label>
+        <input type="text" name="Fecha_Nacimiento_P" id="Fecha_Nacimiento_P" class="form-control" value="@Model.Fecha_Nacimiento_P"readonly />
+    </div>
+    <div class="form-group">
+        <label>Nombre completo:</label>
+        <input type="text" name="Nombre_P" id="Nombre_P" class="form-control" value="@Model.Nombre_P" readonly/>
+    </div>
+    <div class="form-group">
+        <label>Correo Electrónico:</label>
+        <input type="text" name="Correo_P" id="Correo_P" class="form-control" value="@Model.Correo_P"readonly />
+    </div>
+    <div class="form-group">
+        <label>Provincia:</label>
+        <select name="id_Provincia" id="id_Provincia" class="form-control"readonly></select>
+    </div>
+
+    <div class="form-group">
+        <label>Cantón:</label>
+        <select name="id_Canton" id="id_Canton" class="form-control"readonly></select>
+    </div>
+    <div class="form-group">
+        <label>Tipo:</label>
+        <input type="text" name="Id_TipoPersona_TP" id="Id_TipoPersona_TP" class="form-control" value="@Model.Id_TipoPersona_TP"readonly />
+    </div>
+    <div class="form-group">
+        <label>Distrito:</label>
+        <select name="id_Distrito" id="id_Distrito" class="form-control"readonly></select>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Eliminar" id="btnEliminar" class="btn btn-danger"readonly />
+    </div>
+
+
+</form>
+@section scripts{
+
+
+    <script src="~/Scripts/Clientes/ClienteModifica.js"></script>
+
+}

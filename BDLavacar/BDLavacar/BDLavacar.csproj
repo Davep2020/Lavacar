@@ -126,7 +126,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ServiciosController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -155,6 +158,21 @@
     <Compile Include="Models\Provincia.cs">
       <DependentUpon>BDLavacarEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RetornaCantones_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RetornaProvincias_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaClientesID_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaClientes_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaDistritos_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_RetornaMarcaVehiculo_ID_Result.cs">
       <DependentUpon>BDLavacarEntity.tt</DependentUpon>
     </Compile>
@@ -165,6 +183,12 @@
       <DependentUpon>BDLavacarEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaPaisFabricante_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaServicioID_Result.cs">
+      <DependentUpon>BDLavacarEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaServicios_Result.cs">
       <DependentUpon>BDLavacarEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaTipoVehiculo_ID_Result.cs">
@@ -210,10 +234,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Estilos\Estilos.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\Sin título.png" />
     <Content Include="Models\BDLavacarEntity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BDLavacarEntity.Context.cs</LastGenOutput>
@@ -234,6 +260,8 @@
       <DependentUpon>BDLavacarEntity.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Clientes\ClienteLocalizacion.js" />
+    <Content Include="Scripts\Clientes\ClienteModifica.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -269,6 +297,15 @@
     <Content Include="Views\Vehiculo\PaisFabricanteElimina.cshtml" />
     <Content Include="Views\Vehiculo\MarcaVehiculoElimina.cshtml" />
     <Content Include="Views\Vehiculo\TipoVehiculoElimina.cshtml" />
+    <Content Include="Views\Clientes\InsertarUsuario.cshtml" />
+    <Content Include="Views\Clientes\ClientesLista.cshtml" />
+    <Content Include="Views\Clientes\PersonaModifica.cshtml" />
+    <Content Include="Views\Clientes\PersonaEliminar.cshtml" />
+    <Content Include="Views\Servicios\InsertarServicio.cshtml" />
+    <Content Include="Views\Servicios\ServicioLista.cshtml" />
+    <Content Include="Views\Servicios\ServicioEliminar.cshtml" />
+    <Content Include="Views\Servicios\ServicioModifica.cshtml" />
+    <Content Include="Views\Login\login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

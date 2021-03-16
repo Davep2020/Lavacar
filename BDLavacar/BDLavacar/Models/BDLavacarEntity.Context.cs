@@ -33,7 +33,6 @@ namespace BDLavacar.Models
         public DbSet<Provincia> Provincia { get; set; }
         public DbSet<Tbl_MarcaVehiculo_MV> Tbl_MarcaVehiculo_MV { get; set; }
         public DbSet<Tbl_PaisFabricacion_PF> Tbl_PaisFabricacion_PF { get; set; }
-        public DbSet<Tbl_Persona_P> Tbl_Persona_P { get; set; }
         public DbSet<Tbl_Seguridad_SG> Tbl_Seguridad_SG { get; set; }
         public DbSet<Tbl_Servicio_S> Tbl_Servicio_S { get; set; }
         public DbSet<Tbl_Tipo_TV> Tbl_Tipo_TV { get; set; }
@@ -41,6 +40,7 @@ namespace BDLavacar.Models
         public DbSet<Tbl_Vehiculo_V> Tbl_Vehiculo_V { get; set; }
         public DbSet<TblFactura_F> TblFactura_F { get; set; }
         public DbSet<Tbl_FacturaServicioVehiculo_FSV> Tbl_FacturaServicioVehiculo_FSV { get; set; }
+        public DbSet<Tbl_Persona_P> Tbl_Persona_P { get; set; }
     
         public virtual int sp_EliminaMarcaVehiculo(Nullable<int> idMarcaVehiculo)
         {
@@ -227,6 +227,178 @@ namespace BDLavacar.Models
                 new ObjectParameter("idTipo", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaTipoVehiculo_ID_Result>("sp_RetornaTipoVehiculo_ID", idTipoParameter);
+        }
+    
+        public virtual ObjectResult<RetornaCantones_Result> RetornaCantones(string nombre, Nullable<int> id_Provincia)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var id_ProvinciaParameter = id_Provincia.HasValue ?
+                new ObjectParameter("id_Provincia", id_Provincia) :
+                new ObjectParameter("id_Provincia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RetornaCantones_Result>("RetornaCantones", nombreParameter, id_ProvinciaParameter);
+        }
+    
+        public virtual ObjectResult<RetornaProvincias_Result> RetornaProvincias(string nombre)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RetornaProvincias_Result>("RetornaProvincias", nombreParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaDistritos_Result> sp_RetornaDistritos(string nombre, Nullable<int> id_Canton)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var id_CantonParameter = id_Canton.HasValue ?
+                new ObjectParameter("id_Canton", id_Canton) :
+                new ObjectParameter("id_Canton", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaDistritos_Result>("sp_RetornaDistritos", nombreParameter, id_CantonParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaClientes_Result> sp_RetornaClientes()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaClientes_Result>("sp_RetornaClientes");
+        }
+    
+        public virtual ObjectResult<sp_RetornaClientesID_Result> sp_RetornaClientesID(Nullable<int> id_Cliente_P)
+        {
+            var id_Cliente_PParameter = id_Cliente_P.HasValue ?
+                new ObjectParameter("Id_Cliente_P", id_Cliente_P) :
+                new ObjectParameter("Id_Cliente_P", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaClientesID_Result>("sp_RetornaClientesID", id_Cliente_PParameter);
+        }
+    
+        public virtual int sp_ModificaClientes(Nullable<int> id_Cliente_P, Nullable<int> cedula_P, string genero_P, string fecha_Nacimiento_P, string nombre_P, string correo_P, Nullable<int> id_Provincia_P, Nullable<int> id_Canton_P, Nullable<int> id_Tipo_P, Nullable<int> id_Distrito_P)
+        {
+            var id_Cliente_PParameter = id_Cliente_P.HasValue ?
+                new ObjectParameter("Id_Cliente_P", id_Cliente_P) :
+                new ObjectParameter("Id_Cliente_P", typeof(int));
+    
+            var cedula_PParameter = cedula_P.HasValue ?
+                new ObjectParameter("Cedula_P", cedula_P) :
+                new ObjectParameter("Cedula_P", typeof(int));
+    
+            var genero_PParameter = genero_P != null ?
+                new ObjectParameter("Genero_P", genero_P) :
+                new ObjectParameter("Genero_P", typeof(string));
+    
+            var fecha_Nacimiento_PParameter = fecha_Nacimiento_P != null ?
+                new ObjectParameter("Fecha_Nacimiento_P", fecha_Nacimiento_P) :
+                new ObjectParameter("Fecha_Nacimiento_P", typeof(string));
+    
+            var nombre_PParameter = nombre_P != null ?
+                new ObjectParameter("Nombre_P", nombre_P) :
+                new ObjectParameter("Nombre_P", typeof(string));
+    
+            var correo_PParameter = correo_P != null ?
+                new ObjectParameter("Correo_P", correo_P) :
+                new ObjectParameter("Correo_P", typeof(string));
+    
+            var id_Provincia_PParameter = id_Provincia_P.HasValue ?
+                new ObjectParameter("Id_Provincia_P", id_Provincia_P) :
+                new ObjectParameter("Id_Provincia_P", typeof(int));
+    
+            var id_Canton_PParameter = id_Canton_P.HasValue ?
+                new ObjectParameter("Id_Canton_P", id_Canton_P) :
+                new ObjectParameter("Id_Canton_P", typeof(int));
+    
+            var id_Tipo_PParameter = id_Tipo_P.HasValue ?
+                new ObjectParameter("Id_Tipo_P", id_Tipo_P) :
+                new ObjectParameter("Id_Tipo_P", typeof(int));
+    
+            var id_Distrito_PParameter = id_Distrito_P.HasValue ?
+                new ObjectParameter("Id_Distrito_P", id_Distrito_P) :
+                new ObjectParameter("Id_Distrito_P", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaClientes", id_Cliente_PParameter, cedula_PParameter, genero_PParameter, fecha_Nacimiento_PParameter, nombre_PParameter, correo_PParameter, id_Provincia_PParameter, id_Canton_PParameter, id_Tipo_PParameter, id_Distrito_PParameter);
+        }
+    
+        public virtual int sp_EliminaPersona(Nullable<int> id_Cliente_P)
+        {
+            var id_Cliente_PParameter = id_Cliente_P.HasValue ?
+                new ObjectParameter("Id_Cliente_P", id_Cliente_P) :
+                new ObjectParameter("Id_Cliente_P", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EliminaPersona", id_Cliente_PParameter);
+        }
+    
+        public virtual int sp_EliminaServicio(Nullable<int> id_Servicio_S)
+        {
+            var id_Servicio_SParameter = id_Servicio_S.HasValue ?
+                new ObjectParameter("Id_Servicio_S", id_Servicio_S) :
+                new ObjectParameter("Id_Servicio_S", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EliminaServicio", id_Servicio_SParameter);
+        }
+    
+        public virtual int sp_InsertaServicio(string codigo_S, string descripcion_S, Nullable<int> precio_S, string tipo_S)
+        {
+            var codigo_SParameter = codigo_S != null ?
+                new ObjectParameter("Codigo_S", codigo_S) :
+                new ObjectParameter("Codigo_S", typeof(string));
+    
+            var descripcion_SParameter = descripcion_S != null ?
+                new ObjectParameter("Descripcion_S", descripcion_S) :
+                new ObjectParameter("Descripcion_S", typeof(string));
+    
+            var precio_SParameter = precio_S.HasValue ?
+                new ObjectParameter("Precio_S", precio_S) :
+                new ObjectParameter("Precio_S", typeof(int));
+    
+            var tipo_SParameter = tipo_S != null ?
+                new ObjectParameter("Tipo_S", tipo_S) :
+                new ObjectParameter("Tipo_S", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaServicio", codigo_SParameter, descripcion_SParameter, precio_SParameter, tipo_SParameter);
+        }
+    
+        public virtual int sp_ModificaServicio(Nullable<int> id_Servicio_S, string codigo_S, string descripcion_S, Nullable<int> precio_S, string tipo_S)
+        {
+            var id_Servicio_SParameter = id_Servicio_S.HasValue ?
+                new ObjectParameter("Id_Servicio_S", id_Servicio_S) :
+                new ObjectParameter("Id_Servicio_S", typeof(int));
+    
+            var codigo_SParameter = codigo_S != null ?
+                new ObjectParameter("Codigo_S", codigo_S) :
+                new ObjectParameter("Codigo_S", typeof(string));
+    
+            var descripcion_SParameter = descripcion_S != null ?
+                new ObjectParameter("Descripcion_S", descripcion_S) :
+                new ObjectParameter("Descripcion_S", typeof(string));
+    
+            var precio_SParameter = precio_S.HasValue ?
+                new ObjectParameter("Precio_S", precio_S) :
+                new ObjectParameter("Precio_S", typeof(int));
+    
+            var tipo_SParameter = tipo_S != null ?
+                new ObjectParameter("Tipo_S", tipo_S) :
+                new ObjectParameter("Tipo_S", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaServicio", id_Servicio_SParameter, codigo_SParameter, descripcion_SParameter, precio_SParameter, tipo_SParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaServicios_Result> sp_RetornaServicios()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaServicios_Result>("sp_RetornaServicios");
+        }
+    
+        public virtual ObjectResult<sp_RetornaServicioID_Result> sp_RetornaServicioID(Nullable<int> id_Servicio_S)
+        {
+            var id_Servicio_SParameter = id_Servicio_S.HasValue ?
+                new ObjectParameter("Id_Servicio_S", id_Servicio_S) :
+                new ObjectParameter("Id_Servicio_S", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaServicioID_Result>("sp_RetornaServicioID", id_Servicio_SParameter);
         }
     }
 }

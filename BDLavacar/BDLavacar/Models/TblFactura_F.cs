@@ -25,8 +25,8 @@ namespace BDLavacar.Models
         public string Total_F { get; set; }
         public System.DateTime Fecha_F { get; set; }
     
-        public virtual Tbl_Persona_P Tbl_Persona_P { get; set; }
         public virtual Tbl_Vehiculo_V Tbl_Vehiculo_V { get; set; }
         public virtual ICollection<Tbl_FacturaServicioVehiculo_FSV> Tbl_FacturaServicioVehiculo_FSV { get; set; }
+        public virtual Tbl_Persona_P Tbl_Persona_P { get; set; }
     }
 }

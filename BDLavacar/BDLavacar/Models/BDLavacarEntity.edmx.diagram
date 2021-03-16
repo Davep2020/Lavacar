@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="bdlavacarModel.Provincia" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="bdlavacarModel.Tbl_MarcaVehiculo_MV" Width="1.5" PointX="11.25" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="bdlavacarModel.Tbl_PaisFabricacion_PF" Width="1.5" PointX="9" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="bdlavacarModel.Tbl_Persona_P" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="bdlavacarModel.Tbl_Seguridad_SG" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="bdlavacarModel.Tbl_Servicio_S" Width="1.5" PointX="15.75" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="bdlavacarModel.Tbl_Tipo_TV" Width="1.5" PointX="11.25" PointY="10.5" IsExpanded="true" />
@@ -20,18 +19,19 @@
         <EntityTypeShape EntityType="bdlavacarModel.Tbl_FacturaServicioVehiculo_FSV" Width="1.5" PointX="18" PointY="6.875" IsExpanded="true" />
         <AssociationConnector Association="bdlavacarModel.Canton_ref_Provincia" ManuallyRouted="false" />
         <AssociationConnector Association="bdlavacarModel.Distrito_ref_Canton" ManuallyRouted="false" />
-        <AssociationConnector Association="bdlavacarModel.FK_Tbl_Persona_P_Canton" ManuallyRouted="false" />
         <AssociationConnector Association="bdlavacarModel.FK_Tbl_MarcaVehiculo_MV_Tbl_PaisFabricacion_PF" ManuallyRouted="false" />
         <AssociationConnector Association="bdlavacarModel.FK_Tbl_Vehiculo_V_Tbl_MarcaVehiculo_MV" ManuallyRouted="false" />
-        <AssociationConnector Association="bdlavacarModel.FK_Tbl_Persona_P_Tbl_TipoPersona_TP" ManuallyRouted="false" />
-        <AssociationConnector Association="bdlavacarModel.FK_Tbl_Seguridad_SG_Tbl_Persona_P" ManuallyRouted="false" />
-        <AssociationConnector Association="bdlavacarModel.FK_TblFactura_F_Tbl_Persona_P" ManuallyRouted="false" />
         <AssociationConnector Association="bdlavacarModel.FK_Tbl_FacturaServicioVehiculo_FSV_Tbl_Servicio_S" ManuallyRouted="false" />
         <AssociationConnector Association="bdlavacarModel.FK_Tbl_Vehiculo_V_Tbl_Tipo_TV" ManuallyRouted="false" />
         <AssociationConnector Association="bdlavacarModel.FK_TblFactura_F_Tbl_Vehiculo_V" ManuallyRouted="false" />
         <AssociationConnector Association="bdlavacarModel.FK_Tbl_FacturaServicioVehiculo_FSV_TblFactura_F" ManuallyRouted="false" />
-        <AssociationConnector Association="bdlavacarModel.Tbl_VehiculoCliente_VC" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="bdlavacarModel.Tbl_Persona_P" Width="1.5" PointX="8.25" PointY="5.375" />
+        <AssociationConnector Association="bdlavacarModel.FK_Tbl_Persona_P_Canton" />
+        <AssociationConnector Association="bdlavacarModel.FK_Tbl_Persona_P_Tbl_TipoPersona_TP" />
+        <AssociationConnector Association="bdlavacarModel.FK_Tbl_Seguridad_SG_Tbl_Persona_P" />
+        <AssociationConnector Association="bdlavacarModel.FK_TblFactura_F_Tbl_Persona_P" />
+        <AssociationConnector Association="bdlavacarModel.Tbl_VehiculoCliente_VC" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

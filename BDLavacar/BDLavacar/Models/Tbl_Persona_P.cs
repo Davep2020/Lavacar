@@ -24,7 +24,7 @@ namespace BDLavacar.Models
         public int Id_Cliente_P { get; set; }
         public int Cedula_P { get; set; }
         public string Genero_P { get; set; }
-        public System.DateTime Fecha_Nacimiento_P { get; set; }
+        public string Fecha_Nacimiento_P { get; set; }
         public string Nombre_P { get; set; }
         public string Correo_P { get; set; }
         public int Id_Provincia_P { get; set; }
