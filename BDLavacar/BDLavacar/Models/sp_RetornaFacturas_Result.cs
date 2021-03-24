@@ -10,19 +10,13 @@
 namespace BDLavacar.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Tbl_Tipo_TV
+    public partial class sp_RetornaFacturas_Result
     {
-        public Tbl_Tipo_TV()
-        {
-            this.Tbl_Vehiculo_V = new HashSet<Tbl_Vehiculo_V>();
-        }
-    
-        public int Id_Tipo_TV { get; set; }
-        public string codigo_TV { get; set; }
-        public string Tipo_TV { get; set; }
-    
-        public virtual ICollection<Tbl_Vehiculo_V> Tbl_Vehiculo_V { get; set; }
+        public int Id_Factura_F { get; set; }
+        public int Id_Vehiculo_F { get; set; }
+        public int Id_Persona_F { get; set; }
+        public Nullable<int> Total_F { get; set; }
+        public Nullable<System.DateTime> Fecha_F { get; set; }
     }
 }

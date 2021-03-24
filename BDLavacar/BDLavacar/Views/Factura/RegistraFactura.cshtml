@@ -1,0 +1,25 @@
+﻿<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "RegistraFactura";
+    Layout = "~/Views/Shared/_LayoutBDLavacar.cshtml";
+}
+
+<h2>RegistraFactura</h2>
+<form method="post" id="frmRegistroFactura">
+    <label>Vehículo</label>
+    <input type="text" id="txtVehiculo" />
+    <input type="hidden" id="id_Vehiculo" />
+    <label>Persona</label>
+    <input type="text" id="txtPersona" />
+    <input type="hidden" id="id_Persona" />
+    <a href="#" class="btn btn-info">Registrar</a>
+</form>
+
+
+
+@section scripts{
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="~/Scripts/Facturas/FacturaJqueryUI.js"></script>
+
+}
+

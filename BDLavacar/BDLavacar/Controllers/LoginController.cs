@@ -10,7 +10,7 @@ namespace BDLavacar.Controllers
     public class LoginController : Controller
     {
 
-        bdlavacarEntities modeloBD = new bdlavacarEntities();
+        bdlavacarEntities1 modeloBD = new bdlavacarEntities1();
 
         public ActionResult login()
         {
