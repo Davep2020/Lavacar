@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "insertaFactura";
+    Layout = "~/Views/Shared/_LayoutBDLavacar.cshtml";
+}
+
+<h2>insertaFactura</h2>
+<form id="frmFacturaServicio" method="post">
+    <div class="form-group">
+        <label>Cantidad:</label>
+        <input type="text" name="Cantidad_FVS" id="cantidad" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Servicio:</label>
+        <select name="Id_Servicio_FVS" id="servicio" class="form-control">
+            <option value="">Seleccione un Servicio </option>
+            @{
+                foreach (BDLavacar.Models.sp_RetornaServicios_Result Servicio in this.ViewBag.Servicio)
+                {
+                    <option value="@Servicio.Id_Servicio_S"> @Servicio.Tipo_S  </option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Monto:</label>
+        <input type="text" name="Monto_FVS" id="monto" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Insertar" id="btnInsertar" class="btn btn-success" />
+    </div>
+</form>
