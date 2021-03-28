@@ -10,16 +10,13 @@
 namespace BDLavacar.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Tbl_Persona_P
+    public partial class sp_RetornaClientesPreFactura_Result
     {
-        public Tbl_Persona_P()
-        {
-            this.Tbl_Seguridad_SG = new HashSet<Tbl_Seguridad_SG>();
-            this.TblFactura_F = new HashSet<TblFactura_F>();
-        }
-    
+        public string Provincia { get; set; }
+        public string canton { get; set; }
+        public string Tipo_TP { get; set; }
+        public string distrito { get; set; }
         public int Id_Cliente_P { get; set; }
         public string Cedula_P { get; set; }
         public string Genero_P { get; set; }
@@ -32,10 +29,5 @@ namespace BDLavacar.Models
         public int Id_Canton_P { get; set; }
         public int Id_Tipo_P { get; set; }
         public int Id_Distrito_P { get; set; }
-    
-        public virtual Canton Canton { get; set; }
-        public virtual Tbl_TipoPersona_TP Tbl_TipoPersona_TP { get; set; }
-        public virtual ICollection<Tbl_Seguridad_SG> Tbl_Seguridad_SG { get; set; }
-        public virtual ICollection<TblFactura_F> TblFactura_F { get; set; }
     }
 }

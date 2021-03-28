@@ -128,7 +128,7 @@ namespace BDLavacar.Controllers
         #region Json
         public ActionResult RetornaPersona()
         {
-            List<sp_RetornaClientes_Result> Persona = this.modeloBD.sp_RetornaClientes().ToList();
+            List<sp_RetornaClientesPreFactura_Result> Persona = this.modeloBD.sp_RetornaClientesPreFactura().ToList();
             return Json(Persona);
         }
 

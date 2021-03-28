@@ -174,7 +174,7 @@
     <Compile Include="Models\sp_RetornaClientesID_Result.cs">
       <DependentUpon>Lacacar.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_RetornaClientes_Result.cs">
+    <Compile Include="Models\sp_RetornaClientesPreFactura_Result.cs">
       <DependentUpon>Lacacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaCuenta_Result.cs">

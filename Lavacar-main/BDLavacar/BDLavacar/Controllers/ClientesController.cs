@@ -39,61 +39,61 @@ namespace BDLavacar.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult InsertarUsuario(sp_RetornaClientes_Result modeloVista)
-        {
-            int registros = 0;
-            string mensaje = "";
+        //[HttpPost]
+        //public ActionResult InsertarUsuario(sp_RetornaClientes_Result modeloVista)
+        //{
+        //    int registros = 0;
+        //    string mensaje = "";
 
-            try
-            {
-                registros = modeloBD.sp_InsertarPersona(
-                    modeloVista.Cedula_P,
-                    modeloVista.Genero_P,
-                    modeloVista.Fecha_Nacimiento_P,
-                    modeloVista.Nombre_P,
-                    modeloVista.Correo_P,
-                    modeloVista.Provincia,
-                   modeloVista.canton,
-                    modeloVista.distrito,
-                     modeloVista.Tipo_TP
-                    );
-            }
-            catch (Exception e)
-            {
-                mensaje = "Ocurrió un error: " + e.Message;
-            }
-            finally
-            {
-                if (registros > 0)
-                {
-                    Session["Correo"] = modeloVista.Correo_P;
-                    Session["Nombre"] = modeloVista.Nombre_P;
-                    mensaje = "Registro insertado.";
-                    EnviarCorreo();
-                }
-                else
-                {
-                    mensaje = "No se pudo insertar.";
-                }
-            }
+        //    try
+        //    {
+        //        registros = modeloBD.sp_InsertarPersona(
+        //            modeloVista.Cedula_P,
+        //            modeloVista.Genero_P,
+        //            modeloVista.Fecha_Nacimiento_P,
+        //            modeloVista.Nombre_P,
+        //            modeloVista.Correo_P,
+        //            modeloVista.Provincia,
+        //           modeloVista.canton,
+        //            modeloVista.distrito,
+        //             modeloVista.Tipo_TP
+        //            );
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        mensaje = "Ocurrió un error: " + e.Message;
+        //    }
+        //    finally
+        //    {
+        //        if (registros > 0)
+        //        {
+        //            Session["Correo"] = modeloVista.Correo_P;
+        //            Session["Nombre"] = modeloVista.Nombre_P;
+        //            mensaje = "Registro insertado.";
+        //            EnviarCorreo();
+        //        }
+        //        else
+        //        {
+        //            mensaje = "No se pudo insertar.";
+        //        }
+        //    }
 
-            Response.Write("<script laguage=JavaScript>alert('" + mensaje + "');</script>");
-            AgregaTipoPersonaViewBag();
-            return View();
-        }
+        //    Response.Write("<script laguage=JavaScript>alert('" + mensaje + "');</script>");
+        //    AgregaTipoPersonaViewBag();
+        //    return View();
+        //}
 
         #endregion
 
         #region Listar
-        public ActionResult ClientesLista()
-        {
-            List<sp_RetornaClientes_Result> modeloVista = 
-                new List<sp_RetornaClientes_Result>();
+        //public ActionResult ClientesLista()
+        //{
+        //    List<sp_RetornaClientes_Result> modeloVista = 
+        //        new List<sp_RetornaClientes_Result>();
 
-            modeloVista = modeloBD.sp_RetornaClientes().ToList();
-            return View(modeloVista);
-        }
+        //    modeloVista = modeloBD.sp_RetornaClientes().ToList();
+        //    return View(modeloVista);
+        //}
         #endregion
 
         #region Modificar
