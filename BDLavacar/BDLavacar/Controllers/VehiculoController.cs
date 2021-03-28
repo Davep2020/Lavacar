@@ -9,7 +9,7 @@ namespace BDLavacar.Controllers
 {
     public class VehiculoController : Controller
     {
-        bdlavacarEntities modeloBD = new bdlavacarEntities();
+        bdlavacarEntities1 modeloBD = new bdlavacarEntities1();
         // GET: Vehiculo
         public ActionResult Index()
         {

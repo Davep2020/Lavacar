@@ -20,10 +20,10 @@ namespace BDLavacar.Models
         }
     
         public int Id_Servicio_S { get; set; }
+        public string Codigo_S { get; set; }
         public string Descripcion_S { get; set; }
         public int Precio_S { get; set; }
         public string Tipo_S { get; set; }
-        public string Codigo_S { get; set; }
     
         public virtual ICollection<Tbl_FacturaServicioVehiculo_FSV> Tbl_FacturaServicioVehiculo_FSV { get; set; }
     }

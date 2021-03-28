@@ -12,17 +12,12 @@ namespace BDLavacar.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_Tipo_TV
+    public partial class sysdiagrams
     {
-        public Tbl_Tipo_TV()
-        {
-            this.Tbl_Vehiculo_V = new HashSet<Tbl_Vehiculo_V>();
-        }
-    
-        public int Id_Tipo_TV { get; set; }
-        public string codigo_TV { get; set; }
-        public string Tipo_TV { get; set; }
-    
-        public virtual ICollection<Tbl_Vehiculo_V> Tbl_Vehiculo_V { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
