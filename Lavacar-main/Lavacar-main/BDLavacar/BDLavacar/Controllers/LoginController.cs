@@ -17,13 +17,19 @@ namespace BDLavacar.Controllers
         {
             return View();
         }
-        public ActionResult Validar(string pNombre, string pApellido1)
+
+        public ActionResult Validar()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Validar(string correo, string contra)
         {
             string mensaje = "";
             try
             {
                 sp_RetornaLogueo_Result datosCliente = new sp_RetornaLogueo_Result();
-                datosCliente = modeloBD.sp_RetornaLogueo(pNombre,pApellido1).FirstOrDefault();
+                datosCliente = modeloBD.sp_RetornaLogueo(correo, contra).FirstOrDefault();
 
                 if (datosCliente == null)
                 {
@@ -49,7 +55,7 @@ namespace BDLavacar.Controllers
                     {
                         this.Response.Redirect("~/Servicios/ServicioLista");
                     }
-
+                    mensaje = "Usted ha ingresado: " + Session["Nombre"];
                 }
             }
             catch (Exception excepcionCapturada)
@@ -57,8 +63,8 @@ namespace BDLavacar.Controllers
                 mensaje += $"Ocurrio un error:{excepcionCapturada.Message}";
             }
 
-            return View();
+            return Json(new { resultado = mensaje });
 
-                }
+        }
     }
 }

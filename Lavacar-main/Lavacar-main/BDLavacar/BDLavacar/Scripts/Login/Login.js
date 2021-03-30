@@ -31,12 +31,16 @@ function creaEventos() {
 }
 ///se encarga de llamar al método del controlador y procesar el resultado
 function invocarMetodoPost() {
-    var url = '/Login/InicioSesion';
+    var url = '/Login/Validar';
 
     var parametros = {
-        pNombre: $("#correo").val(),
-        pApellido1: $("#contra").val(),
+        correo: $("#correo").val(),
+        contra: $("#contra").val(),
     };
+    Ajax(url, parametros);
+}
+
+function Ajax(url, parametros) {
     $.ajax({
         url: url,
         dataType: 'json',
@@ -54,5 +58,5 @@ function invocarMetodoPost() {
 
 function procesarResultadoMetodo(data) {
     var resultadoFuncion = data.resultado;
-    alert("Su nombre completo es: " + resultadoFuncion);
+    alert(resultadoFuncion);
 }
