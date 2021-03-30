@@ -45,16 +45,6 @@
           <Property Name="fechaModifica" Type="datetime" />
           <Property Name="vc_Estado" Type="varchar" MaxLength="3" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FSV' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Tbl_FacturaServicioVehiculo_FSV">
@@ -507,7 +497,6 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FS
           <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_MarcaVehiculo_MV" EntityType="Self.Tbl_MarcaVehiculo_MV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_PaisFabricacion_PF" EntityType="Self.Tbl_PaisFabricacion_PF" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Persona_P" EntityType="Self.Tbl_Persona_P" Schema="dbo" store:Type="Tables" />
@@ -622,16 +611,6 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <Property Name="fechaModifica" Type="DateTime" Precision="3" />
           <Property Name="vc_Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Canton" Relationship="Self.Canton_ref_Provincia" FromRole="Provincia" ToRole="Canton" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Tbl_MarcaVehiculo_MV">
           <Key>
@@ -832,7 +811,6 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <EntitySet Name="Canton" EntityType="Self.Canton" />
           <EntitySet Name="Distrito" EntityType="Self.Distrito" />
           <EntitySet Name="Provincia" EntityType="Self.Provincia" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tbl_MarcaVehiculo_MV" EntityType="Self.Tbl_MarcaVehiculo_MV" />
           <EntitySet Name="Tbl_PaisFabricacion_PF" EntityType="Self.Tbl_PaisFabricacion_PF" />
           <EntitySet Name="Tbl_Seguridad_SG" EntityType="Self.Tbl_Seguridad_SG" />
@@ -1047,10 +1025,6 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <Parameter Name="IDfACTURA" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaTipoPersona" ReturnType="Collection(bdlavacarModel1.sp_RetornaTipoPersona_Result)" />
-          <FunctionImport Name="sp_RetornaLogueo" ReturnType="Collection(bdlavacarModel1.sp_RetornaLogueo_Result)">
-            <Parameter Name="Usuario" Mode="In" Type="String" />
-            <Parameter Name="contrasena" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="sp_RetornaCuenta" ReturnType="Collection(bdlavacarModel1.sp_RetornaCuenta_Result)">
           <Parameter Name="idCliente" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1091,6 +1065,10 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
             <Parameter Name="idCanton" Mode="In" Type="Int32" />
             <Parameter Name="idDistrito" Mode="In" Type="Int32" />
             <Parameter Name="tipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaLogueo" ReturnType="Collection(bdlavacarModel1.sp_RetornaLogueo_Result)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="RetornaCantones_Result">
@@ -1261,14 +1239,6 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <Property Type="Int32" Name="Id_TipoPersona_TP" Nullable="false" />
           <Property Type="String" Name="Tipo_TP" Nullable="false" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="sp_RetornaLogueo_Result">
-          <Property Type="Int32" Name="Id_Usuarios_SG" Nullable="false" />
-          <Property Type="String" Name="Usuario_SG" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Contraseña_SG" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Tipo" Nullable="true" />
-          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="sp_RetornaCuenta_Result">
           <Property Type="Int32" Name="Id_Usuarios_SG" Nullable="false" />
           <Property Type="String" Name="Usuario_SG" Nullable="false" MaxLength="50" />
@@ -1372,6 +1342,14 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <Property Type="String" Name="Placa_V" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Nombre_P" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="sp_RetornaLogueo_Result">
+          <Property Type="Int32" Name="Id_Usuarios_SG" Nullable="false" />
+          <Property Type="String" Name="Usuario_SG" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Contraseña_SG" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Tipo" Nullable="true" />
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1418,17 +1396,6 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
                 <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
                 <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
                 <ScalarProperty Name="vc_Estado" ColumnName="vc_Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="bdlavacarModel1.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1798,18 +1765,6 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_RetornaLogueo" FunctionName="bdlavacarModel1.Store.sp_RetornaLogueo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="bdlavacarModel1.sp_RetornaLogueo_Result">
-                <ScalarProperty Name="Id_Usuarios_SG" ColumnName="Id_Usuarios_SG" />
-                <ScalarProperty Name="Usuario_SG" ColumnName="Usuario_SG" />
-                <ScalarProperty Name="Contraseña_SG" ColumnName="Contraseña_SG" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_RetornaCuenta" FunctionName="bdlavacarModel1.Store.sp_RetornaCuenta">
             <ResultMapping>
               <ComplexTypeMapping TypeName="bdlavacarModel1.sp_RetornaCuenta_Result">
@@ -1876,6 +1831,18 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_InsertaServicioFactura" FunctionName="bdlavacarModel1.Store.sp_InsertaServicioFactura" />
           <FunctionImportMapping FunctionImportName="sp_InsertarPersona" FunctionName="bdlavacarModel1.Store.sp_InsertarPersona" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaLogueo" FunctionName="bdlavacarModel1.Store.sp_RetornaLogueo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel1.sp_RetornaLogueo_Result">
+                <ScalarProperty Name="Id_Usuarios_SG" ColumnName="Id_Usuarios_SG" />
+                <ScalarProperty Name="Usuario_SG" ColumnName="Usuario_SG" />
+                <ScalarProperty Name="Contraseña_SG" ColumnName="Contraseña_SG" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

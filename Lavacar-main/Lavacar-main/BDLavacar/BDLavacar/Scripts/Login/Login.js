@@ -1,0 +1,58 @@
+﻿$(function () {
+    creaValidaciones();
+    creaEventos();
+});
+
+///crea las validaciones para el formulario
+function creaValidaciones() {
+    $("#frmEjemploPost").validate({
+        ///objeto que contiene "las condiciones" que el formulario
+        ///debe cumplir para ser considerado válido
+        rules: {
+            correo: {
+                required: true
+            },
+            contra: {
+                required: true
+            },
+        }
+    });
+}
+
+function creaEventos() {
+    $("#btnAceptar").on("click", function () {
+        var formulario = $('#frmEjemploPost');
+        formulario.validate();
+
+        if (formulario.valid()) {
+            invocarMetodoPost();
+        }
+    });
+}
+///se encarga de llamar al método del controlador y procesar el resultado
+function invocarMetodoPost() {
+    var url = '/Login/InicioSesion';
+
+    var parametros = {
+        pNombre: $("#correo").val(),
+        pApellido1: $("#contra").val(),
+    };
+    $.ajax({
+        url: url,
+        dataType: 'json',
+        type: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify(parametros),
+        success: function (data, textStatus, jQxhr) {
+            procesarResultadoMetodo(data);
+        },
+        error: function (jQxhr, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+
+function procesarResultadoMetodo(data) {
+    var resultadoFuncion = data.resultado;
+    alert("Su nombre completo es: " + resultadoFuncion);
+}

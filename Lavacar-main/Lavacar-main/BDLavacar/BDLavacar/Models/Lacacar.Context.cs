@@ -42,8 +42,6 @@ public partial class bdlavacarEntities1 : DbContext
 
     public DbSet<Provincia> Provincia { get; set; }
 
-    public DbSet<sysdiagrams> sysdiagrams { get; set; }
-
     public DbSet<Tbl_MarcaVehiculo_MV> Tbl_MarcaVehiculo_MV { get; set; }
 
     public DbSet<Tbl_PaisFabricacion_PF> Tbl_PaisFabricacion_PF { get; set; }
@@ -818,23 +816,6 @@ public partial class bdlavacarEntities1 : DbContext
     }
 
 
-    public virtual ObjectResult<sp_RetornaLogueo_Result> sp_RetornaLogueo(string usuario, string contrasena)
-    {
-
-        var usuarioParameter = usuario != null ?
-            new ObjectParameter("Usuario", usuario) :
-            new ObjectParameter("Usuario", typeof(string));
-
-
-        var contrasenaParameter = contrasena != null ?
-            new ObjectParameter("contrasena", contrasena) :
-            new ObjectParameter("contrasena", typeof(string));
-
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaLogueo_Result>("sp_RetornaLogueo", usuarioParameter, contrasenaParameter);
-    }
-
-
     public virtual ObjectResult<sp_RetornaCuenta_Result> sp_RetornaCuenta(Nullable<int> idCliente)
     {
 
@@ -947,6 +928,23 @@ public partial class bdlavacarEntities1 : DbContext
 
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertarPersona", cedulaParameter, generoParameter, fechaParameter, nombreParameter, pnombreParameter, snombreParameter, correoParameter, idProvinciaParameter, idCantonParameter, idDistritoParameter, tipoParameter);
+    }
+
+
+    public virtual ObjectResult<sp_RetornaLogueo_Result> sp_RetornaLogueo(string usuario, string contrasena)
+    {
+
+        var usuarioParameter = usuario != null ?
+            new ObjectParameter("Usuario", usuario) :
+            new ObjectParameter("Usuario", typeof(string));
+
+
+        var contrasenaParameter = contrasena != null ?
+            new ObjectParameter("contrasena", contrasena) :
+            new ObjectParameter("contrasena", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaLogueo_Result>("sp_RetornaLogueo", usuarioParameter, contrasenaParameter);
     }
 
 }
