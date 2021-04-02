@@ -19,7 +19,7 @@ public partial class sp_RetornaClientesID_Result
 
     public int Id_Cliente_P { get; set; }
 
-    public int Cedula_P { get; set; }
+    public string Cedula_P { get; set; }
 
     public string Genero_P { get; set; }
 
@@ -28,6 +28,10 @@ public partial class sp_RetornaClientesID_Result
     public string Fecha_Nacimiento_P { get; set; }
 
     public string Nombre_P { get; set; }
+
+    public string PApellido { get; set; }
+
+    public string SApellido { get; set; }
 
     public string Correo_P { get; set; }
 

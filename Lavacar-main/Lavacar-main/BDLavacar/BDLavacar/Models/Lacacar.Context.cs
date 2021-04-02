@@ -352,63 +352,6 @@ public partial class bdlavacarEntities1 : DbContext
     }
 
 
-    public virtual int sp_ModificaClientes(Nullable<int> id_Cliente_P, Nullable<int> cedula_P, string genero_P, string fecha_Nacimiento_P, string nombre_P, string correo_P, Nullable<int> id_Provincia_P, Nullable<int> id_Canton_P, Nullable<int> id_Tipo_P, Nullable<int> id_Distrito_P)
-    {
-
-        var id_Cliente_PParameter = id_Cliente_P.HasValue ?
-            new ObjectParameter("Id_Cliente_P", id_Cliente_P) :
-            new ObjectParameter("Id_Cliente_P", typeof(int));
-
-
-        var cedula_PParameter = cedula_P.HasValue ?
-            new ObjectParameter("Cedula_P", cedula_P) :
-            new ObjectParameter("Cedula_P", typeof(int));
-
-
-        var genero_PParameter = genero_P != null ?
-            new ObjectParameter("Genero_P", genero_P) :
-            new ObjectParameter("Genero_P", typeof(string));
-
-
-        var fecha_Nacimiento_PParameter = fecha_Nacimiento_P != null ?
-            new ObjectParameter("Fecha_Nacimiento_P", fecha_Nacimiento_P) :
-            new ObjectParameter("Fecha_Nacimiento_P", typeof(string));
-
-
-        var nombre_PParameter = nombre_P != null ?
-            new ObjectParameter("Nombre_P", nombre_P) :
-            new ObjectParameter("Nombre_P", typeof(string));
-
-
-        var correo_PParameter = correo_P != null ?
-            new ObjectParameter("Correo_P", correo_P) :
-            new ObjectParameter("Correo_P", typeof(string));
-
-
-        var id_Provincia_PParameter = id_Provincia_P.HasValue ?
-            new ObjectParameter("Id_Provincia_P", id_Provincia_P) :
-            new ObjectParameter("Id_Provincia_P", typeof(int));
-
-
-        var id_Canton_PParameter = id_Canton_P.HasValue ?
-            new ObjectParameter("Id_Canton_P", id_Canton_P) :
-            new ObjectParameter("Id_Canton_P", typeof(int));
-
-
-        var id_Tipo_PParameter = id_Tipo_P.HasValue ?
-            new ObjectParameter("Id_Tipo_P", id_Tipo_P) :
-            new ObjectParameter("Id_Tipo_P", typeof(int));
-
-
-        var id_Distrito_PParameter = id_Distrito_P.HasValue ?
-            new ObjectParameter("Id_Distrito_P", id_Distrito_P) :
-            new ObjectParameter("Id_Distrito_P", typeof(int));
-
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaClientes", id_Cliente_PParameter, cedula_PParameter, genero_PParameter, fecha_Nacimiento_PParameter, nombre_PParameter, correo_PParameter, id_Provincia_PParameter, id_Canton_PParameter, id_Tipo_PParameter, id_Distrito_PParameter);
-    }
-
-
     public virtual int sp_ModificaMarcaVehiculo(Nullable<int> idMarcaVehiculo, Nullable<int> idPaisFabricacion, string marcaVehiculo, string codigo)
     {
 
@@ -597,18 +540,6 @@ public partial class bdlavacarEntities1 : DbContext
 
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-    }
-
-
-    public virtual ObjectResult<sp_RetornaClientesID_Result> sp_RetornaClientesID(Nullable<int> id_Cliente_P)
-    {
-
-        var id_Cliente_PParameter = id_Cliente_P.HasValue ?
-            new ObjectParameter("Id_Cliente_P", id_Cliente_P) :
-            new ObjectParameter("Id_Cliente_P", typeof(int));
-
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaClientesID_Result>("sp_RetornaClientesID", id_Cliente_PParameter);
     }
 
 
@@ -842,33 +773,6 @@ public partial class bdlavacarEntities1 : DbContext
     }
 
 
-    public virtual int sp_InsertaServicioFactura(Nullable<int> idfactura, Nullable<int> cantidad, Nullable<int> servicio, Nullable<int> monto)
-    {
-
-        var idfacturaParameter = idfactura.HasValue ?
-            new ObjectParameter("idfactura", idfactura) :
-            new ObjectParameter("idfactura", typeof(int));
-
-
-        var cantidadParameter = cantidad.HasValue ?
-            new ObjectParameter("Cantidad", cantidad) :
-            new ObjectParameter("Cantidad", typeof(int));
-
-
-        var servicioParameter = servicio.HasValue ?
-            new ObjectParameter("Servicio", servicio) :
-            new ObjectParameter("Servicio", typeof(int));
-
-
-        var montoParameter = monto.HasValue ?
-            new ObjectParameter("Monto", monto) :
-            new ObjectParameter("Monto", typeof(int));
-
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaServicioFactura", idfacturaParameter, cantidadParameter, servicioParameter, montoParameter);
-    }
-
-
     public virtual int sp_InsertarPersona(string cedula, string genero, string fecha, string nombre, string pnombre, string snombre, string correo, Nullable<int> idProvincia, Nullable<int> idCanton, Nullable<int> idDistrito, Nullable<int> tipo)
     {
 
@@ -945,6 +849,107 @@ public partial class bdlavacarEntities1 : DbContext
 
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaLogueo_Result>("sp_RetornaLogueo", usuarioParameter, contrasenaParameter);
+    }
+
+
+    public virtual int sp_ModificaClientes(Nullable<int> id_Cliente_P, Nullable<int> cedula_P, string genero_P, string fecha_Nacimiento_P, string nombre_P, string pNombre_P, string sNombre_P, string correo_P, Nullable<int> id_Provincia_P, Nullable<int> id_Canton_P, Nullable<int> id_Tipo_P, Nullable<int> id_Distrito_P)
+    {
+
+        var id_Cliente_PParameter = id_Cliente_P.HasValue ?
+            new ObjectParameter("Id_Cliente_P", id_Cliente_P) :
+            new ObjectParameter("Id_Cliente_P", typeof(int));
+
+
+        var cedula_PParameter = cedula_P.HasValue ?
+            new ObjectParameter("Cedula_P", cedula_P) :
+            new ObjectParameter("Cedula_P", typeof(int));
+
+
+        var genero_PParameter = genero_P != null ?
+            new ObjectParameter("Genero_P", genero_P) :
+            new ObjectParameter("Genero_P", typeof(string));
+
+
+        var fecha_Nacimiento_PParameter = fecha_Nacimiento_P != null ?
+            new ObjectParameter("Fecha_Nacimiento_P", fecha_Nacimiento_P) :
+            new ObjectParameter("Fecha_Nacimiento_P", typeof(string));
+
+
+        var nombre_PParameter = nombre_P != null ?
+            new ObjectParameter("Nombre_P", nombre_P) :
+            new ObjectParameter("Nombre_P", typeof(string));
+
+
+        var pNombre_PParameter = pNombre_P != null ?
+            new ObjectParameter("PNombre_P", pNombre_P) :
+            new ObjectParameter("PNombre_P", typeof(string));
+
+
+        var sNombre_PParameter = sNombre_P != null ?
+            new ObjectParameter("SNombre_P", sNombre_P) :
+            new ObjectParameter("SNombre_P", typeof(string));
+
+
+        var correo_PParameter = correo_P != null ?
+            new ObjectParameter("Correo_P", correo_P) :
+            new ObjectParameter("Correo_P", typeof(string));
+
+
+        var id_Provincia_PParameter = id_Provincia_P.HasValue ?
+            new ObjectParameter("Id_Provincia_P", id_Provincia_P) :
+            new ObjectParameter("Id_Provincia_P", typeof(int));
+
+
+        var id_Canton_PParameter = id_Canton_P.HasValue ?
+            new ObjectParameter("Id_Canton_P", id_Canton_P) :
+            new ObjectParameter("Id_Canton_P", typeof(int));
+
+
+        var id_Tipo_PParameter = id_Tipo_P.HasValue ?
+            new ObjectParameter("Id_Tipo_P", id_Tipo_P) :
+            new ObjectParameter("Id_Tipo_P", typeof(int));
+
+
+        var id_Distrito_PParameter = id_Distrito_P.HasValue ?
+            new ObjectParameter("Id_Distrito_P", id_Distrito_P) :
+            new ObjectParameter("Id_Distrito_P", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaClientes", id_Cliente_PParameter, cedula_PParameter, genero_PParameter, fecha_Nacimiento_PParameter, nombre_PParameter, pNombre_PParameter, sNombre_PParameter, correo_PParameter, id_Provincia_PParameter, id_Canton_PParameter, id_Tipo_PParameter, id_Distrito_PParameter);
+    }
+
+
+    public virtual ObjectResult<sp_RetornaClientesID_Result> sp_RetornaClientesID(Nullable<int> id_Cliente_P)
+    {
+
+        var id_Cliente_PParameter = id_Cliente_P.HasValue ?
+            new ObjectParameter("Id_Cliente_P", id_Cliente_P) :
+            new ObjectParameter("Id_Cliente_P", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaClientesID_Result>("sp_RetornaClientesID", id_Cliente_PParameter);
+    }
+
+
+    public virtual int sp_InsertaServicioFactura(Nullable<int> idfactura, Nullable<int> cantidad, Nullable<int> servicio)
+    {
+
+        var idfacturaParameter = idfactura.HasValue ?
+            new ObjectParameter("idfactura", idfactura) :
+            new ObjectParameter("idfactura", typeof(int));
+
+
+        var cantidadParameter = cantidad.HasValue ?
+            new ObjectParameter("Cantidad", cantidad) :
+            new ObjectParameter("Cantidad", typeof(int));
+
+
+        var servicioParameter = servicio.HasValue ?
+            new ObjectParameter("Servicio", servicio) :
+            new ObjectParameter("Servicio", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertaServicioFactura", idfacturaParameter, cantidadParameter, servicioParameter);
     }
 
 }

@@ -25,6 +25,7 @@ namespace BDLavacar.Controllers
         [HttpPost]
         public ActionResult Validar(string correo, string contra)
         {
+            string url = "";
             string mensaje = "";
             try
             {
@@ -49,11 +50,13 @@ namespace BDLavacar.Controllers
 
                     if (Convert.ToInt32(this.Session["Tipo"]) == 1)
                     {
-                        Response.Redirect("~/Factura/ListaPreFactura");
+                        url = Url.Action("ListaPreFactura", "Factura");
+                        //Response.Redirect("~/Factura/ListaPreFactura");
                     }
                     else if (Convert.ToInt32(this.Session["Tipo"]) == 2)
                     {
-                        this.Response.Redirect("~/Servicios/ServicioLista");
+                        url = Url.Action("ServicioLista", "Servicios");
+                        //this.Response.Redirect("~/Servicios/ServicioLista");
                     }
                     mensaje = "Usted ha ingresado: " + Session["Nombre"];
                 }
@@ -63,7 +66,8 @@ namespace BDLavacar.Controllers
                 mensaje += $"Ocurrio un error:{excepcionCapturada.Message}";
             }
 
-            return Json(new { resultado = mensaje });
+            return Json(new { resultado = mensaje,validado=Session["UsuarioLogeado"],url= url });
+
 
         }
     }

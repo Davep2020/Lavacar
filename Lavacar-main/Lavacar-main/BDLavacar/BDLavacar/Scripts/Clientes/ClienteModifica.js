@@ -10,13 +10,13 @@
 //función que registrará los eventos necesarios para "monitorear"
 //cuando se ejecute el método change de las respectivas listas
 function estableceEventosChange() {
-    $("#id_Provincia").change(function () {
-        var id_Provincia = $("#id_Provincia").val();
-        cargaDropdownListCantones(id_Provincia);
+    $("#provincia").change(function () {
+        var provincia = $("#provincia").val();
+        cargaDropdownListCantones(provincia);
     });
-    $("#id_Canton").change(function () {
-        var id_Canton = $("#id_Canton").val();
-        cargarDropdownListDistritos(id_Canton);
+    $("#canton").change(function () {
+        var canton = $("#canton").val();
+        cargarDropdownListDistritos(canton);
     });
 }
 
@@ -49,13 +49,18 @@ function cargaDropdownListProvincias() {
  * y lo procesa, recorriendo cada posición
  */
 function procesarResultadoProvincias(data) {
-    var ddlProvincia = $("#id_Provincia");
+    var ddlProvincia = $("#provincia");
+    var ddlProvinciaID = $("#hddProvinciaID").val();
+    ddlProvincia.empty();
+    var nuevaOpcion = "<option value=''>Seleccione una provincia</option>";
+    ddlProvincia.append(nuevaOpcion);
     ///Recorre los registros
     $(data).each(function () {
         var provinciaActual = this;
         nuevaOpcion = "<option value='" + provinciaActual.id_Provincia + "'>" + provinciaActual.nombre + "</option>";
         ddlProvincia.append(nuevaOpcion);
     });
+    ddlProvincia.val(ddlProvinciaID);
 }
 
 ///carga los registros de los cantones
@@ -85,9 +90,9 @@ function cargaDropdownListCantones(pIdProvincia) {
 
 
 function procesarResultadoCantones(data) {
-    var ddlCantones = $("#id_Canton");
+    var ddlCantones = $("#canton");
     ddlCantones.empty();
-    nuevaOpcion = "<option value='+'>Seleccione un Cantón</option>";
+    nuevaOpcion = "<option value=''>Seleccione un Cantón</option>";
     ddlCantones.append(nuevaOpcion);
     $(data).each(function () {
         var cantonActual = this;
@@ -119,7 +124,7 @@ function cargarDropdownListDistritos(pId_Canton) {
     });
 }
 function procesarResultadoDistritos(data) {
-    var ddlDistritos = $("#id_Distrito");
+    var ddlDistritos = $("#distrito");
     ddlDistritos.empty();
     nuevaOpcion = "<option value=''>Seleccione un Distrito</option>";
     ddlDistritos.append(nuevaOpcion);

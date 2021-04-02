@@ -57,6 +57,8 @@ function Ajax(url, parametros) {
 }
 
 function procesarResultadoMetodo(data) {
-    var resultadoFuncion = data.resultado;
-    alert(resultadoFuncion);
+    var resultadoFuncion = data;
+    if (resultadoFuncion.validado == true) {
+        window.location.href = resultadoFuncion.url;
+    }
 }

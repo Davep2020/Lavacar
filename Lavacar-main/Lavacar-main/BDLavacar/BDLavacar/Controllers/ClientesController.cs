@@ -108,12 +108,6 @@ namespace BDLavacar.Controllers
         {
             sp_RetornaClientesID_Result modelovista = new sp_RetornaClientesID_Result();
             modelovista = this.modeloBD.sp_RetornaClientesID(Id_Cliente_P).FirstOrDefault();
-            this.Session["Provincia"] = modelovista.id_Provincia;
-            this.Session["NProvincia"] = modelovista.nombreProvincia;
-            this.Session["Canton"] = modelovista.id_Canton;
-            this.Session["NCanton"] = modelovista.nombreCanton;
-            this.Session["Distrito"] = modelovista.id_Distrito;
-            this.Session["NDistrito"] = modelovista.nombreDistrito;
             
             return View(modelovista);
         }
@@ -127,17 +121,17 @@ namespace BDLavacar.Controllers
             {
                 cantRegistrosAfectados = this.modeloBD.sp_ModificaClientes(
                     modelovista.Id_Cliente_P,
-                    modelovista.Cedula_P,
+                    Convert.ToInt16(modelovista.Cedula_P),
                     modelovista.Genero_P,
                     modelovista.Fecha_Nacimiento_P,
                     modelovista.Nombre_P,
+                    modelovista.PApellido,
+                    modelovista.SApellido,
                     modelovista.Correo_P,
                     modelovista.id_Provincia,
                     modelovista.id_Canton,
                     modelovista.Id_TipoPersona_TP,
                     modelovista.id_Distrito
-
-
                     );
             }
             catch (Exception error)
