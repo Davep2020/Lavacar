@@ -96,6 +96,8 @@ namespace BDLavacar.Controllers
             modeloVista = modeloBD.sp_RetornaClientesPreFactura().ToList();
             return View(modeloVista);
         }
+
+
         #endregion
 
         #region Modificar
@@ -108,7 +110,7 @@ namespace BDLavacar.Controllers
         {
             sp_RetornaClientesID_Result modelovista = new sp_RetornaClientesID_Result();
             modelovista = this.modeloBD.sp_RetornaClientesID(Id_Cliente_P).FirstOrDefault();
-            
+            AgregaTipoPersonaViewBag();
             return View(modelovista);
         }
 
@@ -121,7 +123,7 @@ namespace BDLavacar.Controllers
             {
                 cantRegistrosAfectados = this.modeloBD.sp_ModificaClientes(
                     modelovista.Id_Cliente_P,
-                    Convert.ToInt16(modelovista.Cedula_P),
+                    Convert.ToInt32(modelovista.Cedula_P),
                     modelovista.Genero_P,
                     modelovista.Fecha_Nacimiento_P,
                     modelovista.Nombre_P,
@@ -151,9 +153,10 @@ namespace BDLavacar.Controllers
 
             }
             Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
+            AgregaTipoPersonaViewBag();
             return View(modelovista);
 
-
+            
         }
 
         #endregion
@@ -163,6 +166,7 @@ namespace BDLavacar.Controllers
         {
             sp_RetornaClientesID_Result modelovista = new sp_RetornaClientesID_Result();
             modelovista = this.modeloBD.sp_RetornaClientesID(Id_Cliente_P).FirstOrDefault();
+            AgregaTipoPersonaViewBag();
             return View(modelovista);
         }
 
@@ -193,7 +197,8 @@ namespace BDLavacar.Controllers
 
             }
             Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
-            
+            AgregaTipoPersonaViewBag();
+
             return View(modelovista);
 
 
@@ -254,4 +259,5 @@ namespace BDLavacar.Controllers
         }
         #endregion
     }
+
 }
