@@ -733,4 +733,37 @@ namespace BDLavacar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaVistaClientes_Result>("sp_RetornaVistaClientes", correoParameter);
         }
     }
+
+    public virtual int sp_EliminaPersona(Nullable<int> id_Cliente_P)
+    {
+
+        var id_Cliente_PParameter = id_Cliente_P.HasValue ?
+            new ObjectParameter("Id_Cliente_P", id_Cliente_P) :
+            new ObjectParameter("Id_Cliente_P", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EliminaPersona", id_Cliente_PParameter);
+    }
+
+
+    public virtual ObjectResult<sp_ReporteVehiculoscliente_Result> sp_ReporteVehiculoscliente()
+    {
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteVehiculoscliente_Result>("sp_ReporteVehiculoscliente");
+    }
+
+
+    public virtual ObjectResult<sp_ReporteServicioscliente_Result> sp_ReporteServicioscliente()
+    {
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteServicioscliente_Result>("sp_ReporteServicioscliente");
+    }
+
+
+    public virtual ObjectResult<sp_ReporteServiciosvehiculo_Result> sp_ReporteServiciosvehiculo()
+    {
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteServiciosvehiculo_Result>("sp_ReporteServiciosvehiculo");
+    }
+
 }

@@ -131,6 +131,7 @@
     <Compile Include="Controllers\FacturaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Controllers\ServiciosController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,6 +171,15 @@
       <DependentUpon>Lacacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_MuestraVehiculo_Result.cs">
+      <DependentUpon>Lacacar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_ReporteServicioscliente_Result.cs">
+      <DependentUpon>Lacacar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_ReporteServiciosvehiculo_Result.cs">
+      <DependentUpon>Lacacar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_ReporteVehiculoscliente_Result.cs">
       <DependentUpon>Lacacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaClientesID_Result.cs">
@@ -315,6 +325,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Login\Login.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Reportes\Generico.js" />
+    <Content Include="Scripts\Reportes\KendoServicioXCliente.js" />
+    <Content Include="Scripts\Reportes\KendoServicioXVehiculo.js" />
+    <Content Include="Scripts\Reportes\KendoVehiculoXCliente.js" />
     <Content Include="Scripts\Vehiculos\vehiculos.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -361,7 +375,11 @@
     <Content Include="Views\Factura\PreFacturaEliminar.cshtml" />
     <Content Include="Views\Login\login.cshtml" />
     <Content Include="Views\Login\InicioSesion.cshtml" />
+    <Content Include="Views\Reportes\ReportesIndex.cshtml" />
     <Content Include="Views\ClienteVista\ClientesVistaLista.cshtml" />
+    <Content Include="Views\Reportes\VehiculosCliente.cshtml" />
+    <Content Include="Views\Reportes\Servicioscliente.cshtml" />
+    <Content Include="Views\Reportes\ServiciosVehiculo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

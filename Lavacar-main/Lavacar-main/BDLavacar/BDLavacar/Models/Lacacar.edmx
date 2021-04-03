@@ -439,6 +439,9 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FS
           <Parameter Name="owner_id" Type="int" Mode="In" />
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_ReporteServicioscliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ReporteServiciosvehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ReporteVehiculoscliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_RetornaClientesID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_Cliente_P" Type="int" Mode="In" />
         </Function>
@@ -878,9 +881,6 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <FunctionImport Name="sp_EliminaPaisFabricante">
           <Parameter Name="idPais" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_EliminaPersona">
-          <Parameter Name="Id_Cliente_P" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="sp_EliminaServicio">
           <Parameter Name="Id_Servicio_S" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1078,9 +1078,12 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
             <Parameter Name="Servicio" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_RetornaVistaClientes" ReturnType="Collection(bdlavacarModel1.sp_RetornaVistaClientes_Result)">
-            <Parameter Name="correo" Mode="In" Type="String" />
+          <FunctionImport Name="sp_EliminaPersona">
+          <Parameter Name="Id_Cliente_P" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_ReporteVehiculoscliente" ReturnType="Collection(bdlavacarModel1.sp_ReporteVehiculoscliente_Result)" />
+          <FunctionImport Name="sp_ReporteServicioscliente" ReturnType="Collection(bdlavacarModel1.sp_ReporteServicioscliente_Result)" />
+          <FunctionImport Name="sp_ReporteServiciosvehiculo" ReturnType="Collection(bdlavacarModel1.sp_ReporteServiciosvehiculo_Result)" />
         </EntityContainer>
         <ComplexType Name="RetornaCantones_Result">
           <Property Type="Int32" Name="id_Canton" Nullable="false" />
@@ -1363,6 +1366,27 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <Property Type="Int32" Name="id_Distrito" Nullable="false" />
           <Property Type="String" Name="nombreDistrito" Nullable="false" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="sp_ReporteVehiculoscliente_Result">
+          <Property Type="String" Name="Nombre_Completo" Nullable="false" MaxLength="152" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Marca" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Placa" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_ReporteServicioscliente_Result">
+          <Property Type="String" Name="Nombre_Completo" Nullable="false" MaxLength="152" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Tipo_S" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Cantidad_FVS" Nullable="false" />
+          <Property Type="Int32" Name="Monto_FVS" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ReporteServiciosvehiculo_Result">
+          <Property Type="String" Name="Tipo_MV" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Placa_V" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Tipo_S" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Cantidad_FVS" Nullable="false" />
+          <Property Type="Int32" Name="Monto_FVS" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="sp_RetornaVistaClientes_Result">
           <Property Type="Int32" Name="Id_Cliente_P" Nullable="true" />
           <Property Type="String" Name="Cedula_P" Nullable="true" MaxLength="50" />
@@ -1589,7 +1613,6 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <FunctionImportMapping FunctionImportName="sp_EliminaCanton" FunctionName="bdlavacarModel1.Store.sp_EliminaCanton" />
           <FunctionImportMapping FunctionImportName="sp_EliminaMarcaVehiculo" FunctionName="bdlavacarModel1.Store.sp_EliminaMarcaVehiculo" />
           <FunctionImportMapping FunctionImportName="sp_EliminaPaisFabricante" FunctionName="bdlavacarModel1.Store.sp_EliminaPaisFabricante" />
-          <FunctionImportMapping FunctionImportName="sp_EliminaPersona" FunctionName="bdlavacarModel1.Store.sp_EliminaPersona" />
           <FunctionImportMapping FunctionImportName="sp_EliminaServicio" FunctionName="bdlavacarModel1.Store.sp_EliminaServicio" />
           <FunctionImportMapping FunctionImportName="sp_EliminaTipoVehiculo" FunctionName="bdlavacarModel1.Store.sp_EliminaTipoVehiculo" />
           <FunctionImportMapping FunctionImportName="sp_EliminaVehiculo" FunctionName="bdlavacarModel1.Store.sp_EliminaVehiculo" />
@@ -1896,7 +1919,10 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_InsertaServicioFactura" FunctionName="bdlavacarModel1.Store.sp_InsertaServicioFactura" />
-          <FunctionImportMapping FunctionImportName="sp_RetornaVistaClientes" FunctionName="bdlavacarModel1.Store.sp_RetornaVistaClientes">
+          <FunctionImportMapping FunctionImportName="sp_EliminaPersona" FunctionName="bdlavacarModel1.Store.sp_EliminaPersona" />
+          <FunctionImportMapping FunctionImportName="sp_ReporteVehiculoscliente" FunctionName="bdlavacarModel1.Store.sp_ReporteVehiculoscliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel1.sp_ReporteVehiculoscliente_Result">
             <ResultMapping>
               <ComplexTypeMapping TypeName="bdlavacarModel1.sp_RetornaVistaClientes_Result">
                 <ScalarProperty Name="Id_Cliente_P" ColumnName="Id_Cliente_P" />
@@ -1905,12 +1931,23 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
                 <ScalarProperty Name="Fecha_Nacimiento_P" ColumnName="Fecha_Nacimiento_P" />
                 <ScalarProperty Name="Nombre_P" ColumnName="Nombre_P" />
                 <ScalarProperty Name="PApellido" ColumnName="PApellido" />
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
                 <ScalarProperty Name="SApellido" ColumnName="SApellido" />
                 <ScalarProperty Name="Correo_P" ColumnName="Correo_P" />
                 <ScalarProperty Name="Id_Provincia_P" ColumnName="Id_Provincia_P" />
                 <ScalarProperty Name="Id_Canton_P" ColumnName="Id_Canton_P" />
                 <ScalarProperty Name="Id_Tipo_P" ColumnName="Id_Tipo_P" />
                 <ScalarProperty Name="Id_Distrito_P" ColumnName="Id_Distrito_P" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ReporteServicioscliente" FunctionName="bdlavacarModel1.Store.sp_ReporteServicioscliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel1.sp_ReporteServicioscliente_Result">
                 <ScalarProperty Name="Id_TipoPersona_TP" ColumnName="Id_TipoPersona_TP" />
                 <ScalarProperty Name="Tipo_TP" ColumnName="Tipo_TP" />
                 <ScalarProperty Name="Id_Factura_F" ColumnName="Id_Factura_F" />
@@ -1934,6 +1971,25 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
                 <ScalarProperty Name="Id_Tipo_V" ColumnName="Id_Tipo_V" />
                 <ScalarProperty Name="Numero_Puertas_V" ColumnName="Numero_Puertas_V" />
                 <ScalarProperty Name="Numero_Ruedas_V" ColumnName="Numero_Ruedas_V" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Tipo_S" ColumnName="Tipo_S" />
+                <ScalarProperty Name="Cantidad_FVS" ColumnName="Cantidad_FVS" />
+                <ScalarProperty Name="Monto_FVS" ColumnName="Monto_FVS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ReporteServiciosvehiculo" FunctionName="bdlavacarModel1.Store.sp_ReporteServiciosvehiculo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel1.sp_ReporteServiciosvehiculo_Result">
+                <ScalarProperty Name="Tipo_MV" ColumnName="Tipo_MV" />
+                <ScalarProperty Name="Placa_V" ColumnName="Placa_V" />
+                <ScalarProperty Name="Tipo_S" ColumnName="Tipo_S" />
+                <ScalarProperty Name="Cantidad_FVS" ColumnName="Cantidad_FVS" />
+                <ScalarProperty Name="Monto_FVS" ColumnName="Monto_FVS" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

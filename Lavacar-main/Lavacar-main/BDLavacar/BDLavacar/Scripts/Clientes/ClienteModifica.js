@@ -91,6 +91,7 @@ function cargaDropdownListCantones(pIdProvincia) {
 
 function procesarResultadoCantones(data) {
     var ddlCantones = $("#canton");
+    var ddlCantonID = $("#hddCantonID").val();
     ddlCantones.empty();
     nuevaOpcion = "<option value=''>Seleccione un Cantón</option>";
     ddlCantones.append(nuevaOpcion);
@@ -99,6 +100,7 @@ function procesarResultadoCantones(data) {
         nuevaOpcion = "<option value='" + cantonActual.id_Canton + "'>" + cantonActual.nombre + "</option>";
         ddlCantones.append(nuevaOpcion);
     });
+    ddlCantones.val(ddlCantonID);
 }
 
 function cargarDropdownListDistritos(pId_Canton) {
@@ -125,6 +127,7 @@ function cargarDropdownListDistritos(pId_Canton) {
 }
 function procesarResultadoDistritos(data) {
     var ddlDistritos = $("#distrito");
+    var ddlDistritoID = $("#hddDistritoID").val();
     ddlDistritos.empty();
     nuevaOpcion = "<option value=''>Seleccione un Distrito</option>";
     ddlDistritos.append(nuevaOpcion);
@@ -133,4 +136,5 @@ function procesarResultadoDistritos(data) {
         nuevaOpcion = "<option value='" + DistritoActual.id_Distrito + "'>" + DistritoActual.nombre + "</option>";
         ddlDistritos.append(nuevaOpcion);
     });
+    ddlDistritos.val(ddlDistritoID);
 }
