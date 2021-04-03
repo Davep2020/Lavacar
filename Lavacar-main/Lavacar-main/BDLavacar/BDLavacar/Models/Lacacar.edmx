@@ -57,6 +57,7 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FS
           <Property Name="Cantidad_FVS" Type="int" Nullable="false" />
           <Property Name="Id_Servicio_FVS" Type="int" />
           <Property Name="Monto_FVS" Type="int" Nullable="false" />
+          <Property Name="Estado_FVS" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="Tbl_MarcaVehiculo_MV">
           <Key>
@@ -494,6 +495,9 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FS
           <Parameter Name="idVehiculo" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_RetornaVehiculoUI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_RetornaVistaClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="bdlavacarModel1StoreContainer">
           <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
@@ -512,7 +516,8 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FS
 [Tbl_FacturaServicioVehiculo_FSV].[Id_Factura_FVS] AS [Id_Factura_FVS], 
 [Tbl_FacturaServicioVehiculo_FSV].[Cantidad_FVS] AS [Cantidad_FVS], 
 [Tbl_FacturaServicioVehiculo_FSV].[Id_Servicio_FVS] AS [Id_Servicio_FVS], 
-[Tbl_FacturaServicioVehiculo_FSV].[Monto_FVS] AS [Monto_FVS]
+[Tbl_FacturaServicioVehiculo_FSV].[Monto_FVS] AS [Monto_FVS], 
+[Tbl_FacturaServicioVehiculo_FSV].[Estado_FVS] AS [Estado_FVS]
 FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="Canton_ref_Provincia" Association="Self.Canton_ref_Provincia">
@@ -711,6 +716,7 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <Property Name="Monto_FVS" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Tbl_Servicio_S" Relationship="Self.FK_Tbl_FacturaServicioVehiculo_FSV_Tbl_Servicio_S" FromRole="Tbl_FacturaServicioVehiculo_FSV" ToRole="Tbl_Servicio_S" />
           <NavigationProperty Name="TblFactura_F" Relationship="Self.FK_Tbl_FacturaServicioVehiculo_FSV_TblFactura_F" FromRole="Tbl_FacturaServicioVehiculo_FSV" ToRole="TblFactura_F" />
+          <Property Name="Estado_FVS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <Association Name="Canton_ref_Provincia">
           <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
@@ -1072,6 +1078,9 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
             <Parameter Name="Servicio" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_RetornaVistaClientes" ReturnType="Collection(bdlavacarModel1.sp_RetornaVistaClientes_Result)">
+            <Parameter Name="correo" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="RetornaCantones_Result">
           <Property Type="Int32" Name="id_Canton" Nullable="false" />
@@ -1354,6 +1363,43 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <Property Type="Int32" Name="id_Distrito" Nullable="false" />
           <Property Type="String" Name="nombreDistrito" Nullable="false" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="sp_RetornaVistaClientes_Result">
+          <Property Type="Int32" Name="Id_Cliente_P" Nullable="true" />
+          <Property Type="String" Name="Cedula_P" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Genero_P" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Fecha_Nacimiento_P" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Nombre_P" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Correo_P" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Id_Provincia_P" Nullable="true" />
+          <Property Type="Int32" Name="Id_Canton_P" Nullable="true" />
+          <Property Type="Int32" Name="Id_Tipo_P" Nullable="true" />
+          <Property Type="Int32" Name="Id_Distrito_P" Nullable="true" />
+          <Property Type="Int32" Name="Id_TipoPersona_TP" Nullable="true" />
+          <Property Type="String" Name="Tipo_TP" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Factura_F" Nullable="true" />
+          <Property Type="Int32" Name="Id_Vehiculo_F" Nullable="true" />
+          <Property Type="Int32" Name="Id_Persona_F" Nullable="true" />
+          <Property Type="Int32" Name="Total_F" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha_F" Nullable="true" />
+          <Property Type="Int32" Name="Id_Factura_FVS" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad_FVS" Nullable="true" />
+          <Property Type="Int32" Name="Id_Servicio_FVS" Nullable="true" />
+          <Property Type="Int32" Name="Monto_FVS" Nullable="true" />
+          <Property Type="String" Name="Estado_FVS" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Id_Servicio_S" Nullable="true" />
+          <Property Type="String" Name="Codigo_S" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Descripcion_S" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Precio_S" Nullable="true" />
+          <Property Type="String" Name="Tipo_S" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Vehiculo_V" Nullable="true" />
+          <Property Type="String" Name="Placa_V" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Marca_V" Nullable="true" />
+          <Property Type="Int32" Name="Id_Tipo_V" Nullable="true" />
+          <Property Type="Int32" Name="Numero_Puertas_V" Nullable="true" />
+          <Property Type="Int32" Name="Numero_Ruedas_V" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1487,6 +1533,7 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <EntitySetMapping Name="Tbl_FacturaServicioVehiculo_FSV">
             <EntityTypeMapping TypeName="bdlavacarModel1.Tbl_FacturaServicioVehiculo_FSV">
               <MappingFragment StoreEntitySet="Tbl_FacturaServicioVehiculo_FSV">
+                <ScalarProperty Name="Estado_FVS" ColumnName="Estado_FVS" />
                 <ScalarProperty Name="Id_Factura_FVS" ColumnName="Id_Factura_FVS" />
                 <ScalarProperty Name="Cantidad_FVS" ColumnName="Cantidad_FVS" />
                 <ScalarProperty Name="Id_Servicio_FVS" ColumnName="Id_Servicio_FVS" />
@@ -1849,6 +1896,47 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_InsertaServicioFactura" FunctionName="bdlavacarModel1.Store.sp_InsertaServicioFactura" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaVistaClientes" FunctionName="bdlavacarModel1.Store.sp_RetornaVistaClientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="bdlavacarModel1.sp_RetornaVistaClientes_Result">
+                <ScalarProperty Name="Id_Cliente_P" ColumnName="Id_Cliente_P" />
+                <ScalarProperty Name="Cedula_P" ColumnName="Cedula_P" />
+                <ScalarProperty Name="Genero_P" ColumnName="Genero_P" />
+                <ScalarProperty Name="Fecha_Nacimiento_P" ColumnName="Fecha_Nacimiento_P" />
+                <ScalarProperty Name="Nombre_P" ColumnName="Nombre_P" />
+                <ScalarProperty Name="PApellido" ColumnName="PApellido" />
+                <ScalarProperty Name="SApellido" ColumnName="SApellido" />
+                <ScalarProperty Name="Correo_P" ColumnName="Correo_P" />
+                <ScalarProperty Name="Id_Provincia_P" ColumnName="Id_Provincia_P" />
+                <ScalarProperty Name="Id_Canton_P" ColumnName="Id_Canton_P" />
+                <ScalarProperty Name="Id_Tipo_P" ColumnName="Id_Tipo_P" />
+                <ScalarProperty Name="Id_Distrito_P" ColumnName="Id_Distrito_P" />
+                <ScalarProperty Name="Id_TipoPersona_TP" ColumnName="Id_TipoPersona_TP" />
+                <ScalarProperty Name="Tipo_TP" ColumnName="Tipo_TP" />
+                <ScalarProperty Name="Id_Factura_F" ColumnName="Id_Factura_F" />
+                <ScalarProperty Name="Id_Vehiculo_F" ColumnName="Id_Vehiculo_F" />
+                <ScalarProperty Name="Id_Persona_F" ColumnName="Id_Persona_F" />
+                <ScalarProperty Name="Total_F" ColumnName="Total_F" />
+                <ScalarProperty Name="Fecha_F" ColumnName="Fecha_F" />
+                <ScalarProperty Name="Id_Factura_FVS" ColumnName="Id_Factura_FVS" />
+                <ScalarProperty Name="Cantidad_FVS" ColumnName="Cantidad_FVS" />
+                <ScalarProperty Name="Id_Servicio_FVS" ColumnName="Id_Servicio_FVS" />
+                <ScalarProperty Name="Monto_FVS" ColumnName="Monto_FVS" />
+                <ScalarProperty Name="Estado_FVS" ColumnName="Estado_FVS" />
+                <ScalarProperty Name="Id_Servicio_S" ColumnName="Id_Servicio_S" />
+                <ScalarProperty Name="Codigo_S" ColumnName="Codigo_S" />
+                <ScalarProperty Name="Descripcion_S" ColumnName="Descripcion_S" />
+                <ScalarProperty Name="Precio_S" ColumnName="Precio_S" />
+                <ScalarProperty Name="Tipo_S" ColumnName="Tipo_S" />
+                <ScalarProperty Name="Id_Vehiculo_V" ColumnName="Id_Vehiculo_V" />
+                <ScalarProperty Name="Placa_V" ColumnName="Placa_V" />
+                <ScalarProperty Name="Id_Marca_V" ColumnName="Id_Marca_V" />
+                <ScalarProperty Name="Id_Tipo_V" ColumnName="Id_Tipo_V" />
+                <ScalarProperty Name="Numero_Puertas_V" ColumnName="Numero_Puertas_V" />
+                <ScalarProperty Name="Numero_Ruedas_V" ColumnName="Numero_Ruedas_V" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

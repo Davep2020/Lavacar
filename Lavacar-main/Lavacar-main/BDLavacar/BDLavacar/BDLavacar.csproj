@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ClienteVistaController.cs" />
     <Compile Include="Controllers\FacturaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -232,6 +233,9 @@
       <DependentUpon>Lacacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaVehiculo_Result.cs">
+      <DependentUpon>Lacacar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaVistaClientes_Result.cs">
       <DependentUpon>Lacacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TblFactura_F.cs">
@@ -357,6 +361,7 @@
     <Content Include="Views\Factura\PreFacturaEliminar.cshtml" />
     <Content Include="Views\Login\login.cshtml" />
     <Content Include="Views\Login\InicioSesion.cshtml" />
+    <Content Include="Views\ClienteVista\ClientesVistaLista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

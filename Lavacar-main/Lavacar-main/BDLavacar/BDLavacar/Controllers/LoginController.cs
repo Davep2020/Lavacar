@@ -25,6 +25,7 @@ namespace BDLavacar.Controllers
         [HttpPost]
         public ActionResult Validar(string correo, string contra)
         {
+            Session["correoVista"] = correo;
             string url = "";
             string mensaje = "";
             try
@@ -50,12 +51,12 @@ namespace BDLavacar.Controllers
 
                     if (Convert.ToInt32(this.Session["Tipo"]) == 1)
                     {
-                        url = Url.Action("ListaPreFactura", "Factura");
+                        url = Url.Action("ServicioLista", "Servicios");
                         //Response.Redirect("~/Factura/ListaPreFactura");
                     }
                     else if (Convert.ToInt32(this.Session["Tipo"]) == 2)
                     {
-                        url = Url.Action("ServicioLista", "Servicios");
+                        url = Url.Action("ClientesVistaLista", "ClienteVista");
                         //this.Response.Redirect("~/Servicios/ServicioLista");
                     }
                     mensaje = "Usted ha ingresado: " + Session["Nombre"];
