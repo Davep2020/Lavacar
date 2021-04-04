@@ -9,7 +9,7 @@ namespace BDLavacar.Controllers
 {
     public class FacturaController : Controller
     {
-        bdlavacarEntities1 modeloBD = new bdlavacarEntities1();
+        bdlavacarEntities2 modeloBD = new bdlavacarEntities2();
         #region Ingresar
 
         #region Registrar
@@ -31,8 +31,7 @@ namespace BDLavacar.Controllers
                 cantRegistroAfectados = this.modeloBD.sp_InsertaServicioFactura(
                                         modeloVista.Id_Factura_FVS = Convert.ToInt32(Session["Id_Factura_F"]),
                                         modeloVista.Cantidad_FVS,
-                                        modeloVista.Id_Servicio_FVS,
-                                        modeloVista.Monto_FVS);
+                                        modeloVista.Id_Servicio_FVS);
             }
             catch (Exception error)
             {

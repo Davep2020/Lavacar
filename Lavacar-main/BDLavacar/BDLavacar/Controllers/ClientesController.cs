@@ -10,7 +10,7 @@ namespace BDLavacar.Controllers
 {
     public class ClientesController : Controller
     {
-        bdlavacarEntities1 modeloBD = new bdlavacarEntities1();
+        bdlavacarEntities2 modeloBD = new bdlavacarEntities2();
 
         #region JSON
         public ActionResult RetornaProvincias()
@@ -39,61 +39,65 @@ namespace BDLavacar.Controllers
 
         }
 
-        //[HttpPost]
-        //public ActionResult InsertarUsuario(sp_RetornaClientes_Result modeloVista)
-        //{
-        //    int registros = 0;
-        //    string mensaje = "";
+        [HttpPost]
+        public ActionResult InsertarUsuario(sp_RetornaClientesPreFactura_Result modeloVista)
+        {
+            int registros = 0;
+            string mensaje = "";
 
-        //    try
-        //    {
-        //        registros = modeloBD.sp_InsertarPersona(
-        //            modeloVista.Cedula_P,
-        //            modeloVista.Genero_P,
-        //            modeloVista.Fecha_Nacimiento_P,
-        //            modeloVista.Nombre_P,
-        //            modeloVista.Correo_P,
-        //            modeloVista.Provincia,
-        //           modeloVista.canton,
-        //            modeloVista.distrito,
-        //             modeloVista.Tipo_TP
-        //            );
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        mensaje = "Ocurrió un error: " + e.Message;
-        //    }
-        //    finally
-        //    {
-        //        if (registros > 0)
-        //        {
-        //            Session["Correo"] = modeloVista.Correo_P;
-        //            Session["Nombre"] = modeloVista.Nombre_P;
-        //            mensaje = "Registro insertado.";
-        //            EnviarCorreo();
-        //        }
-        //        else
-        //        {
-        //            mensaje = "No se pudo insertar.";
-        //        }
-        //    }
+            try
+            {
+                registros = modeloBD.sp_InsertarPersona(
+                    modeloVista.Cedula_P,
+                    modeloVista.Genero_P,
+                    modeloVista.Fecha_Nacimiento_P,
+                    modeloVista.Nombre_P,
+                    modeloVista.PApellido,
+                    modeloVista.SApellido,
+                    modeloVista.Correo_P,
+                    modeloVista.Id_Provincia_P,
+                   modeloVista.Id_Canton_P,
+                    modeloVista.Id_Distrito_P,
+                     modeloVista.Id_Tipo_P
+                    );
+            }
+            catch (Exception e)
+            {
+                mensaje = "Ocurrió un error: " + e.Message;
+            }
+            finally
+            {
+                if (registros > 0)
+                {
+                    Session["Correo"] = modeloVista.Correo_P;
+                    Session["Nombre"] = modeloVista.Nombre_P;
+                    mensaje = "Registro insertado.";
+                    EnviarCorreo();
+                }
+                else
+                {
+                    mensaje = "No se pudo insertar.";
+                }
+            }
 
-        //    Response.Write("<script laguage=JavaScript>alert('" + mensaje + "');</script>");
-        //    AgregaTipoPersonaViewBag();
-        //    return View();
-        //}
+            Response.Write("<script laguage=JavaScript>alert('" + mensaje + "');</script>");
+            AgregaTipoPersonaViewBag();
+            return View();
+        }
 
         #endregion
 
         #region Listar
-        //public ActionResult ClientesLista()
-        //{
-        //    List<sp_RetornaClientes_Result> modeloVista = 
-        //        new List<sp_RetornaClientes_Result>();
+        public ActionResult ClientesLista()
+        {
+            List<sp_RetornaClientesPreFactura_Result> modeloVista =
+                new List<sp_RetornaClientesPreFactura_Result>();
 
-        //    modeloVista = modeloBD.sp_RetornaClientes().ToList();
-        //    return View(modeloVista);
-        //}
+            modeloVista = modeloBD.sp_RetornaClientesPreFactura().ToList();
+            return View(modeloVista);
+        }
+
+
         #endregion
 
         #region Modificar
@@ -106,13 +110,7 @@ namespace BDLavacar.Controllers
         {
             sp_RetornaClientesID_Result modelovista = new sp_RetornaClientesID_Result();
             modelovista = this.modeloBD.sp_RetornaClientesID(Id_Cliente_P).FirstOrDefault();
-            this.Session["Provincia"] = modelovista.id_Provincia;
-            this.Session["NProvincia"] = modelovista.nombreProvincia;
-            this.Session["Canton"] = modelovista.id_Canton;
-            this.Session["NCanton"] = modelovista.nombreCanton;
-            this.Session["Distrito"] = modelovista.id_Distrito;
-            this.Session["NDistrito"] = modelovista.nombreDistrito;
-            
+            AgregaTipoPersonaViewBag();
             return View(modelovista);
         }
 
@@ -125,17 +123,17 @@ namespace BDLavacar.Controllers
             {
                 cantRegistrosAfectados = this.modeloBD.sp_ModificaClientes(
                     modelovista.Id_Cliente_P,
-                    modelovista.Cedula_P,
+                    Convert.ToInt32(modelovista.Cedula_P),
                     modelovista.Genero_P,
                     modelovista.Fecha_Nacimiento_P,
                     modelovista.Nombre_P,
+                    modelovista.PApellido,
+                    modelovista.SApellido,
                     modelovista.Correo_P,
                     modelovista.id_Provincia,
                     modelovista.id_Canton,
                     modelovista.Id_TipoPersona_TP,
                     modelovista.id_Distrito
-
-
                     );
             }
             catch (Exception error)
@@ -155,9 +153,10 @@ namespace BDLavacar.Controllers
 
             }
             Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
+            AgregaTipoPersonaViewBag();
             return View(modelovista);
 
-
+            
         }
 
         #endregion
@@ -167,6 +166,7 @@ namespace BDLavacar.Controllers
         {
             sp_RetornaClientesID_Result modelovista = new sp_RetornaClientesID_Result();
             modelovista = this.modeloBD.sp_RetornaClientesID(Id_Cliente_P).FirstOrDefault();
+            AgregaTipoPersonaViewBag();
             return View(modelovista);
         }
 
@@ -197,7 +197,8 @@ namespace BDLavacar.Controllers
 
             }
             Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
-            
+            AgregaTipoPersonaViewBag();
+
             return View(modelovista);
 
 
@@ -228,14 +229,14 @@ namespace BDLavacar.Controllers
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 mail.From = new MailAddress("Aseguradora@gmail.com");
                 mail.To.Add(tomail);
-                mail.Subject = "Su cuenta en lavemeelMCQUEEN";
+                mail.Subject = "Su cuenta en lave su Mcqueen";
                 mail.Body += " <html>";
                 mail.Body += "<body>";
-                mail.Body += "<h1>Estimado cliente:  </h1>" + datos + ", gracias por confiar en Seguros el Equipo del Siglo XXI. Para nosotros es un placer servirle." + "</br>";
+                mail.Body += "<h1>Estimado cliente:  </h1>" + datos + ", gracias por confiar en Lave su Mcqueen. Para nosotros es un placer servirle." + "</br>";
                 mail.Body += "<h1>Sus credenciales para ingresar son los siguientes: </h1>" + "</br>";
                 mail.Body += "<h1>Usuario: </h1>" + tomail;
                 mail.Body += "<h1>Clave: Cc2021* </h1>" ;
-                mail.Body += "<h1>Gracias CUCHAO</h1>";
+                mail.Body += "<h1>Gracias ,⚡CUCHAO⚡</h1>";
                 mail.Body += "</body>";
                 mail.Body += "</html>";
 
@@ -258,4 +259,5 @@ namespace BDLavacar.Controllers
         }
         #endregion
     }
+
 }

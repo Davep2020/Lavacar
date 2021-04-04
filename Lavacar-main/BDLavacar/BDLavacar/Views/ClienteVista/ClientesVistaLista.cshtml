@@ -1,0 +1,52 @@
+﻿@model BDLavacar.Models.sp_RetornaVistaClientes_Result
+@{
+    ViewBag.Title = "ClientesVistaLista";
+    Layout = "~/Views/Shared/_LayoutBDLavacar.cshtml";
+}
+
+
+
+<h2>Usuario:</h2>
+<form action="" method="post">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i> <label> Correo:</label>
+                    <p>@Model.Correo_P</p>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-user"></i> <label> Nombre:</label>
+                    <p>@Model.Nombre_P @Model.PApellido @Model.SApellido</p>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-wallet"></i> <label> Cédula:</label>
+                    <p>@Model.Cedula_P</p>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-user"></i> <label> Placa:</label>
+                    <p>@Model.Numero_Puertas_V</p>
+                </div>
+            </div>
+            <div class="col-sm">
+                One of three columns
+            </div>
+            <div class="col-sm">
+                One of three columns
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+
+</form>
+
+

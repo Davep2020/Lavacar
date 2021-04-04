@@ -1,4 +1,4 @@
-﻿@model List<BDLavacar.Models.sp_RetornaClientes_Result>
+﻿@model List<BDLavacar.Models.sp_RetornaClientesPreFactura_Result>
 @{
     ViewBag.Title = "ClientesLista";
     Layout = "~/Views/Shared/_LayoutBDLavacar.cshtml";
@@ -14,10 +14,11 @@
         <td><strong>Correo</strong></td>
         <td><strong>Lugar de Residencia</strong></td>
         <td><strong>Categoria</strong></td>
+        
 
     </tr>
     @{ 
-        foreach (BDLavacar.Models.sp_RetornaClientes_Result posicion in this.Model)
+        foreach (BDLavacar.Models.sp_RetornaClientesPreFactura_Result posicion in this.Model)
         {
             <tr>
                 <td>@posicion.Cedula_P</td>

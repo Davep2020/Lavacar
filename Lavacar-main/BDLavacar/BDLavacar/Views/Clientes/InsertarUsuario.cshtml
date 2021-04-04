@@ -22,28 +22,35 @@
         <input type="date" name="Fecha_Nacimiento_P" id="nacimiento" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Nombre completo:</label>
+        <label>Nombre:</label>
         <input type="text" name="Nombre_P" id="Nombre" class="form-control" />
     </div>
     <div class="form-group">
+        <label>Primer Apellido:</label>
+        <input type="text" name="PApellido" id="Nombre" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Segundo Apellido:</label>
+        <input type="text" name="SApellido" id="Nombre" class="form-control" />
+    </div>    <div class="form-group">
         <label>Correo Electrónico:</label>
         <input type="email" name="Correo_P" id="Correo" class="form-control" />
     </div>
     <div class="form-group">
         <label>Provincia:</label>
-        <select name="Provincia" id="provincia" class="form-control"></select>
+        <select name="Id_Provincia_P" id="provincia" class="form-control"></select>
     </div>
     <div class="form-group">
         <label>Cantón:</label>
-        <select name="canton" id="canton" class="form-control"></select>
+        <select name="Id_Canton_P" id="canton" class="form-control"></select>
     </div>
     <div class="form-group">
         <label>Distrito:</label>
-        <select name="distrito" id="distrito" class="form-control"></select>
+        <select name="Id_Distrito_P" id="distrito" class="form-control"></select>
     </div>
     <div class="form-group">
         <label>Tipo de Persona:</label>
-        <select name="Tipo_TP" id="Tipo_TP" class="form-control">
+        <select name="Id_Tipo_P" id="Tipo_TP" class="form-control">
             <option value="">Seleccione un país </option>
             @{
                 foreach (BDLavacar.Models.sp_RetornaTipoPersona_Result Tipo in this.ViewBag.TipoPersona)
@@ -53,11 +60,9 @@
             }
         </select>
     </div>
-
     <div class="form-group">
         <input type="submit" value="Insertar" id="btnInsertar" class="btn btn-success" />
     </div>
-
 </form>
 @section scripts{
 
