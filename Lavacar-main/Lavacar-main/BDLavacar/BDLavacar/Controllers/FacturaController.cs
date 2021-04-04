@@ -9,7 +9,7 @@ namespace BDLavacar.Controllers
 {
     public class FacturaController : Controller
     {
-        bdlavacarEntities1 modeloBD = new bdlavacarEntities1();
+        bdlavacarEntities2 modeloBD = new bdlavacarEntities2();
         #region Ingresar
 
         #region Registrar

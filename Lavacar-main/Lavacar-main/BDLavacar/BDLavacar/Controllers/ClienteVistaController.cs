@@ -9,7 +9,7 @@ namespace BDLavacar.Controllers
 {
     public class ClienteVistaController : Controller
     {
-        bdlavacarEntities1 modeloBD = new bdlavacarEntities1();
+        bdlavacarEntities2 modeloBD = new bdlavacarEntities2();
 
         #region JSON
         public ActionResult RetornaProvincias()

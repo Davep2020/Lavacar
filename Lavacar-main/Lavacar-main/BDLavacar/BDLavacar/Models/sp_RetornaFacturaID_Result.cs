@@ -17,5 +17,6 @@ namespace BDLavacar.Models
         public int Cantidad_FVS { get; set; }
         public Nullable<int> Id_Servicio_FVS { get; set; }
         public int Monto_FVS { get; set; }
+        public string Estado_FVS { get; set; }
     }
 }

@@ -12,25 +12,15 @@ namespace BDLavacar.Models
     using System;
     using System.Collections.Generic;
     
-public partial class Tbl_FacturaServicioVehiculo_FSV
-{
-
-    public int Id_Factura_FVS { get; set; }
-
-    public int Cantidad_FVS { get; set; }
-
-    public Nullable<int> Id_Servicio_FVS { get; set; }
-
-    public int Monto_FVS { get; set; }
-
-    public string Estado_FVS { get; set; }
-
-
-
-    public virtual Tbl_Servicio_S Tbl_Servicio_S { get; set; }
-
-    public virtual TblFactura_F TblFactura_F { get; set; }
-
-}
-
+    public partial class Tbl_FacturaServicioVehiculo_FSV
+    {
+        public int Id_Factura_FVS { get; set; }
+        public int Cantidad_FVS { get; set; }
+        public Nullable<int> Id_Servicio_FVS { get; set; }
+        public int Monto_FVS { get; set; }
+        public string Estado_FVS { get; set; }
+    
+        public virtual Tbl_Servicio_S Tbl_Servicio_S { get; set; }
+        public virtual TblFactura_F TblFactura_F { get; set; }
+    }
 }

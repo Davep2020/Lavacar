@@ -137,146 +137,158 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BDLavacar.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDLavacar.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BDLavacar.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BDLavacar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDLavacar.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Canton.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Distrito.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Lacacar.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Lacacar.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Lacacar.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Lacacar.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Lacacar.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Lacacar.edmx</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Provincia.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RetornaCantonesID_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RetornaCantones_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RetornaProvincias_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BDLavacar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_MuestraVehiculo_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_ReporteServicioscliente_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_ReporteServiciosvehiculo_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_ReporteVehiculoscliente_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaClientesID_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaClientesPreFactura_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaClientes_Result.cs">
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaCuenta_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaDistritos_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaFacturaFinal_Result.cs">
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaFacturaID_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaFacturaNULL_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaFacturas_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaLogueo_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaMarcaVehiculo_ID_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaMarcaVehiculo_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaPaisFabricante_ID_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaPaisFabricante_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaPreFacturaID_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaServicioID_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaServicios_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaTipoPersona_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaTipoVehiculo_ID_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaTipoVehiculo_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaVehiculoUI_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaVehiculo_ID_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaVehiculo_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_RetornaVistaClientes_Result.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TblFactura_F.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_FacturaServicioVehiculo_FSV.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_MarcaVehiculo_MV.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_PaisFabricacion_PF.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_Persona_P.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_Seguridad_SG.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_Servicio_S.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_TipoPersona_TP.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_Tipo_TV.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_Vehiculo_V.cs">
-      <DependentUpon>Lacacar.tt</DependentUpon>
+      <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -291,24 +303,24 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagenes\Sin título.png" />
-    <Content Include="Models\Lacacar.Context.tt">
+    <Content Include="Models\BDLavacar.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Lacacar.edmx</DependentUpon>
-      <LastGenOutput>Lacacar.Context.cs</LastGenOutput>
+      <DependentUpon>BDLavacar.edmx</DependentUpon>
+      <LastGenOutput>BDLavacar.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Lacacar.tt">
+    <Content Include="Models\BDLavacar.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Lacacar.edmx</DependentUpon>
-      <LastGenOutput>Lacacar.cs</LastGenOutput>
+      <DependentUpon>BDLavacar.edmx</DependentUpon>
+      <LastGenOutput>BDLavacar.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Lacacar.edmx">
+    <EntityDeploy Include="Models\BDLavacar.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Lacacar.Designer.cs</LastGenOutput>
+      <LastGenOutput>BDLavacar.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Lacacar.edmx.diagram">
-      <DependentUpon>Lacacar.edmx</DependentUpon>
+    <Content Include="Models\BDLavacar.edmx.diagram">
+      <DependentUpon>BDLavacar.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Clientes\ClienteLocalizacion.js" />
