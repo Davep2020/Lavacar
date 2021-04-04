@@ -30,14 +30,14 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" style="background-color:#e1e1e1">
-                            <li>@Html.ActionLink("Consultar Vehículo", "Vehiculo", "VehiculoLista")</li>
-                            <li>@Html.ActionLink("Ingresar Vehículo", "Vehiculo", "VehiculoNuevo")</li>
-                            <li>@Html.ActionLink("Consultar Marca", "Vehiculo", "MarcaVehiculoLista")</li>
-                            <li>@Html.ActionLink("Ingresar Marca", "Vehiculo", "MarcaVehiculoNuevo")</li>
-                            <li>@Html.ActionLink("Consultar Tipo", "Vehiculo", "TipoVehiculoLista")</li>
-                            <li>@Html.ActionLink("Ingresar Tipo", "Vehiculo", "TipoVehiculoNuevo")</li>
-                            <li>@Html.ActionLink("Consultar País", "Vehiculo", "PaisFabricanteLista")</li>
-                            <li>@Html.ActionLink("Ingresar País", "Vehiculo", "PaisFabricanteNuevo")</li>
+                            <li>@Html.ActionLink("Consultar Vehículo", "VehiculoLista", "Vehiculo")</li>
+                            <li>@Html.ActionLink("Ingresar Vehículo", "VehiculoNuevo", "Vehiculo")</li>
+                            <li>@Html.ActionLink("Consultar Marca", "MarcaVehiculoLista", "Vehiculo")</li>
+                            <li>@Html.ActionLink("Ingresar Marca", "MarcaVehiculoNuevo", "Vehiculo")</li>
+                            <li>@Html.ActionLink("Consultar Tipo", "TipoVehiculoLista", "Vehiculo")</li>
+                            <li>@Html.ActionLink("Ingresar Tipo", "TipoVehiculoNuevo", "Vehiculo")</li>
+                            <li>@Html.ActionLink("Consultar País", "PaisFabricanteLista", "Vehiculo")</li>
+                            <li>@Html.ActionLink("Ingresar País", "PaisFabricanteNuevo", "Vehiculo")</li>
 
                         </ul>
                     </li>
@@ -47,9 +47,9 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" style="background-color:#e1e1e1">
-                            <li>@Html.ActionLink("Consultar Cliente", "Clientes", "ClientesLista")</li>
-                            <li>@Html.ActionLink("Ingresar Cliente", "Clientes", "InsertarUsuario")</li>
-                            <li>@Html.ActionLink("Agregar Vehículo", "Factura", "RegistraFactura")</li>
+                            <li>@Html.ActionLink("Consultar Cliente", "ClientesLista", "Clientes")</li>
+                            <li>@Html.ActionLink("Ingresar Cliente", "InsertarUsuario", "Clientes")</li>
+                            <li>@Html.ActionLink("Agregar Vehículo", "RegistraFactura", "Factura")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -58,8 +58,8 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" style="background-color:#e1e1e1">
-                            <li>@Html.ActionLink("Consultar Servicios", "Servicios", "ServicioLista")</li>
-                            <li>@Html.ActionLink("Ingresar Servicios", "Servicios", "InsertarServicio")</li>
+                            <li>@Html.ActionLink("Consultar Servicios", "ServicioLista", "Servicios")</li>
+                            <li>@Html.ActionLink("Ingresar Servicios", "InsertarServicio", "Servicios")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -68,8 +68,8 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" style="background-color:#e1e1e1">
-                            <li>@Html.ActionLink("Consultar Factura", "Factura", "ListaPreFactura")</li>
-                            <li>@Html.ActionLink("Ingresar Factura", "Factura", "insertaFactura")</li>
+                            <li>@Html.ActionLink("Consultar Factura", "ListaPreFactura", "Factura")</li>
+                            @*<li>@Html.ActionLink("Ingresar Factura", "insertaFactura", "Factura")</li>*@
 
 
                         </ul>
@@ -80,9 +80,9 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" style="background-color:#e1e1e1">
-                            <li>@Html.ActionLink("Vehículos por cliente", "Reportes", "VehiculosCliente")</li>
-                            <li>@Html.ActionLink("Servicios por cliente", "Reportes", "Servicioscliente")</li>
-                            <li>@Html.ActionLink("Servicios por vehículo", "Reportes", "ServiciosVehiculo")</li>
+                            <li>@Html.ActionLink("Vehículos por cliente", "VehiculosCliente", "Reportes")</li>
+                            <li>@Html.ActionLink("Servicios por cliente", "Servicioscliente", "Reportes")</li>
+                            <li>@Html.ActionLink("Servicios por vehículo", "ServiciosVehiculo", "Reportes")</li>
 
                         </ul>
                     </li>
