@@ -1,12 +1,10 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
     <title>@ViewBag.Title</title>
     <link href="https://kendo.cdn.telerik.com/2020.2.617/styles/kendo.common.min.css" rel="stylesheet" />
     <link href="https://kendo.cdn.telerik.com/2020.2.617/styles/kendo.blueopal.min.css" rel="stylesheet" />
@@ -22,13 +20,72 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("LavesuCar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("LavesuMcqueen", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Vehiculos", "VehiculoLista", "Vehiculo")</li>
-                    <li>@Html.ActionLink("Personas", "ClientesLista", "Clientes")</li>
-                    <li>@Html.ActionLink("Servicios", "ServicioLista", "Servicios")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Vehículo
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:#e1e1e1">
+                            <li>@Html.ActionLink("Consultar Vehículo", "Vehiculo", "VehiculoLista")</li>
+                            <li>@Html.ActionLink("Ingresar Vehículo", "Vehiculo", "VehiculoNuevo")</li>
+                            <li>@Html.ActionLink("Consultar Marca", "Vehiculo", "MarcaVehiculoLista")</li>
+                            <li>@Html.ActionLink("Ingresar Marca", "Vehiculo", "MarcaVehiculoNuevo")</li>
+                            <li>@Html.ActionLink("Consultar Tipo", "Vehiculo", "TipoVehiculoLista")</li>
+                            <li>@Html.ActionLink("Ingresar Tipo", "Vehiculo", "TipoVehiculoNuevo")</li>
+                            <li>@Html.ActionLink("Consultar País", "Vehiculo", "PaisFabricanteLista")</li>
+                            <li>@Html.ActionLink("Ingresar País", "Vehiculo", "PaisFabricanteNuevo")</li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Cliente
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:#e1e1e1">
+                            <li>@Html.ActionLink("Consultar Cliente", "Clientes", "ClientesLista")</li>
+                            <li>@Html.ActionLink("Ingresar Cliente", "Clientes", "InsertarUsuario")</li>
+                            <li>@Html.ActionLink("Agregar Vehículo", "Factura", "RegistraFactura")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Servicios
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:#e1e1e1">
+                            <li>@Html.ActionLink("Consultar Servicios", "Servicios", "ServicioLista")</li>
+                            <li>@Html.ActionLink("Ingresar Servicios", "Servicios", "InsertarServicio")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Factura
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:#e1e1e1">
+                            <li>@Html.ActionLink("Consultar Factura", "Factura", "ListaPreFactura")</li>
+                            <li>@Html.ActionLink("Ingresar Factura", "Factura", "insertaFactura")</li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            Reportes
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:#e1e1e1">
+                            <li>@Html.ActionLink("Vehículos por cliente", "Reportes", "VehiculosCliente")</li>
+                            <li>@Html.ActionLink("Servicios por cliente", "Reportes", "Servicioscliente")</li>
+                            <li>@Html.ActionLink("Servicios por vehículo", "Reportes", "ServiciosVehiculo")</li>
+
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -37,17 +94,12 @@
         @RenderBody()
         <hr />
 
-        
     </div>
-
     <div style=" position: fixed; left: 0; bottom: 0; padding-top:10px;width: 100%; background-color: #000000; color: white; text-align: center">
-
         <footer class="bg-light text-center text-lg-start">
             <p>&copy; @DateTime.Now.Year - Lavacar</p>
         </footer>
     </div>
-
-
 
 
     @Scripts.Render("~/bundles/jquery")
