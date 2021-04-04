@@ -6,13 +6,13 @@
 
 
 
-<h2>Usuario:</h2>
+<h2> @Model.Nombre_P @Model.PApellido @Model.SApellido</h2>
 <form action="" method="post">
 
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm">
+            <div class="col-sm-4">
                 <div class="form-group">
                     <i class="fas fa-envelope"></i> <label> Correo:</label>
                     <p>@Model.Correo_P</p>
@@ -28,16 +28,37 @@
                     <p>@Model.Cedula_P</p>
                 </div>
 
+
+            </div>
+            <div class="col-sm-4">
                 <div class="form-group">
-                    <i class="fas fa-user"></i> <label> Placa:</label>
-                    <p>@Model.Numero_Puertas_V</p>
+                    <i class="fas card-list"></i> <label> Placa:</label>
+                    <p>@Model.Placa_V</p>
+                </div>
+
+                <div class="form-group">
+                    <i class="fas fa-user"></i> <label> Cantidad Puertas:</label>
+                    <p>@Model.Numero_Ruedas_V</p>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-user"></i> <label> Marca:</label>
+                    <p>@*@Model.*@</p>
                 </div>
             </div>
-            <div class="col-sm">
-                One of three columns
-            </div>
-            <div class="col-sm">
-                One of three columns
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <i class="fas fa-sliders"></i> <label> Servicio:</label>
+                    <p>@Model.Tipo_S</p>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-list"></i> <label> Cantidad:</label>
+                    <p>@Model.Cantidad_FVS</p>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-cash"></i> <label> Costo:</label>
+                    <p>@Model.Total_F</p>
+                </div>
             </div>
         </div>
     </div>
