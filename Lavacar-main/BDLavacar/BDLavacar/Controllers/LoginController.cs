@@ -51,12 +51,12 @@ namespace BDLavacar.Controllers
 
                     if (Convert.ToInt32(this.Session["Tipo"]) == 1)
                     {
-                        url = Url.Action("ServicioLista", "Servicios");
+                        url = Url.Action("Inicio", "Home");
                         //Response.Redirect("~/Factura/ListaPreFactura");
                     }
                     else if (Convert.ToInt32(this.Session["Tipo"]) == 2)
                     {
-                        url = Url.Action("ServiciosClienteID", "Reportes");
+                        url = Url.Action("ClientesVistaLista", "ClienteVista");
                         //this.Response.Redirect("~/Servicios/ServicioLista");
                     }
                     mensaje = "Usted ha ingresado: " + Session["Nombre"];

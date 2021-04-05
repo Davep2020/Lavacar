@@ -4,36 +4,34 @@
     Layout = "~/Views/Shared/_LayoutBDLavacar.cshtml";
 }
 
-
-
-<h2>Usuario:</h2>
+<h1>Bienvenido <strong>@Model.PApellido @Model.SApellido @Model.Nombre_P</strong>, usted ingresó por última vez <strong>@Model.UltimaFecha_SG</strong></h1>
 <form action="" method="post">
 
-
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm">
+            <div class="col-sm-4">
                 <div class="form-group">
                     <i class="fas fa-envelope"></i> <label> Correo:</label>
                     <p>@Model.Correo_P</p>
                 </div>
-
                 <div class="form-group">
                     <i class="fas fa-user"></i> <label> Nombre:</label>
                     <p>@Model.Nombre_P @Model.PApellido @Model.SApellido</p>
                 </div>
-
                 <div class="form-group">
                     <i class="fas fa-wallet"></i> <label> Cédula:</label>
                     <p>@Model.Cedula_P</p>
                 </div>
-
+            </div>
+            <div class="col-sm-4">
                 <div class="form-group">
                     <i class="fas fa-user"></i> <label> Placa:</label>
                     <p>@Model.Numero_Puertas_V</p>
                 </div>
             </div>
-            <div class="col-sm">
+
+
+            <div class="col-sm-4">
                 One of three columns
             </div>
             <div class="col-sm">
@@ -43,10 +41,6 @@
     </div>
 
 
-    
-
-
 
 </form>
-
 

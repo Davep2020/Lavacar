@@ -8,7 +8,7 @@
 // RetornaPersonasLista()
 function obtenerRegistrosPersonas() {
     /////construir la dirección del método del servidor
-    var urlMetodo = '/Reportes/ClienteReporteVehiculoID'
+    var urlMetodo = '/Reportes/ClienteReporteVehiculo'
     var parametros = {};
     var funcion = creaGridKendo;
     ///ejecuta la función $.ajax utilizando un método genérico

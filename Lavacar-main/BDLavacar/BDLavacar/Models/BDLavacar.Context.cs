@@ -1000,18 +1000,6 @@ public partial class bdlavacarEntities2 : DbContext
     }
 
 
-    public virtual ObjectResult<sp_RetornaVistaClientes_Result> sp_RetornaVistaClientes(string correo)
-    {
-
-        var correoParameter = correo != null ?
-            new ObjectParameter("correo", correo) :
-            new ObjectParameter("correo", typeof(string));
-
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaVistaClientes_Result>("sp_RetornaVistaClientes", correoParameter);
-    }
-
-
     public virtual ObjectResult<sp_ReporteServiciosclienteID_Result> sp_ReporteServiciosclienteID(string correo)
     {
 
@@ -1045,6 +1033,18 @@ public partial class bdlavacarEntities2 : DbContext
 
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteVehiculosclienteID_Result>("sp_ReporteVehiculosclienteID", correoParameter);
+    }
+
+
+    public virtual ObjectResult<sp_RetornaVistaClientes_Result> sp_RetornaVistaClientes(string correo)
+    {
+
+        var correoParameter = correo != null ?
+            new ObjectParameter("correo", correo) :
+            new ObjectParameter("correo", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaVistaClientes_Result>("sp_RetornaVistaClientes", correoParameter);
     }
 
 }

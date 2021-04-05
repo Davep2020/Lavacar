@@ -87,6 +87,16 @@ public partial class sp_RetornaVistaClientes_Result
 
     public Nullable<int> Numero_Ruedas_V { get; set; }
 
+    public Nullable<int> Id_Usuarios_SG { get; set; }
+
+    public string Usuario_SG { get; set; }
+
+    public string Contraseña_SG { get; set; }
+
+    public Nullable<int> Id_Cliente_SG { get; set; }
+
+    public Nullable<System.DateTime> UltimaFecha_SG { get; set; }
+
 }
 
 }
