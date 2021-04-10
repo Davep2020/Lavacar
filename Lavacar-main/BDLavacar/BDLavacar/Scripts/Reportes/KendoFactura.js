@@ -1,12 +1,12 @@
 ﻿$(function () {
-    obtenerRegistrosPersonas();
+    obtenerRegistrosFactura();
 });
 
 
 /// funcion que obtiene los registros
 // del metodo del controlador
 // RetornaPersonasLista()
-function obtenerRegistrosPersonas() {
+function obtenerRegistrosFactura() {
     /////construir la dirección del método del servidor
     var urlMetodo = '/Factura/KendoFacturaLista'
     var parametros = {};
@@ -26,13 +26,21 @@ function creaGridKendo(data) {
         },
         pageable: true,
         columns: [{
-            field: 'PApellido' + ' ' + 'SApellido' + ' ' +'Nombre_P',
+            field: 'PApellido',
             title: 'Nombre del Cliente'
         },
         {
             field: 'Cedula_P',
             title: 'Cedula'
-        },
+            },
+            {
+                field: 'Cedula_P',
+                title: 'Marca'
+            },
+            {
+                field: 'Cedula_P',
+                title: 'Placa'
+            },
         {
             field: 'Tipo_S',
             title: 'Tipo'
@@ -42,13 +50,15 @@ function creaGridKendo(data) {
             title: 'Cantidad'
         },
         {
+            field: 'Monto_FVS',
+            title: 'Monto'
+        },
+        {
             field: 'Total_F',
-            title: 'Total'
-            },
+            title: 'Total de la factura'
+        }],
+        filterable: true
 
 
-        ],
-        filterable: true,
-     
     });
 }

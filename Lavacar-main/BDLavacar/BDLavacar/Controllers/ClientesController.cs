@@ -227,7 +227,7 @@ namespace BDLavacar.Controllers
                 datos = Session["Nombre"].ToString();
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("Aseguradora@gmail.com");
+                mail.From = new MailAddress("lavesumcqueen@gmail.com");
                 mail.To.Add(tomail);
                 mail.Subject = "Su cuenta en lave su Mcqueen";
                 mail.Body += " <html>";
@@ -242,7 +242,7 @@ namespace BDLavacar.Controllers
 
                 mail.IsBodyHtml = true;
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("AseguradoraPuriscal@gmail.com", "gl9#^oWWV#er");
+                SmtpServer.Credentials = new System.Net.NetworkCredential("lavesumcqueen@gmail.com", "Proyecto123");
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);
