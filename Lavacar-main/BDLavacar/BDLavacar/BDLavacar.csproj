@@ -351,6 +351,7 @@
     <Content Include="Scripts\Login\Login.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Reportes\Generico.js" />
+    <Content Include="Scripts\Reportes\KendoFactura.js" />
     <Content Include="Scripts\Reportes\KendoServicioXCliente.js" />
     <Content Include="Scripts\Reportes\KendoServicioXClienteID.js" />
     <Content Include="Scripts\Reportes\KendoServicioXVehiculo.js" />
@@ -413,6 +414,7 @@
     <Content Include="Views\Reportes\VehiculosClienteID.cshtml" />
     <Content Include="Views\Reportes\ServiciosClienteID.cshtml" />
     <Content Include="Views\Home\Inicio.cshtml" />
+    <Content Include="Views\Factura\KendoFactura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

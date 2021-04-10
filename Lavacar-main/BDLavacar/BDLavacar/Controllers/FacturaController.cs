@@ -114,6 +114,21 @@ namespace BDLavacar.Controllers
             return View(modeloVista);
         }
 
+        public ActionResult KendoFactura()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult KendoFacturaLista()
+        {
+            List<sp_RetornaFacturaFinal_Result> listaPersonas =
+               this.modeloBD.sp_RetornaFacturaFinal().ToList();
+            return Json(new
+            {
+                resultado = listaPersonas
+            });
+        }
 
         #endregion
 

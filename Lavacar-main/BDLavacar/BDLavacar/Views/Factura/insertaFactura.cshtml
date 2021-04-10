@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutBDLavacar.cshtml";
 }
 
-<h2>insertaFactura</h2>
+<h2>Facturar Productos o Servicios</h2>
 <form id="frmFacturaServicio" method="post">
     <div class="form-group">
         <label>Cantidad:</label>
@@ -23,12 +23,9 @@
             }
         </select>
     </div>
-    @*<div class="form-group">
-        <label>Monto:</label>
-        <input type="text" name="Monto_FVS" id="monto" class="form-control" />
-    </div>*@
     <div class="form-group">
-        <input type="submit" value="Insertar" id="btnInsertar" class="btn btn-success" />
-        <input value="Volver" id="btnVolver" class="btn btn-success" src="~/Factura/ListaPreFactura" />
+        <input type="submit" value="Ingresar" id="btnInsertar" class="btn btn-info " />
+        <input value="Facturar" id="btnCompletar" class="btn btn-success"/>
+        <a href="/KendoFactura" class="btn btn-success">Facturar</a>
     </div>
 </form>

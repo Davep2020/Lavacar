@@ -236,7 +236,7 @@ namespace BDLavacar.Controllers
                 mail.Body += "<h1>Sus credenciales para ingresar son los siguientes: </h1>" + "</br>";
                 mail.Body += "<h1>Usuario: </h1>" + tomail;
                 mail.Body += "<h1>Clave: Cc2021* </h1>" ;
-                mail.Body += "<h1>Gracias ,⚡CUCHAO⚡</h1>";
+                mail.Body += "<h1>Gracias ,CUCHAO</h1>";
                 mail.Body += "</body>";
                 mail.Body += "</html>";
 
