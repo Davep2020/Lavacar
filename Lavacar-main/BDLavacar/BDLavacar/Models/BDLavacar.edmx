@@ -1533,6 +1533,10 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <Property Type="String" Name="Contraseña_SG" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Id_Cliente_SG" Nullable="true" />
           <Property Type="DateTime" Name="UltimaFecha_SG" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Id_Marca_MV" Nullable="true" />
+          <Property Type="String" Name="Codigo_MV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tipo_MV" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Id_Pais_MV" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2207,6 +2211,10 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
                 <ScalarProperty Name="Contraseña_SG" ColumnName="Contraseña_SG" />
                 <ScalarProperty Name="Id_Cliente_SG" ColumnName="Id_Cliente_SG" />
                 <ScalarProperty Name="UltimaFecha_SG" ColumnName="UltimaFecha_SG" />
+                <ScalarProperty Name="Id_Marca_MV" ColumnName="Id_Marca_MV" />
+                <ScalarProperty Name="Codigo_MV" ColumnName="Codigo_MV" />
+                <ScalarProperty Name="Tipo_MV" ColumnName="Tipo_MV" />
+                <ScalarProperty Name="Id_Pais_MV" ColumnName="Id_Pais_MV" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

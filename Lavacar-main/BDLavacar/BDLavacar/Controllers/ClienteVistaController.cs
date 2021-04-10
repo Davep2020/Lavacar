@@ -40,65 +40,62 @@ namespace BDLavacar.Controllers
         }
         #endregion
 
-        //#region Modificar
-        ///// <summary>
-        ///// Función Para modificar Datos 
-        ///// </summary>
-        ///// <param name="Id_Cliente_P"></param>
-        ///// <returns></returns>
-        //public ActionResult PersonaModifica(int Id_Cliente_P)
-        //{
-        //    sp_RetornaClientesID_Result modelovista = new sp_RetornaClientesID_Result();
-        //    modelovista = this.modeloBD.sp_RetornaClientesID(Id_Cliente_P).FirstOrDefault();
+        #region Modificar
 
-        //    return View(modelovista);
-        //}
+        public ActionResult VistaPersonaModifica(int Id_Cliente_P)
+        {
+            sp_RetornaClientesID_Result modelovista = new sp_RetornaClientesID_Result();
+            modelovista = this.modeloBD.sp_RetornaClientesID(Id_Cliente_P).FirstOrDefault();
+            AgregaTipoPersonaViewBag();
+            return View(modelovista);
+        }
 
-        //[HttpPost]
-        //public ActionResult PersonaModifica(sp_RetornaClientesID_Result modelovista)
-        //{
-        //    int cantRegistrosAfectados = 0;
-        //    string resultado = "";
-        //    try
-        //    {
-        //        cantRegistrosAfectados = this.modeloBD.sp_ModificaClientes(
-        //            modelovista.Id_Cliente_P,
-        //            Convert.ToInt16(modelovista.Cedula_P),
-        //            modelovista.Genero_P,
-        //            modelovista.Fecha_Nacimiento_P,
-        //            modelovista.Nombre_P,
-        //            modelovista.PApellido,
-        //            modelovista.SApellido,
-        //            modelovista.Correo_P,
-        //            modelovista.id_Provincia,
-        //            modelovista.id_Canton,
-        //            modelovista.Id_TipoPersona_TP,
-        //            modelovista.id_Distrito
-        //            );
-        //    }
-        //    catch (Exception error)
-        //    {
-        //        resultado = "Ocurrio un error: " + error.Message;
-        //    }
-        //    finally
-        //    {
-        //        if (cantRegistrosAfectados > 0)
-        //        {
-        //            resultado += "Registro modificado";
-        //        }
-        //        else
-        //        {
-        //            resultado += "No se pudo modificar";
-        //        }
+        [HttpPost]
+        public ActionResult VistaPersonaModifica(sp_RetornaClientesID_Result modelovista)
+        {
+            int cantRegistrosAfectados = 0;
+            string resultado = "";
+            try
+            {
+                cantRegistrosAfectados = this.modeloBD.sp_ModificaClientes(
+                    modelovista.Id_Cliente_P,
+                    Convert.ToInt32(modelovista.Cedula_P),
+                    modelovista.Genero_P,
+                    modelovista.Fecha_Nacimiento_P,
+                    modelovista.Nombre_P,
+                    modelovista.PApellido,
+                    modelovista.SApellido,
+                    modelovista.Correo_P,
+                    modelovista.id_Provincia,
+                    modelovista.id_Canton,
+                    modelovista.Id_TipoPersona_TP,
+                    modelovista.id_Distrito
+                    );
+            }
+            catch (Exception error)
+            {
+                resultado = "Ocurrio un error: " + error.Message;
+            }
+            finally
+            {
+                if (cantRegistrosAfectados > 0)
+                {
+                    resultado += "Registro modificado";
+                }
+                else
+                {
+                    resultado += "No se pudo modificar";
+                }
 
-        //    }
-        //    Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
-        //    return View(modelovista);
+            }
+            Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
+            AgregaTipoPersonaViewBag();
+            return View(modelovista);
 
 
-        //}
+        }
 
-        //#endregion
+        #endregion
 
         #region void
         void AgregaTipoPersonaViewBag()

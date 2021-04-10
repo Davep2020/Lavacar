@@ -19,28 +19,45 @@
                     <p>@Model.Nombre_P @Model.PApellido @Model.SApellido</p>
                 </div>
                 <div class="form-group">
-                    <i class="fas fa-wallet"></i> <label> Cédula:</label>
+                    <i class="fas fa-user"></i> <label> Cédula:</label>
                     <p>@Model.Cedula_P</p>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <i class="fas fa-user"></i> <label> Placa:</label>
+                    <i class="fas fa-car"></i> <label> Placa:</label>
+                    <p>@Model.Placa_V</p>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-car"></i> <label> Puertas:</label>
                     <p>@Model.Numero_Puertas_V</p>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-car"></i> <label> Marca:</label>
+                    <p>@Model.Tipo_MV</p>
                 </div>
             </div>
 
 
             <div class="col-sm-4">
-                One of three columns
+                <div class="form-group">
+                    <i class="fas fa-list"></i> <label> Cantidad Servicios:</label>
+                    <p>@Model.Cantidad_FVS</p>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-list"></i> <label> Servicios:</label>
+                    <p>@Model.Tipo_S</p>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-list"></i> <label> Monto:</label>
+                    <p>@Model.Total_F</p>
+                </div>
             </div>
-            <div class="col-sm">
-                One of three columns
-            </div>
+
         </div>
     </div>
 
-
+    <a href="~/ClienteVista/VistaPersonaModifica?Id_Cliente_P=@Model.Id_Cliente_P" class="btn btn-info">Editar perfil</a>
 
 </form>
 

@@ -1,10 +1,10 @@
 ﻿@model BDLavacar.Models.sp_RetornaClientesID_Result
 @{
-    ViewBag.Title = "PersonaModifica";
-    Layout = "~/Views/Shared/_LayoutBDLavacar.cshtml";
+    ViewBag.Title = "VistaPersonaModifica";
+    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
 }
 
-<h2>Modificar Persona</h2>
+<h2>Modificar mi datos</h2>
 
 <form id="frmModificaUsuario" method="post">
     <div class="form-group">
@@ -83,6 +83,7 @@
     <input type="hidden" name="hddCantonID" id="hddCantonID" value="@Model.id_Canton" />
     <input type="hidden" name="hddDistritoID" id="hddDistritoID" value="@Model.id_Distrito" />
 </form>
+<a href="~/ClienteVista/ClientesVistaLista" class="btn btn-warning">Volver</a>
 @section scripts{
 
 
