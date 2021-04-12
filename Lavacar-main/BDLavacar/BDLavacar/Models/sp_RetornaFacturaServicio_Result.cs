@@ -14,30 +14,10 @@ namespace BDLavacar.Models
 
 using System;
     
-public partial class sp_RetornaFacturaID_Result
+public partial class sp_RetornaFacturaServicio_Result
 {
 
-    public string NombreCompleto { get; set; }
-
-    public Nullable<int> Id_Factura_FVS { get; set; }
-
-    public Nullable<int> Cantidad_FVS { get; set; }
-
-    public Nullable<int> Id_Servicio_FVS { get; set; }
-
-    public Nullable<int> Monto_FVS { get; set; }
-
-    public string Estado_FVS { get; set; }
-
-    public Nullable<int> Id_Factura_F { get; set; }
-
-    public Nullable<int> Id_Vehiculo_F { get; set; }
-
-    public Nullable<int> Id_Persona_F { get; set; }
-
-    public Nullable<int> Total_F { get; set; }
-
-    public string Fecha_F { get; set; }
+    public string Nombre_Completo { get; set; }
 
     public int Id_Cliente_P { get; set; }
 
@@ -63,6 +43,16 @@ public partial class sp_RetornaFacturaID_Result
 
     public int Id_Distrito_P { get; set; }
 
+    public int Id_Factura_F { get; set; }
+
+    public int Id_Vehiculo_F { get; set; }
+
+    public int Id_Persona_F { get; set; }
+
+    public Nullable<int> Total_F { get; set; }
+
+    public string Fecha_F { get; set; }
+
     public int Id_Vehiculo_V { get; set; }
 
     public string Placa_V { get; set; }
@@ -82,6 +72,26 @@ public partial class sp_RetornaFacturaID_Result
     public string Tipo_MV { get; set; }
 
     public int Id_Pais_MV { get; set; }
+
+    public int Id_Servicio_S { get; set; }
+
+    public string Codigo_S { get; set; }
+
+    public string Descripcion_S { get; set; }
+
+    public int Precio_S { get; set; }
+
+    public string Tipo_S { get; set; }
+
+    public int Id_Factura_FVS { get; set; }
+
+    public int Cantidad_FVS { get; set; }
+
+    public Nullable<int> Id_Servicio_FVS { get; set; }
+
+    public int Monto_FVS { get; set; }
+
+    public string Estado_FVS { get; set; }
 
 }
 

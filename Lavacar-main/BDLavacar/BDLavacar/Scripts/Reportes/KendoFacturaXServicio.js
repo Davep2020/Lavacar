@@ -8,7 +8,7 @@
 // RetornaPersonasLista()
 function obtenerRegistrosFactura() {
     /////construir la dirección del método del servidor
-    var urlMetodo = '/Factura/KendoFacturaLista'
+    var urlMetodo = '/Factura/sp_RetornaFacturaServicio_Result'
     var parametros = {};
     var funcion = creaGridKendo;
     ///ejecuta la función $.ajax utilizando un método genérico
@@ -19,7 +19,7 @@ function obtenerRegistrosFactura() {
 //los datos obtenidos al llamar al método
 // RetornaListaClientes
 function creaGridKendo(data) {
-    
+
 
     $("#divKendoGrid").kendoGrid({
         dataSource: {
@@ -32,7 +32,7 @@ function creaGridKendo(data) {
                 field: 'Id_Factura_F',
                 title: '#_Factura'
             }, {
-                field: 'Nombre_Completo' ,
+                field: 'Nombre_Completo',
                 title: 'Nombre del Cliente'
             },
             {
@@ -48,17 +48,21 @@ function creaGridKendo(data) {
                 title: 'Placa'
             },
             {
-                field: 'Total_F',
-                title: 'Total de la factura'
+                field: 'Tipo_S',
+                title: 'Servicio'
             },
             {
-                field: 'Fecha_F',
-                title: 'Fecha de creación'
+                field: 'Cantidad_FVS',
+                title: 'Cantidad'
             },
             {
-              
+                field: 'Monto_FVS',
+                title: 'Monto'
+            },
+            {
+
                 template: function (dataItem) {
-                    return "<a href='/Factura/MuestraServicios?Id_Factura_F=" + dataItem.Id_Factura_F + "'>Ver_Factura</a>"
+                    return "<a href='~/Factura/MuestraServicios?Id_Factura_F=" + dataItem.Id_Factura_F + "'>Modificar</a>"
                 }
             }
         ],

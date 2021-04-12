@@ -221,6 +221,9 @@
     <Compile Include="Models\sp_RetornaFacturaNULL_Result.cs">
       <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_RetornaFacturaServicio_Result.cs">
+      <DependentUpon>BDLavacar.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_RetornaFacturas_Result.cs">
       <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
@@ -352,6 +355,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Reportes\Generico.js" />
     <Content Include="Scripts\Reportes\KendoFactura.js" />
+    <Content Include="Scripts\Reportes\KendoFacturaXServicio.js" />
     <Content Include="Scripts\Reportes\KendoServicioXCliente.js" />
     <Content Include="Scripts\Reportes\KendoServicioXClienteID.js" />
     <Content Include="Scripts\Reportes\KendoServicioXVehiculo.js" />
@@ -416,6 +420,7 @@
     <Content Include="Views\Home\Inicio.cshtml" />
     <Content Include="Views\Factura\KendoFactura.cshtml" />
     <Content Include="Views\ClienteVista\VistaPersonaModifica.cshtml" />
+    <Content Include="Views\Factura\MuestraServicios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

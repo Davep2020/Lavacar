@@ -18,6 +18,12 @@ namespace BDLavacar.Controllers
             sp_RetornaFacturaID_Result modelovista = new sp_RetornaFacturaID_Result();
             modelovista = this.modeloBD.sp_RetornaFacturaID(Id_Factura_F).FirstOrDefault();
             Session["Id_Factura_F"] = Id_Factura_F;
+            Session["Nombre"] = modelovista.NombreCompleto;
+            Session["cedula"] = modelovista.Cedula_P;
+            Session["marca"] = modelovista.Tipo_MV;
+            Session["placa"] = modelovista.Placa_V;
+            Session["fecha"] = modelovista.Fecha_F;
+            Session["total"] = modelovista.Total_F;
             AgregaServicioViewBag();
             return View(modelovista);
         }
@@ -124,6 +130,22 @@ namespace BDLavacar.Controllers
         {
             List<sp_RetornaFacturaFinal_Result> listaPersonas =
                this.modeloBD.sp_RetornaFacturaFinal().ToList();
+            return Json(new
+            {
+                resultado = listaPersonas
+            });
+        }
+
+
+        public ActionResult MuestraServicios()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult KendoFacturaServicio(int Id_Factura_F )
+        {
+            List<sp_RetornaFacturaServicio_Result> listaPersonas =
+               this.modeloBD.sp_RetornaFacturaServicio(Id_Factura_F).ToList();
             return Json(new
             {
                 resultado = listaPersonas
