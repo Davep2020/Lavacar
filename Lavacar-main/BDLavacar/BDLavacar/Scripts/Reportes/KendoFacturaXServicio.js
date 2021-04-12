@@ -8,7 +8,7 @@
 // RetornaPersonasLista()
 function obtenerRegistrosFactura() {
     /////construir la dirección del método del servidor
-    var urlMetodo = '/Factura/sp_RetornaFacturaServicio_Result'
+    var urlMetodo = '/Factura/MuestraServiciosLista'
     var parametros = {};
     var funcion = creaGridKendo;
     ///ejecuta la función $.ajax utilizando un método genérico
