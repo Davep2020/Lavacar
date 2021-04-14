@@ -221,6 +221,9 @@
     <Compile Include="Models\sp_RetornaFacturaNULL_Result.cs">
       <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_RetornaFacturaServicioID_Result.cs">
+      <DependentUpon>BDLavacar.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_RetornaFacturaServicio_Result.cs">
       <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
@@ -421,6 +424,7 @@
     <Content Include="Views\Factura\KendoFactura.cshtml" />
     <Content Include="Views\ClienteVista\VistaPersonaModifica.cshtml" />
     <Content Include="Views\Factura\MuestraServicios.cshtml" />
+    <Content Include="Views\Factura\ModificaFactura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

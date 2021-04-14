@@ -142,6 +142,7 @@ namespace BDLavacar.Controllers
             Session["Id_Facturas_F"] = Id_Factura_F;
             sp_RetornaFacturaServicio_Result modelovista = new sp_RetornaFacturaServicio_Result();
             modelovista = this.modeloBD.sp_RetornaFacturaServicio(Id_Factura_F).FirstOrDefault();
+            
             return View(modelovista);
         }
         [HttpPost]
@@ -149,6 +150,7 @@ namespace BDLavacar.Controllers
         {
             List<sp_RetornaFacturaServicio_Result> listaPersonas =
                this.modeloBD.sp_RetornaFacturaServicio(modelovista.Id_Factura_F = Convert.ToInt32(Session["Id_Facturas_F"])).ToList();
+
             return Json(new
             {
                 resultado = listaPersonas
@@ -217,6 +219,19 @@ namespace BDLavacar.Controllers
             return View(modelovista);
 
 
+        }
+
+        #endregion
+
+
+        #region Modificar
+
+        public ActionResult ModificaFactura(int Id_Servicio_S, int Id_Factura_F)
+        {
+            
+            sp_RetornaFacturaServicioID_Result modeloVista = new sp_RetornaFacturaServicioID_Result();
+            modeloVista = this.modeloBD.sp_RetornaFacturaServicioID(Id_Factura_F, Id_Servicio_S).FirstOrDefault();
+            return View(modeloVista);
         }
 
         #endregion

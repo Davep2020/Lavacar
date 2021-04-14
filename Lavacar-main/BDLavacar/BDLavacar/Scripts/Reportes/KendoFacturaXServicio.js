@@ -56,13 +56,22 @@ function creaGridKendo(data) {
                 title: 'Cantidad'
             },
             {
+                field: 'Estado_FVS',
+                title: 'Estado'
+            },
+            {
                 field: 'Monto_FVS',
                 title: 'Monto'
             },
             {
 
                 template: function (dataItem) {
-                    return "<a href='~/Factura/MuestraServicios?Id_Factura_F=" + dataItem.Id_Factura_F + "'>Modificar</a>"
+                    return "<a href='/Factura/ModificaFactura?Id_Factura_F=" + dataItem.Id_Factura_F + "?Id_Servicio_S=" + dataItem.Id_Servicio_S + "' class='btn btn-info'>Modificar</a>"
+                }
+            },
+                {
+                template: function (dataItem) {
+                    return "<a href='/Factura/EliminaFactura?Id_Factura_F=" + dataItem.Id_Factura_F + "' class='btn btn-danger'>Eliminar</a>"
                 }
             }
         ],
