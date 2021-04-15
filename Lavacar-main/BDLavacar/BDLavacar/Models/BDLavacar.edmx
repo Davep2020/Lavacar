@@ -321,6 +321,10 @@ advertencia 6002: La tabla o vista 'bdlavacar.dbo.Tbl_FacturaServicioVehiculo_FS
         <Function Name="sp_EliminaServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_Servicio_S" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_EliminaServicioFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Factura" Type="int" Mode="In" />
+          <Parameter Name="Id_Servicio" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_EliminaTipoVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTipoVehiculo" Type="int" Mode="In" />
         </Function>
@@ -1146,6 +1150,10 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
             <Parameter Name="Id_Servicio" Mode="In" Type="Int32" />
             <Parameter Name="Monto" Mode="In" Type="Int32" />
             <Parameter Name="Estado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EliminaServicioFactura">
+            <Parameter Name="Id_Factura" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Servicio" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="TblFactura_F">
@@ -2381,6 +2389,7 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_ModificaServicioFactura" FunctionName="bdlavacarModel.Store.sp_ModificaServicioFactura" />
+          <FunctionImportMapping FunctionImportName="sp_EliminaServicioFactura" FunctionName="bdlavacarModel.Store.sp_EliminaServicioFactura" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

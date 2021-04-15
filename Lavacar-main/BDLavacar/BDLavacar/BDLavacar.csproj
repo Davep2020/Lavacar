@@ -419,6 +419,7 @@
     <Content Include="Views\ClienteVista\VistaPersonaModifica.cshtml" />
     <Content Include="Views\Factura\MuestraServicios.cshtml" />
     <Content Include="Views\Factura\ModificaFactura.cshtml" />
+    <Content Include="Views\Factura\EliminaServicioFactura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -181,6 +181,7 @@ namespace BDLavacar.Controllers
         #endregion
 
         #region Eliminar
+        #region Eliminar Prefactura
         public ActionResult PreFacturaEliminar(int Id_Factura_F)
         {
             sp_RetornaPreFacturaID_Result modelovista = new sp_RetornaPreFacturaID_Result();
@@ -216,6 +217,50 @@ namespace BDLavacar.Controllers
             }
             Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
            
+            return View(modelovista);
+
+
+        }
+        # endregion
+
+        public ActionResult EliminaServicioFactura(int Id_Servicio_S)
+        {
+            Session["Id_Servicio_S"]= Id_Servicio_S;
+            sp_RetornaFacturaServicioID_Result modeloVista = new sp_RetornaFacturaServicioID_Result();
+            modeloVista = this.modeloBD.sp_RetornaFacturaServicioID(Convert.ToInt32(Session["Id_Facturas_F"]), Id_Servicio_S).FirstOrDefault();
+            return View(modeloVista);
+        }
+
+        [HttpPost]
+        public ActionResult EliminaServicioFactura(sp_RetornaFacturaServicio_Result modelovista)
+        {
+            int cantRegistrosAfectados = 0;
+            string resultado = "";
+            int Id_Facturas_F = Convert.ToInt32(Session["Id_Facturas_F"]);
+            int Id_Servicio_S = Convert.ToInt32(Session["Id_Servicio_S"]);
+            try
+            {
+                cantRegistrosAfectados = this.modeloBD.sp_EliminaServicioFactura(
+                    Id_Facturas_F, Id_Servicio_S);
+            }
+            catch (Exception error)
+            {
+                resultado = "Ocurrio un error: " + error.Message;
+            }
+            finally
+            {
+                if (cantRegistrosAfectados > 0)
+                {
+                    resultado += "Servicio eliminado de la lista";
+                }
+                else
+                {
+                    resultado += "No se pudo eliminar el servicio";
+                }
+
+            }
+            Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
+
             return View(modelovista);
 
 
