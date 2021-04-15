@@ -1,4 +1,4 @@
-﻿
+﻿@model BDLavacar.Models.sp_RetornaFacturaServicioID_Result
 @{
     ViewBag.Title = "ModificaFactura";
     Layout = "~/Views/Shared/_LayoutBDLavacar.cshtml";
@@ -19,14 +19,26 @@
     </div>
 
     <div class="form-group">
-        <label>Estado</label>
+        <label>Estado:</label>
         <select name="Estado_FVS" id="Estado_FVS" class="form-control">
-            <option value="">SELECCIONE EL ESTADO</option>
-            <option value="">Facturado</option>
-            <option value="">Anulado</option>
+            @{
+
+                if (Model.Estado_FVS == "Facturado")
+                {
+                    <option value="Facturado" id="Facturado" selected>Facturado</option>
+                    <option value="Anulado" id="Anulado">Anulado</option>
+                }
+                else
+                {
+                    <option value="Facturado" id="Facturado">Facturado</option>
+                    <option value="Anulado" id="Anulado" selected>Anulado</option>
+                }
+            }
+
+
         </select>
     </div>
-
+    <label value=""></label>
     <div class="form-group">
         <input type="submit" value="Modificar" id="btnModificar" class="btn btn-info" />
     </div>

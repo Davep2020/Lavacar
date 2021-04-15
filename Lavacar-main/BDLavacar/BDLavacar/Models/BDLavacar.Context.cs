@@ -145,32 +145,6 @@ namespace BDLavacar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EliminaVehiculo", idVehiculoParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
         public virtual int sp_InsertaCanton(Nullable<int> id_Provincia, string nombre, Nullable<int> id_CantonInec)
         {
             var id_ProvinciaParameter = id_Provincia.HasValue ?
@@ -535,9 +509,31 @@ namespace BDLavacar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_MuestraVehiculo_Result>("sp_MuestraVehiculo", marcaParameter);
         }
     
+        public virtual int sp_RegistraFacturas(Nullable<int> vehiculo, Nullable<int> persona)
+        {
+            var vehiculoParameter = vehiculo.HasValue ?
+                new ObjectParameter("Vehiculo", vehiculo) :
+                new ObjectParameter("Vehiculo", typeof(int));
+    
+            var personaParameter = persona.HasValue ?
+                new ObjectParameter("Persona", persona) :
+                new ObjectParameter("Persona", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_RegistraFacturas", vehiculoParameter, personaParameter);
+        }
+    
         public virtual ObjectResult<sp_ReporteServicioscliente_Result> sp_ReporteServicioscliente()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteServicioscliente_Result>("sp_ReporteServicioscliente");
+        }
+    
+        public virtual ObjectResult<sp_ReporteServiciosclienteID_Result> sp_ReporteServiciosclienteID(string correo)
+        {
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteServiciosclienteID_Result>("sp_ReporteServiciosclienteID", correoParameter);
         }
     
         public virtual ObjectResult<sp_ReporteServiciosvehiculo_Result> sp_ReporteServiciosvehiculo()
@@ -545,9 +541,27 @@ namespace BDLavacar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteServiciosvehiculo_Result>("sp_ReporteServiciosvehiculo");
         }
     
+        public virtual ObjectResult<sp_ReporteServiciosvehiculoID_Result> sp_ReporteServiciosvehiculoID(string correo)
+        {
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteServiciosvehiculoID_Result>("sp_ReporteServiciosvehiculoID", correoParameter);
+        }
+    
         public virtual ObjectResult<sp_ReporteVehiculoscliente_Result> sp_ReporteVehiculoscliente()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteVehiculoscliente_Result>("sp_ReporteVehiculoscliente");
+        }
+    
+        public virtual ObjectResult<sp_ReporteVehiculosclienteID_Result> sp_ReporteVehiculosclienteID(string correo)
+        {
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteVehiculosclienteID_Result>("sp_ReporteVehiculosclienteID", correoParameter);
         }
     
         public virtual ObjectResult<sp_RetornaClientes_Result> sp_RetornaClientes()
@@ -591,9 +605,50 @@ namespace BDLavacar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaDistritos_Result>("sp_RetornaDistritos", nombreParameter, id_CantonParameter);
         }
     
+        public virtual ObjectResult<sp_RetornaFacturaFinal_Result> sp_RetornaFacturaFinal()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturaFinal_Result>("sp_RetornaFacturaFinal");
+        }
+    
+        public virtual ObjectResult<sp_RetornaFacturaID_Result> sp_RetornaFacturaID(Nullable<int> iDfACTURA)
+        {
+            var iDfACTURAParameter = iDfACTURA.HasValue ?
+                new ObjectParameter("IDfACTURA", iDfACTURA) :
+                new ObjectParameter("IDfACTURA", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturaID_Result>("sp_RetornaFacturaID", iDfACTURAParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaFacturaNULL_Result> sp_RetornaFacturaNULL()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturaNULL_Result>("sp_RetornaFacturaNULL");
+        }
+    
         public virtual ObjectResult<sp_RetornaFacturas_Result> sp_RetornaFacturas()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturas_Result>("sp_RetornaFacturas");
+        }
+    
+        public virtual ObjectResult<sp_RetornaFacturaServicio_Result> sp_RetornaFacturaServicio(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturaServicio_Result>("sp_RetornaFacturaServicio", idParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaFacturaServicioID_Result> sp_RetornaFacturaServicioID(Nullable<int> id_Factura, Nullable<int> id_Servicio)
+        {
+            var id_FacturaParameter = id_Factura.HasValue ?
+                new ObjectParameter("Id_Factura", id_Factura) :
+                new ObjectParameter("Id_Factura", typeof(int));
+    
+            var id_ServicioParameter = id_Servicio.HasValue ?
+                new ObjectParameter("Id_Servicio", id_Servicio) :
+                new ObjectParameter("Id_Servicio", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturaServicioID_Result>("sp_RetornaFacturaServicioID", id_FacturaParameter, id_ServicioParameter);
         }
     
         public virtual ObjectResult<sp_RetornaLogueo_Result> sp_RetornaLogueo(string usuario, string contrasena)
@@ -726,33 +781,6 @@ namespace BDLavacar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaVehiculoUI_Result>("sp_RetornaVehiculoUI");
         }
     
-        public virtual ObjectResult<sp_ReporteServiciosclienteID_Result> sp_ReporteServiciosclienteID(string correo)
-        {
-            var correoParameter = correo != null ?
-                new ObjectParameter("correo", correo) :
-                new ObjectParameter("correo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteServiciosclienteID_Result>("sp_ReporteServiciosclienteID", correoParameter);
-        }
-    
-        public virtual ObjectResult<sp_ReporteServiciosvehiculoID_Result> sp_ReporteServiciosvehiculoID(string correo)
-        {
-            var correoParameter = correo != null ?
-                new ObjectParameter("correo", correo) :
-                new ObjectParameter("correo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteServiciosvehiculoID_Result>("sp_ReporteServiciosvehiculoID", correoParameter);
-        }
-    
-        public virtual ObjectResult<sp_ReporteVehiculosclienteID_Result> sp_ReporteVehiculosclienteID(string correo)
-        {
-            var correoParameter = correo != null ?
-                new ObjectParameter("correo", correo) :
-                new ObjectParameter("correo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ReporteVehiculosclienteID_Result>("sp_ReporteVehiculosclienteID", correoParameter);
-        }
-    
         public virtual ObjectResult<sp_RetornaVistaClientes_Result> sp_RetornaVistaClientes(string correo)
         {
             var correoParameter = correo != null ?
@@ -762,58 +790,29 @@ namespace BDLavacar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaVistaClientes_Result>("sp_RetornaVistaClientes", correoParameter);
         }
     
-        public virtual ObjectResult<sp_RetornaFacturaFinal_Result> sp_RetornaFacturaFinal()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturaFinal_Result>("sp_RetornaFacturaFinal");
-        }
-    
-        public virtual ObjectResult<sp_RetornaFacturaID_Result> sp_RetornaFacturaID(Nullable<int> iDfACTURA)
-        {
-            var iDfACTURAParameter = iDfACTURA.HasValue ?
-                new ObjectParameter("IDfACTURA", iDfACTURA) :
-                new ObjectParameter("IDfACTURA", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturaID_Result>("sp_RetornaFacturaID", iDfACTURAParameter);
-        }
-    
-        public virtual ObjectResult<sp_RetornaFacturaNULL_Result> sp_RetornaFacturaNULL()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturaNULL_Result>("sp_RetornaFacturaNULL");
-        }
-    
-        public virtual ObjectResult<sp_RetornaFacturaServicio_Result> sp_RetornaFacturaServicio(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturaServicio_Result>("sp_RetornaFacturaServicio", idParameter);
-        }
-    
-        public virtual int sp_RegistraFacturas(Nullable<int> vehiculo, Nullable<int> persona)
-        {
-            var vehiculoParameter = vehiculo.HasValue ?
-                new ObjectParameter("Vehiculo", vehiculo) :
-                new ObjectParameter("Vehiculo", typeof(int));
-    
-            var personaParameter = persona.HasValue ?
-                new ObjectParameter("Persona", persona) :
-                new ObjectParameter("Persona", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_RegistraFacturas", vehiculoParameter, personaParameter);
-        }
-    
-        public virtual ObjectResult<sp_RetornaFacturaServicioID_Result> sp_RetornaFacturaServicioID(Nullable<int> id_Factura, Nullable<int> id_Servicio)
+        public virtual int sp_ModificaServicioFactura(Nullable<int> id_Factura, Nullable<int> cantidad, Nullable<int> id_Servicio, Nullable<int> monto, string estado)
         {
             var id_FacturaParameter = id_Factura.HasValue ?
                 new ObjectParameter("Id_Factura", id_Factura) :
                 new ObjectParameter("Id_Factura", typeof(int));
     
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(int));
+    
             var id_ServicioParameter = id_Servicio.HasValue ?
                 new ObjectParameter("Id_Servicio", id_Servicio) :
                 new ObjectParameter("Id_Servicio", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaFacturaServicioID_Result>("sp_RetornaFacturaServicioID", id_FacturaParameter, id_ServicioParameter);
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("Monto", monto) :
+                new ObjectParameter("Monto", typeof(int));
+    
+            var estadoParameter = estado != null ?
+                new ObjectParameter("Estado", estado) :
+                new ObjectParameter("Estado", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaServicioFactura", id_FacturaParameter, cantidadParameter, id_ServicioParameter, montoParameter, estadoParameter);
         }
     }
 }

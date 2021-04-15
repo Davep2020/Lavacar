@@ -170,12 +170,6 @@
     <Compile Include="Models\RetornaProvincias_Result.cs">
       <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>BDLavacar.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>BDLavacar.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\sp_MuestraVehiculo_Result.cs">
       <DependentUpon>BDLavacar.tt</DependentUpon>
     </Compile>

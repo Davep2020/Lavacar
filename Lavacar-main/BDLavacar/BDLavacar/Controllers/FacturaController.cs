@@ -226,14 +226,53 @@ namespace BDLavacar.Controllers
 
         #region Modificar
 
-        public ActionResult ModificaFactura(int Id_Servicio_S, int Id_Factura_F)
+        public ActionResult ModificaFactura(int Id_Servicio_S)
         {
             
             sp_RetornaFacturaServicioID_Result modeloVista = new sp_RetornaFacturaServicioID_Result();
-            modeloVista = this.modeloBD.sp_RetornaFacturaServicioID(Id_Factura_F, Id_Servicio_S).FirstOrDefault();
+            modeloVista = this.modeloBD.sp_RetornaFacturaServicioID(Convert.ToInt32(Session["Id_Facturas_F"]), Id_Servicio_S).FirstOrDefault();
             return View(modeloVista);
         }
 
+
+        [HttpPost]
+        public ActionResult ModificaFactura(sp_RetornaFacturaServicio_Result modeloVista)
+        {
+            int cantRegistroAfectados = 0;
+            string resultado = "";
+            int Id_Facturas_F = Convert.ToInt32(Session["Id_Facturas_F"]);
+            try
+            {
+                cantRegistroAfectados = this.modeloBD.sp_ModificaServicioFactura(
+                                        Id_Facturas_F,
+                                        modeloVista.Cantidad_FVS,
+                                        modeloVista.Id_Servicio_S,
+                                        modeloVista.Monto_FVS,
+                                        modeloVista.Estado_FVS
+                                        );
+            }
+            catch (Exception error)
+            {
+                resultado = "Ocurrio un error: " + error.Message;
+            }
+            finally
+            {
+                if (cantRegistroAfectados > 0)
+                {
+                    resultado += "Registro modificado";
+
+                }
+                else
+                {
+                    resultado += "No se pudo modificar";
+                }
+            }
+
+            Response.Write("<script language=javascript>alert('" + resultado + "');</script>");
+
+            AgregaServicioViewBag();
+            return View();
+        }
         #endregion
 
     }

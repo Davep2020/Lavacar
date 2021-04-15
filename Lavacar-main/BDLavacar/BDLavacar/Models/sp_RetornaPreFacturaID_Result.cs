@@ -17,6 +17,6 @@ namespace BDLavacar.Models
         public int Id_Vehiculo_F { get; set; }
         public int Id_Persona_F { get; set; }
         public Nullable<int> Total_F { get; set; }
-        public Nullable<System.DateTime> Fecha_F { get; set; }
+        public string Fecha_F { get; set; }
     }
 }

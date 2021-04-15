@@ -23,5 +23,10 @@ namespace BDLavacar.Models
         public Nullable<int> Id_Servicio_FVS { get; set; }
         public int Monto_FVS { get; set; }
         public string Estado_FVS { get; set; }
+        public int Id_Factura_F { get; set; }
+        public int Id_Vehiculo_F { get; set; }
+        public int Id_Persona_F { get; set; }
+        public Nullable<int> Total_F { get; set; }
+        public string Fecha_F { get; set; }
     }
 }

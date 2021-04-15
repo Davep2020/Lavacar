@@ -66,7 +66,7 @@ function creaGridKendo(data) {
             {
 
                 template: function (dataItem) {
-                    return "<a href='/Factura/ModificaFactura?Id_Factura_F=" + dataItem.Id_Factura_F + "?Id_Servicio_S=" + dataItem.Id_Servicio_S + "' class='btn btn-info'>Modificar</a>"
+                    return "<a href='/Factura/ModificaFactura?Id_Servicio_S=" + dataItem.Id_Servicio_S + "' class='btn btn-info'>Modificar</a>"
                 }
             },
                 {
