@@ -7,7 +7,7 @@
 <h2>Servicio Modifica</h2>
 
 
-<form id="frmModificaUsuario" method="post">
+<form id="frmModificaServicio" method="post">
     <div class="form-group">
         <label>Código:</label>
         <input type="text" name="Codigo_S" id="Codigo_S" class="form-control" value="@Model.Codigo_S" />
@@ -28,4 +28,7 @@
         <input type="submit" value="Modificar" id="btnModificar" class="btn btn-success" />
     </div>
 
-</form>  
+</form>
+@section scripts{
+    <script src="~/Scripts/Validaciones/ValidacionesModificaServicio.js"></script>
+}

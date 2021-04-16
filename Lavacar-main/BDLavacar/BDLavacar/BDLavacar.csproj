@@ -360,6 +360,19 @@
     <Content Include="Scripts\Reportes\KendoServicioXVehiculoID.js" />
     <Content Include="Scripts\Reportes\KendoVehiculoXCliente.js" />
     <Content Include="Scripts\Reportes\KendoVehiculoXClienteID.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesInsertaMV.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesInsertaPF.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesInsertaServicio.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesInsertaTV.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesInsertaVehiculo.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesModificaCliente.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesModificaMV.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesModificaPM.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesModificaServicio.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesModificaTV.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesModificaVehiculo.js" />
+    <Content Include="Scripts\Validaciones\ValidacionesModificaVistaPersona.js" />
+    <Content Include="Scripts\Validaciones\ValidacionInsertaCliente.js" />
     <Content Include="Scripts\Vehiculos\vehiculos.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -419,8 +432,8 @@
     <Content Include="Views\Factura\KendoFactura.cshtml" />
     <Content Include="Views\ClienteVista\VistaPersonaModifica.cshtml" />
     <Content Include="Views\Factura\MuestraServicios.cshtml" />
-    <Content Include="Views\Factura\ModificaFactura.cshtml" />
     <Content Include="Views\Factura\EliminaServicioFactura.cshtml" />
+    <Content Include="Views\Factura\ModificaServicioFactura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

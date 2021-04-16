@@ -1144,16 +1144,16 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
           <FunctionImport Name="sp_RetornaVistaClientes" ReturnType="Collection(bdlavacarModel.sp_RetornaVistaClientes_Result)">
           <Parameter Name="correo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_EliminaServicioFactura">
+            <Parameter Name="Id_Factura" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Servicio" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_ModificaServicioFactura">
             <Parameter Name="Id_Factura" Mode="In" Type="Int32" />
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
             <Parameter Name="Id_Servicio" Mode="In" Type="Int32" />
             <Parameter Name="Monto" Mode="In" Type="Int32" />
             <Parameter Name="Estado" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_EliminaServicioFactura">
-            <Parameter Name="Id_Factura" Mode="In" Type="Int32" />
-            <Parameter Name="Id_Servicio" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="TblFactura_F">
@@ -2388,8 +2388,8 @@ FROM [dbo].[Tbl_FacturaServicioVehiculo_FSV] AS [Tbl_FacturaServicioVehiculo_FSV
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_ModificaServicioFactura" FunctionName="bdlavacarModel.Store.sp_ModificaServicioFactura" />
           <FunctionImportMapping FunctionImportName="sp_EliminaServicioFactura" FunctionName="bdlavacarModel.Store.sp_EliminaServicioFactura" />
+          <FunctionImportMapping FunctionImportName="sp_ModificaServicioFactura" FunctionName="bdlavacarModel.Store.sp_ModificaServicioFactura" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

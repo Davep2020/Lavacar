@@ -232,7 +232,7 @@ namespace BDLavacar.Controllers
         }
 
         [HttpPost]
-        public ActionResult EliminaServicioFactura(sp_RetornaFacturaServicio_Result modelovista)
+        public ActionResult EliminaServicioFactura(sp_RetornaFacturaServicioID_Result modelovista)
         {
             int cantRegistrosAfectados = 0;
             string resultado = "";
@@ -261,6 +261,7 @@ namespace BDLavacar.Controllers
             }
             Response.Write("<script language=javascript>alert('" + resultado + "')</script>");
 
+            Response.Redirect("~/Factura/MuestraServicios?Id_Factura_F=" + Id_Facturas_F);
             return View(modelovista);
 
 
@@ -271,7 +272,7 @@ namespace BDLavacar.Controllers
 
         #region Modificar
 
-        public ActionResult ModificaFactura(int Id_Servicio_S)
+        public ActionResult ModificaServicioFactura(int Id_Servicio_S)
         {
             
             sp_RetornaFacturaServicioID_Result modeloVista = new sp_RetornaFacturaServicioID_Result();
@@ -281,7 +282,7 @@ namespace BDLavacar.Controllers
 
 
         [HttpPost]
-        public ActionResult ModificaFactura(sp_RetornaFacturaServicio_Result modeloVista)
+        public ActionResult ModificaServicioFactura(sp_RetornaFacturaServicioID_Result modeloVista)
         {
             int cantRegistroAfectados = 0;
             string resultado = "";

@@ -790,6 +790,19 @@ namespace BDLavacar.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaVistaClientes_Result>("sp_RetornaVistaClientes", correoParameter);
         }
     
+        public virtual int sp_EliminaServicioFactura(Nullable<int> id_Factura, Nullable<int> id_Servicio)
+        {
+            var id_FacturaParameter = id_Factura.HasValue ?
+                new ObjectParameter("Id_Factura", id_Factura) :
+                new ObjectParameter("Id_Factura", typeof(int));
+    
+            var id_ServicioParameter = id_Servicio.HasValue ?
+                new ObjectParameter("Id_Servicio", id_Servicio) :
+                new ObjectParameter("Id_Servicio", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EliminaServicioFactura", id_FacturaParameter, id_ServicioParameter);
+        }
+    
         public virtual int sp_ModificaServicioFactura(Nullable<int> id_Factura, Nullable<int> cantidad, Nullable<int> id_Servicio, Nullable<int> monto, string estado)
         {
             var id_FacturaParameter = id_Factura.HasValue ?
@@ -813,19 +826,6 @@ namespace BDLavacar.Models
                 new ObjectParameter("Estado", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ModificaServicioFactura", id_FacturaParameter, cantidadParameter, id_ServicioParameter, montoParameter, estadoParameter);
-        }
-    
-        public virtual int sp_EliminaServicioFactura(Nullable<int> id_Factura, Nullable<int> id_Servicio)
-        {
-            var id_FacturaParameter = id_Factura.HasValue ?
-                new ObjectParameter("Id_Factura", id_Factura) :
-                new ObjectParameter("Id_Factura", typeof(int));
-    
-            var id_ServicioParameter = id_Servicio.HasValue ?
-                new ObjectParameter("Id_Servicio", id_Servicio) :
-                new ObjectParameter("Id_Servicio", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EliminaServicioFactura", id_FacturaParameter, id_ServicioParameter);
         }
     }
 }

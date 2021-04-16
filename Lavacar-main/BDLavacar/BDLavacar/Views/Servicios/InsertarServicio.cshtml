@@ -5,7 +5,7 @@
 }
 
 <h2>Insertar Servicio</h2>
-<form id="frmModificaUsuario" method="post">
+<form id="frmInsertaServicio" method="post">
     <div class="form-group">
         <label>Código:</label>
         <input type="text" name="Codigo_S" id="Codigo_S" class="form-control" />
@@ -26,4 +26,7 @@
         <input type="submit" value="Inresar" id="btnIngresar" class="btn btn-success" />
     </div>
 
-</form>  
+</form>
+@section scripts{
+    <script src="~/Scripts/Validaciones/ValidacionesInsertaServicio.js"></script>
+}
