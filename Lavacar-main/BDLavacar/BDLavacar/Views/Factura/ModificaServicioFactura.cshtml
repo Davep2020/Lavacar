@@ -10,20 +10,20 @@
 
     <div class="form-group">
         <label>Servicio</label>
-        <input type="text" name="Tipo_S" id="Tipo_S" class="form-control" value="@Model.Tipo_S" />
+        <input type="text" name="Tipo_S" id="Tipo_S" class="form-control" value="@HttpContext.Current.Session["Servicio"].ToString()" />
     </div>
 
     <div class="form-group">
         <label>Cantidad</label>
-        <input type="text" name="Cantidad_FVS" id="Cantidad_FVS" class="form-control" value="@Model.Cantidad_FVS" />
+        <input type="text" name="Cantidad_FVS" id="Cantidad_FVS" class="form-control" value="@HttpContext.Current.Session["Cantidad"].ToString()" />
     </div>
 
     <div class="form-group">
-        <label>Estado:</label>
+        <label id="lblEstado">Estado:</label>
         <select name="Estado_FVS" id="Estado_FVS" class="form-control">
             @{
 
-                if (Model.Estado_FVS == "Facturado")
+                if (@HttpContext.Current.Session["Estado"].ToString() == "Facturado")
                 {
                     <option value="Facturado" id="Facturado" selected>Facturado</option>
                     <option value="Anulado" id="Anulado">Anulado</option>
@@ -38,9 +38,13 @@
 
         </select>
     </div>
-    <label value=""></label>
+    <input type="date" id="fecha" name="name" value="@HttpContext.Current.Session["Fecha"].ToString()" style="display: none;" class="fecha" />
+    <label value="" id="txt"></label>
     <div class="form-group">
         <input type="submit" value="Modificar" id="btnModificar" class="btn btn-info" />
     </div>
 </form>
 
+@section scripts{
+    <script src="~/Scripts/ComprobacionFecha/comprobacionFecha.js"></script>
+}

@@ -277,6 +277,10 @@ namespace BDLavacar.Controllers
             
             sp_RetornaFacturaServicioID_Result modeloVista = new sp_RetornaFacturaServicioID_Result();
             modeloVista = this.modeloBD.sp_RetornaFacturaServicioID(Convert.ToInt32(Session["Id_Facturas_F"]), Id_Servicio_S).FirstOrDefault();
+            Session["Cantidad"] = modeloVista.Cantidad_FVS;
+            Session["Servicio"] = modeloVista.Tipo_S;
+            Session["Estado"] = modeloVista.Estado_FVS;
+            Session["Fecha"] = modeloVista.Fecha_F;
             return View(modeloVista);
         }
 
@@ -296,6 +300,7 @@ namespace BDLavacar.Controllers
                                         modeloVista.Monto_FVS,
                                         modeloVista.Estado_FVS
                                         );
+
             }
             catch (Exception error)
             {
