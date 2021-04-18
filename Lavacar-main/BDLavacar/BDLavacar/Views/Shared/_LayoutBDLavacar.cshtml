@@ -89,6 +89,7 @@
 
                         </ul>
                     </li>
+                    <li id="Cerrar">@Html.ActionLink("Cerrar Sesion", "InicioSesion", "Login")</li>
                 </ul>
             </div>
         </div>
@@ -109,5 +110,6 @@
     @Scripts.Render("~/bundles/myBundle")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Login/Cerrar_Sesion.js"></script>
 </body>
 </html>

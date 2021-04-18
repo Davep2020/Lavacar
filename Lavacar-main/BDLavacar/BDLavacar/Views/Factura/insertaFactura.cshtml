@@ -31,7 +31,7 @@
         <br />
         <div class="form-group">
             <label>Servicio:</label>
-            <select name="Id_Servicio_FVS" id="servicio" class="form-control">
+            <select name="Id_Servicio_FVS" id="servicio" class="form-control" required>
                 <option value="">Seleccione un Servicio </option>
                 @{
                     foreach (BDLavacar.Models.sp_RetornaServicios_Result Servicio in this.ViewBag.Servicio)

@@ -19,6 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("LavesuCar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
@@ -27,6 +28,7 @@
                     <li>@Html.ActionLink("Vehiculos", "VehiculoLista", "Vehiculo")</li>
                     <li>@Html.ActionLink("ClienteVista", "ClientesVistaLista", "Inicio")</li>
                     <li>@Html.ActionLink("Servicios", "ServicioLista", "Servicios")</li>
+                    <li>@Html.ActionLink("Cerrar Sesión", "InicioSesion", "Login")</li>
                 </ul>
             </div>
         </div>
@@ -47,5 +49,6 @@
     @Scripts.Render("~/bundles/myBundle")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Login/Cerrar_Sesion.js"></script>
 </body>
 </html>

@@ -17,7 +17,6 @@ namespace BDLavacar.Controllers
         {
             return View();
         }
-
         public ActionResult Validar()
         {
             return View();
@@ -28,6 +27,7 @@ namespace BDLavacar.Controllers
             Session["correoVista"] = correo;
             string url = "";
             string mensaje = "";
+
             try
             {
                 sp_RetornaLogueo_Result datosCliente = new sp_RetornaLogueo_Result();
@@ -39,7 +39,8 @@ namespace BDLavacar.Controllers
                     this.Session.Add("Nombre", null);
                     this.Session.Add("Tipo", null);
                     this.Session.Add("Fecha", null);
-                    this.Session.Add("UsuarioLogeado", null);
+                    this.Session.Add("UsuarioLogeado", false);
+
                 }
                 else
                 {
@@ -52,13 +53,14 @@ namespace BDLavacar.Controllers
                     if (Convert.ToInt32(this.Session["Tipo"]) == 1)
                     {
                         url = Url.Action("Inicio", "Home");
-                        //Response.Redirect("~/Factura/ListaPreFactura");
+                      
                     }
                     else if (Convert.ToInt32(this.Session["Tipo"]) == 2)
                     {
                         url = Url.Action("ClientesVistaLista", "ClienteVista");
-                        //this.Response.Redirect("~/Servicios/ServicioLista");
+                     
                     }
+                   
                     mensaje = "Usted ha ingresado: " + Session["Nombre"];
                 }
             }

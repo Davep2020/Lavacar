@@ -10,7 +10,10 @@ function creaValidaciones() {
         ///debe cumplir para ser considerado válido
         rules: {
             correo: {
-                required: true
+                required: true,
+                required: $.validator.format("Valor Requerido"),
+                email: true,
+                email: "Favor ingrese una dirección de correo electrónico válida"
             },
             contra: {
                 required: true
@@ -59,6 +62,9 @@ function Ajax(url, parametros) {
 function procesarResultadoMetodo(data) {
     var resultadoFuncion = data;
     if (resultadoFuncion.validado == true) {
+        window.location.href = resultadoFuncion.url;
+    } else {
+        alert('Usuario Incorrecto');
         window.location.href = resultadoFuncion.url;
     }
 }
