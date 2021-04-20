@@ -339,6 +339,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Clientes\ClienteLocalizacion.js" />
     <Content Include="Scripts\Clientes\ClienteModifica.js" />
+    <Content Include="Scripts\ComprobacionFecha\comprobacionFecha.js" />
     <Content Include="Scripts\Facturas\FacturaJqueryUI.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
