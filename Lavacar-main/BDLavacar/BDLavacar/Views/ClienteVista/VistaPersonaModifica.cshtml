@@ -61,17 +61,17 @@
         <select name="id_Canton" id="canton" class="form-control"></select>
     </div>
     @*<div class="form-group">
-        <label>Tipo de Persona:</label>
-        <select name="Id_TipoPersona_TP" id="Tipo_TP" class="form-control">
-            <option value="">Seleccione Tipo Usuario </option>
-            @{
-                foreach (BDLavacar.Models.sp_RetornaTipoPersona_Result Tipo in this.ViewBag.TipoPersona)
-                {
-                    <option value="@Tipo.Id_TipoPersona_TP"> @Tipo.Tipo_TP  </option>
+            <label>Tipo de Persona:</label>
+            <select name="Id_TipoPersona_TP" id="Tipo_TP" class="form-control">
+                <option value="">Seleccione Tipo Usuario </option>
+                @{
+                    foreach (BDLavacar.Models.sp_RetornaTipoPersona_Result Tipo in this.ViewBag.TipoPersona)
+                    {
+                        <option value="@Tipo.Id_TipoPersona_TP"> @Tipo.Tipo_TP  </option>
+                    }
                 }
-            }
-        </select>
-    </div>*@
+            </select>
+        </div>*@
     <div class="form-group">
         <label>Distrito:</label>
         <select name="id_Distrito" id="distrito" class="form-control"></select>
@@ -82,8 +82,11 @@
     <input type="hidden" name="hddProvincia" id="hddProvinciaID" value="@Model.id_Provincia" />
     <input type="hidden" name="hddCantonID" id="hddCantonID" value="@Model.id_Canton" />
     <input type="hidden" name="hddDistritoID" id="hddDistritoID" value="@Model.id_Distrito" />
+    <a href="~/ClienteVista/ClientesVistaLista" class="btn btn-warning" style="margin-bottom:2%">Volver</a>
+    
 </form>
-<a href="~/ClienteVista/ClientesVistaLista" class="btn btn-warning">Volver</a>
+
+
 @section scripts{
 
 
